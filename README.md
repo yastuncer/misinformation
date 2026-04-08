@@ -7,9 +7,10 @@ How do linguistic trust-cue patterns differ between COVID and climate misinforma
 ## Datasets
 | Dataset | Domain | Size |
 |---|---|---|
-| CMU-MisCov19 | COVID-19 | 4,573 tweets |
-| ClimateMiSt | Climate Change | 2,008 tweets |
+| ComplexDataLab | COVID-19 + Climate Change (filtered) | 45 sub-datasets |
 | MuMiN | General (filtered) | 12,914 claims / 21M tweets |
+
+> **Note:** Dataset selection pending team decision. CMU-MisCov19 was dropped — only contains tweet IDs, not tweet text. Evaluating ComplexDataLab as potential source for both COVID and climate data.
 
 ## Setup
 1. Create and activate a virtual environment
