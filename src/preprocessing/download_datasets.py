@@ -21,12 +21,17 @@ def download_covid_rumor():
 def download_additional_covid_dataset():
     df = pd.read_excel(f"{RAW_DIR}/jns-covid_misinfo_2021-03-06_Final_Clean.xlsx")
     df.to_csv(f"{RAW_DIR}/additional_covid_dataset.csv", index=False)
-    
     print(f"Success! Saved as {RAW_DIR}/additional_covid_dataset.csv")
 
+def download_climate_fever():
+    dataset = load_dataset("ComplexDataLab/Misinfo_Datasets", "climate_fever", split="train")
+    dataset.to_pandas().to_csv(f"{RAW_DIR}/climate_fever.csv", index=False)
+    print("Saved to data/raw/climate_fever.csv!")
+
 if __name__ == "__main__":
-    # download_complexdatalab()
-    # download_covid_rumor()
+    download_complexdatalab()
+    download_covid_rumor()
     download_additional_covid_dataset()
+    download_climate_fever()
 
 

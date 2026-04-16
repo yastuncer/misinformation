@@ -9,5 +9,8 @@ jupyter>=1.0
 pytest>=7.4
 mumin==1.10.0
 datasets==4.5.0
+sentence-transformers>=5.4.0
+XGBoost>=3.2.0
+SciPy>=1.17.1
 
 # Install order: pip install mumin first, then pip install datasets pandas --upgrade
