@@ -10,7 +10,7 @@ COVID_D = [
     'covid_vaccine_misinfo_mic'
 ]
 
-CLIMATE_D = ['climate_fever']
+CLIMATE_D = ['climate_fever', 'climate_fever_direct', 'quotaclimat']
 
 def filter_cdl(df):
     df['domain'] = 'general'

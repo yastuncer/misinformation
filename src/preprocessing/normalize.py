@@ -38,9 +38,7 @@ def normalize_princeton(df):
     df['label'] = 'misinformation'
     df['source'] = 'princeton'
     df['domain'] = 'covid'
-    df['dataset'] = 'jns-covid_misinfo'
-    
-
+    df['dataset'] = 'jns-covid_misinfo' 
     return df[['text', 'label', 'domain', 'source', 'dataset']]
 
 def normalize_climate_fever(df):
@@ -49,8 +47,18 @@ def normalize_climate_fever(df):
     df['source'] = 'cdl'
     if 'dataset' not in df.columns:
         df['dataset'] = 'climate_fever'
-    df = df.drop_duplicates(subset=['text'])
     return df[['text', 'label', 'source', 'dataset']]
 
+def normalize_quotaclimat(df):
+    df = df.rename(columns={'quote': 'text'})
+    df['source'] = 'quotaclimat'
+    if 'dataset' not in df.columns:
+        df['dataset'] = 'quotaclimat'
+    return df[['text', 'label', 'source', 'dataset']]
 
-
+def normalize_climate_fever_direct(df):
+    df = df.rename(columns={'claim': 'text', 'claim_label': 'label'})
+    df['source'] = 'climate_fever_direct'
+    if 'dataset' not in df.columns:
+        df['dataset'] = 'climate_fever_direct'
+    return df[['text', 'label', 'source', 'dataset']]

@@ -34,9 +34,19 @@ def harmonize_cdl_labels(df):
     return df
 
 def harmonize_labels(df, source):
-    if source == 'cdl': # sends the dataset to a harmonizer
+    # Route both cdl and climate_fever_direct to the CDL harmonizer
+    if source == 'cdl' or source == 'climate_fever_direct': 
         return harmonize_cdl_labels(df)
+        
     elif source == 'princeton':
         return df # this has already been normalized 
+        
+    # NEW: Add routing for quotaclimat
+    elif source == 'quotaclimat':
+        # Quotaclimat labels are specific denial taxonomies (e.g., '1_not_happening')
+        # We can harmonize all of these as 'misinformation'
+        df['label'] = 'misinformation'
+        return df
+        
     else:
         raise ValueError(f"Unknown source: {source}")

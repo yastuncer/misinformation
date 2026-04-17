@@ -28,10 +28,26 @@ def download_climate_fever():
     dataset.to_pandas().to_csv(f"{RAW_DIR}/climate_fever.csv", index=False)
     print("Saved to data/raw/climate_fever.csv!")
 
+# After cleaning and normalizing climate_fever from cdl, 
+# we noticed some missing values in the text column. 
+# To ensure we have a complete dataset, we augmented
+# our climate domain with more datasets.
+
+def download_climate_fever_direct():
+    dataset = load_dataset("tdiggelm/climate_fever", split="test")
+    dataset.to_pandas().to_csv(f"{RAW_DIR}/climate_fever_direct.csv", index=False)
+    print("Saved to data/raw/climate_fever_direct.csv!")
+
+def download_quotaclimat():
+    dataset = load_dataset("QuotaClimat/frugalaichallenge-text-train", split="train")
+    dataset.to_pandas().to_csv(f"{RAW_DIR}/quotaclimat.csv", index=False)
+    print("Saved to data/raw/quotaclimat.csv!")
+
 if __name__ == "__main__":
     download_complexdatalab()
     download_covid_rumor()
     download_additional_covid_dataset()
     download_climate_fever()
-
+    download_climate_fever_direct()
+    download_quotaclimat()
 

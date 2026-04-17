@@ -18,6 +18,10 @@ def clean_tweet(text):
     text = re.sub(r'[\U0001F600-\U0001F64F\U0001F300-\U0001F5FF\U0001F680-\U0001F6FF\U00002702-\U000027B0]+', '', text) # removing all emojis
     text = text.lower() # lowercase letters
 
+    # Remove newlines, carriage returns, and strip leading/trailing spaces
+    text = text.replace('\n', ' ').replace('\r', '').strip()
+    
+    text = text.lower()
     return text
 
 # putting clean tweets into a column 
