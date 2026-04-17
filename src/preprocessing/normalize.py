@@ -49,4 +49,8 @@ def normalize_climate_fever(df):
     df['source'] = 'cdl'
     if 'dataset' not in df.columns:
         df['dataset'] = 'climate_fever'
+    df = df.drop_duplicates(subset=['text'])
     return df[['text', 'label', 'source', 'dataset']]
+
+
+
