@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..',
 
 from src.features.tf_idf import top_terms_per_domain, print_top_terms
 from src.features.lemmatization import lemmatize_series
+from src.features.vader import avg_vader
 
 PROCESSED_DIR = 'data/processed'
 ANALYSIS_DIR  = 'data/analysis'
@@ -42,7 +43,34 @@ def run_pipeline():
     )
     print_top_terms(results, top_n=25)
 
-    # 3. save
+    # 3. VADER sentiment analysis
+    print("\nCalculating average VADER sentiment scores...")
+    covid_sentiment = avg_vader(covid['text'].tolist())
+    climate_sentiment = avg_vader(climate['text'].tolist())
+    sentiment_results = {
+        'covid': {
+            'neg': covid_sentiment[0],
+            'neu': covid_sentiment[1],
+            'pos': covid_sentiment[2],
+            'compound': covid_sentiment[3]
+        },
+        'climate': {
+            'neg': climate_sentiment[0],
+            'neu': climate_sentiment[1],
+            'pos': climate_sentiment[2],
+            'compound': climate_sentiment[3]
+        }
+    }
+
+    print("\nAverage VADER Sentiment Scores:")
+    for domain, scores in sentiment_results.items():
+        print(f"  {domain.capitalize()}:")
+        print(f"    Neg: {scores['neg']:.4f}")
+        print(f"    Neu: {scores['neu']:.4f}")
+        print(f"    Pos: {scores['pos']:.4f}")
+        print(f"    Compound: {scores['compound']:.4f}")
+
+    # 4. save
     tfidf_serializable = {
         domain: [(term, float(score)) for term, score in terms]
         for domain, terms in results.items()
@@ -50,6 +78,12 @@ def run_pipeline():
     with open(f'{ANALYSIS_DIR}/top_tfidf_terms.json', 'w') as f:
         json.dump(tfidf_serializable, f, indent=2)
     print(f"\nSaved → {ANALYSIS_DIR}/top_tfidf_terms.json")
+
+    with open(f'{ANALYSIS_DIR}/vader_sentiment.json', 'w') as f:
+        json.dump(sentiment_results, f, indent=2)
+    print(f"Saved → {ANALYSIS_DIR}/vader_sentiment.json")
+    
+
 
 
 if __name__ == '__main__':
