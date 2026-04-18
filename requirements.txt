@@ -34,6 +34,7 @@ nltk==3.9.4
 transformers==5.5.4
 sentence-transformers==5.4.0
 tokenizers==0.22.2
+langdetect==1.0.9
 
 # ==========================================
 # Deep Learning & Neural Networks

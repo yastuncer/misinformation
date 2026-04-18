@@ -15,7 +15,7 @@ import pandas as pd
 from src.preprocessing.normalize import normalize_cdl, normalize_princeton, normalize_climate_fever, normalize_quotaclimat, normalize_climate_fever_direct
 from src.preprocessing.harmonize_labels import harmonize_labels
 from src.preprocessing.filter_datasets import filter_cdl, get_covid, get_climate, get_general
-from src.preprocessing.clean import clean_series
+from src.preprocessing.clean import clean_series, filter_english
 
 RAW_DIR = 'data/raw'
 PROCESSED_DIR = 'data/processed'
@@ -99,6 +99,10 @@ def run_pipeline():
     covid = covid.drop_duplicates(subset=['text']).dropna(subset=['text']).reset_index(drop=True)
     climate = climate.drop_duplicates(subset=['text']).dropna(subset=['text']).reset_index(drop=True)
     general = general.drop_duplicates(subset=['text']).dropna(subset=['text']).reset_index(drop=True)
+
+    # FILTER NON-ENGLISH TWEETS IN COVID DOMAIN
+    print("Filtering non-English tweets...")
+    covid = filter_english(covid, 'text')
 
     # save processed CSVs
     print("Saving processed files...")
