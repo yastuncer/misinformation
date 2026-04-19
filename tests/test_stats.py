@@ -3,12 +3,18 @@ import unittest
 
 import pandas as pd
 
-from src.analysis.stats import benjamini_hochberg, cohens_d, cramers_v, dominant_emotion_result
+from src.analysis.stats import (
+    benjamini_hochberg,
+    cramers_v,
+    dominant_emotion_result,
+    numeric_test_result,
+    rank_biserial_correlation,
+)
 
 
 class StatsHelpersTest(unittest.TestCase):
-    def test_cohens_d_is_zero_for_identical_samples(self):
-        self.assertEqual(cohens_d([1, 2, 3], [1, 2, 3]), 0.0)
+    def test_rank_biserial_is_one_when_first_sample_dominates(self):
+        self.assertEqual(rank_biserial_correlation(4.0, 2, 2), 1.0)
 
     def test_benjamini_hochberg_is_monotonic_after_sorting(self):
         adjusted = benjamini_hochberg([0.001, 0.01, 0.03, 0.2])
@@ -56,6 +62,43 @@ class StatsHelpersTest(unittest.TestCase):
         self.assertEqual(payload["covid"]["counts"]["joy"], 1)
         self.assertEqual(payload["climate"]["counts"]["fear"], 2)
         self.assertTrue(math.isfinite(result["effect_size"]))
+
+    def test_numeric_test_result_reports_mwu_metadata_and_filters_nans(self):
+        result = numeric_test_result(
+            "sadness",
+            "emotion",
+            [3.0, float("nan"), 4.0],
+            [1.0, 2.0, float("nan")],
+        )
+
+        self.assertEqual(result["test"], "mann_whitney_u")
+        self.assertEqual(result["statistic_name"], "u")
+        self.assertEqual(result["effect_size_name"], "rank_biserial_correlation")
+        self.assertEqual(result["covid_n"], 2)
+        self.assertEqual(result["climate_n"], 2)
+        self.assertEqual(result["covid_median"], 3.5)
+        self.assertEqual(result["climate_median"], 1.5)
+        self.assertEqual(result["median_difference"], 2.0)
+        self.assertTrue(math.isfinite(result["p_value"]))
+
+    def test_numeric_test_result_handles_identical_samples_with_ties(self):
+        result = numeric_test_result("fear", "emotion", [1.0, 1.0, 1.0], [1.0, 1.0, 1.0])
+
+        self.assertAlmostEqual(result["effect_size"], 0.0)
+        self.assertAlmostEqual(result["p_value"], 1.0)
+
+    def test_numeric_test_result_handles_empty_after_nan_filtering(self):
+        result = numeric_test_result(
+            "joy",
+            "emotion",
+            [float("nan"), float("nan")],
+            [1.0, 2.0],
+        )
+
+        self.assertEqual(result["covid_n"], 0)
+        self.assertTrue(math.isnan(result["statistic"]))
+        self.assertTrue(math.isnan(result["p_value"]))
+        self.assertEqual(result["notes"], "insufficient_data")
 
 
 if __name__ == "__main__":

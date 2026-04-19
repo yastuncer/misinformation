@@ -13,8 +13,8 @@ from src.features.vader import VADER_COLUMNS, get_vader_scores
 ANALYSIS_DIR = Path("data/analysis")
 COVID_PATH = ANALYSIS_DIR / "covid_emotions.csv"
 CLIMATE_PATH = ANALYSIS_DIR / "climate_emotions.csv"
-TEST_RESULTS_PATH = ANALYSIS_DIR / "statistical_tests.csv"
-SUMMARY_PATH = ANALYSIS_DIR / "stats_summary.json"
+TEST_RESULTS_PATH = ANALYSIS_DIR / "statistical_tests_mwu.csv"
+SUMMARY_PATH = ANALYSIS_DIR / "stats_summary_mwu.json"
 
 EMOTION_COLUMNS = [
     "anger",
@@ -35,22 +35,22 @@ def word_count(text):
     return len(re.findall(r"\b\w+\b", text))
 
 
-def cohens_d(sample_a, sample_b):
-    a = np.asarray(sample_a, dtype=float)
-    b = np.asarray(sample_b, dtype=float)
-    if len(a) < 2 or len(b) < 2:
+def safe_mean(values):
+    if len(values) == 0:
         return math.nan
+    return float(np.mean(values))
 
-    var_a = a.var(ddof=1)
-    var_b = b.var(ddof=1)
-    pooled_denom = len(a) + len(b) - 2
-    if pooled_denom <= 0:
+
+def safe_median(values):
+    if len(values) == 0:
         return math.nan
+    return float(np.median(values))
 
-    pooled_var = ((len(a) - 1) * var_a + (len(b) - 1) * var_b) / pooled_denom
-    if pooled_var <= 0:
-        return 0.0
-    return (a.mean() - b.mean()) / math.sqrt(pooled_var)
+
+def rank_biserial_correlation(u_statistic, sample_a_size, sample_b_size):
+    if sample_a_size == 0 or sample_b_size == 0:
+        return math.nan
+    return float((2 * u_statistic) / (sample_a_size * sample_b_size) - 1)
 
 
 def cramers_v(chi2_statistic, contingency_table):
@@ -125,30 +125,53 @@ def numeric_test_result(feature_name, feature_group, covid_values, climate_value
     covid_values = pd.to_numeric(pd.Series(covid_values), errors="coerce").dropna().to_numpy()
     climate_values = pd.to_numeric(pd.Series(climate_values), errors="coerce").dropna().to_numpy()
 
-    statistic, p_value = stats.ttest_ind(
-        covid_values,
-        climate_values,
-        equal_var=False,
-        nan_policy="omit",
-    )
-    effect_size = cohens_d(covid_values, climate_values)
+    covid_n = int(len(covid_values))
+    climate_n = int(len(climate_values))
+    covid_mean = safe_mean(covid_values)
+    climate_mean = safe_mean(climate_values)
+    covid_median = safe_median(covid_values)
+    climate_median = safe_median(climate_values)
+
+    if covid_n == 0 or climate_n == 0:
+        statistic = math.nan
+        p_value = math.nan
+        effect_size = math.nan
+        notes = "insufficient_data"
+    else:
+        try:
+            statistic, p_value = stats.mannwhitneyu(
+                covid_values,
+                climate_values,
+                alternative="two-sided",
+                method="asymptotic",
+            )
+        except TypeError:
+            statistic, p_value = stats.mannwhitneyu(
+                covid_values,
+                climate_values,
+                alternative="two-sided",
+            )
+        effect_size = rank_biserial_correlation(statistic, covid_n, climate_n)
+        notes = "means_are_descriptive_only"
 
     return {
         "feature_group": feature_group,
         "feature": feature_name,
-        "test": "welch_t_test",
-        "covid_n": int(len(covid_values)),
-        "climate_n": int(len(climate_values)),
-        "covid_mean": float(np.mean(covid_values)),
-        "climate_mean": float(np.mean(climate_values)),
-        "covid_median": float(np.median(covid_values)),
-        "climate_median": float(np.median(climate_values)),
-        "mean_difference": float(np.mean(covid_values) - np.mean(climate_values)),
-        "statistic": float(statistic),
-        "p_value": float(p_value),
+        "test": "mann_whitney_u",
+        "statistic_name": "u",
+        "covid_n": covid_n,
+        "climate_n": climate_n,
+        "covid_mean": covid_mean,
+        "climate_mean": climate_mean,
+        "covid_median": covid_median,
+        "climate_median": climate_median,
+        "mean_difference": covid_mean - climate_mean,
+        "median_difference": covid_median - climate_median,
+        "statistic": float(statistic) if np.isfinite(statistic) else math.nan,
+        "p_value": float(p_value) if np.isfinite(p_value) else math.nan,
         "effect_size": float(effect_size),
-        "effect_size_name": "cohens_d",
-        "notes": "",
+        "effect_size_name": "rank_biserial_correlation",
+        "notes": notes,
     }
 
 
@@ -168,6 +191,7 @@ def dominant_emotion_result(covid_df, climate_df):
         "feature_group": "emotion_distribution",
         "feature": "dominant_emotion",
         "test": "chi_square",
+        "statistic_name": "chi2",
         "covid_n": int(covid_counts.sum()),
         "climate_n": int(climate_counts.sum()),
         "covid_mean": math.nan,
@@ -175,6 +199,7 @@ def dominant_emotion_result(covid_df, climate_df):
         "covid_median": math.nan,
         "climate_median": math.nan,
         "mean_difference": math.nan,
+        "median_difference": math.nan,
         "statistic": float(statistic),
         "p_value": float(p_value),
         "effect_size": float(effect_size),
@@ -278,6 +303,8 @@ def run_stats(covid_path=COVID_PATH, climate_path=CLIMATE_PATH):
     results_df.to_csv(TEST_RESULTS_PATH, index=False)
 
     summary_payload = {
+        "numeric_test": "mann_whitney_u",
+        "numeric_effect_size": "rank_biserial_correlation",
         "domains": {
             "covid": summarize_domain(covid_df),
             "climate": summarize_domain(climate_df),
@@ -311,8 +338,8 @@ def run_stats(covid_path=COVID_PATH, climate_path=CLIMATE_PATH):
                 "feature_group",
                 "feature",
                 "test",
-                "covid_mean",
-                "climate_mean",
+                "covid_median",
+                "climate_median",
                 "p_value",
                 "adjusted_p_value",
                 "effect_size",

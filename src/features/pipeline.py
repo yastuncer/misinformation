@@ -6,7 +6,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
-from src.analysis.stats import run_stats
+from src.analysis.stats import SUMMARY_PATH, TEST_RESULTS_PATH, run_stats
 from src.analysis.tfidf_context import run_tfidf_context_analysis
 from src.features.emotion import get_emotions_batch
 from src.features.lemmatization import lemmatize_series
@@ -114,8 +114,8 @@ def run_pipeline():
         tfidf_path=tfidf_path,
         vader_path=vader_path,
         output_path=f"{ANALYSIS_DIR}/misinformation_analysis.png",
-        stats_path=f"{ANALYSIS_DIR}/statistical_tests.csv",
-        summary_path=f"{ANALYSIS_DIR}/stats_summary.json",
+        stats_path=str(TEST_RESULTS_PATH),
+        summary_path=str(SUMMARY_PATH),
     )
 
 

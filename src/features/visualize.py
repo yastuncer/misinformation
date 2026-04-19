@@ -35,6 +35,15 @@ def get_stat_lookup(stats_df):
     }
 
 
+def numeric_test_label(summary):
+    if not summary:
+        return "adjusted significance"
+    test_name = summary.get("numeric_test", "")
+    if test_name == "mann_whitney_u":
+        return "Mann-Whitney U significance"
+    return "adjusted significance"
+
+
 def annotate_significance(ax, x_positions, left_values, right_values, rows, y_padding_ratio=0.03):
     y_min, y_max = ax.get_ylim()
     y_span = max(y_max - y_min, 1e-6)
@@ -75,6 +84,7 @@ def plot_all(
     if summary_path:
         with open(summary_path, encoding="utf-8") as handle:
             summary = json.load(handle)
+    numeric_label = numeric_test_label(summary)
 
     emotions = ["anger", "disgust", "fear", "joy", "neutral", "sadness", "surprise"]
     cov_color = "#E05C5C"
@@ -96,7 +106,7 @@ def plot_all(
     ax.set_xticks(x)
     ax.set_xticklabels(emotions, rotation=30, ha="right")
     ax.set_ylabel("Mean Score")
-    ax.set_title("Mean Emotion Scores by Domain")
+    ax.set_title(f"Mean Emotion Scores by Domain\n(bars show means; {numeric_label})")
     ax.legend()
     ax.grid(axis="y", alpha=0.3)
     annotate_significance(
@@ -140,7 +150,7 @@ def plot_all(
     ax.set_xticks(x2)
     ax.set_xticklabels(labels)
     ax.set_ylabel("Score")
-    ax.set_title("VADER Sentiment Comparison")
+    ax.set_title(f"VADER Sentiment Comparison\n(bars show means; {numeric_label})")
     ax.legend()
     ax.grid(axis="y", alpha=0.3)
     annotate_significance(
@@ -191,7 +201,7 @@ def plot_all(
     ax.set_xticklabels(["Sadness", "Anger"], fontsize=11)
     ax.set_ylabel("Emotion Score")
     ax.set_title(
-        "Key Emotion Differences\n"
+        f"Key Emotion Differences\n{numeric_label}\n"
         f"Sadness {significance_label(sadness_row['adjusted_p_value']) if sadness_row is not None else ''} | "
         f"Anger {significance_label(anger_row['adjusted_p_value']) if anger_row is not None else ''}"
     )
@@ -251,6 +261,6 @@ if __name__ == "__main__":
         tfidf_path="data/analysis/top_tfidf_terms.json",
         vader_path="data/analysis/vader_sentiment.json",
         output_path="data/analysis/misinformation_analysis.png",
-        stats_path="data/analysis/statistical_tests.csv",
-        summary_path="data/analysis/stats_summary.json",
+        stats_path="data/analysis/statistical_tests_mwu.csv",
+        summary_path="data/analysis/stats_summary_mwu.json",
     )
