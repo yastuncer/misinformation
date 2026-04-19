@@ -98,6 +98,13 @@ def to_python(value):
     return value
 
 
+def safe_percentages(counts):
+    total = counts.sum()
+    if total == 0:
+        return {emotion: 0.0 for emotion in counts.index}
+    return {emotion: float(count / total) for emotion, count in counts.items()}
+
+
 def prepare_domain_frame(path):
     df = pd.read_csv(path).copy()
     if "text" not in df.columns:
@@ -182,45 +189,51 @@ def dominant_emotion_result(covid_df, climate_df):
     climate_counts = (
         climate_df["dominant_emotion"].value_counts().reindex(EMOTION_COLUMNS, fill_value=0)
     )
+    covid_total = int(covid_counts.sum())
+    climate_total = int(climate_counts.sum())
     contingency = pd.DataFrame({"covid": covid_counts, "climate": climate_counts})
     contingency = contingency[contingency.sum(axis=1) > 0]
-    statistic, p_value, degrees_of_freedom, expected = stats.chi2_contingency(contingency)
-    effect_size = cramers_v(statistic, contingency)
+
+    if contingency.empty or covid_total == 0 or climate_total == 0:
+        statistic = math.nan
+        p_value = math.nan
+        degrees_of_freedom = 0
+        expected = np.empty((0, 0))
+        effect_size = math.nan
+        notes = "insufficient_data"
+    else:
+        statistic, p_value, degrees_of_freedom, expected = stats.chi2_contingency(contingency)
+        effect_size = cramers_v(statistic, contingency)
+        notes = f"dof={degrees_of_freedom}"
 
     result_row = {
         "feature_group": "emotion_distribution",
         "feature": "dominant_emotion",
         "test": "chi_square",
         "statistic_name": "chi2",
-        "covid_n": int(covid_counts.sum()),
-        "climate_n": int(climate_counts.sum()),
+        "covid_n": covid_total,
+        "climate_n": climate_total,
         "covid_mean": math.nan,
         "climate_mean": math.nan,
         "covid_median": math.nan,
         "climate_median": math.nan,
         "mean_difference": math.nan,
         "median_difference": math.nan,
-        "statistic": float(statistic),
-        "p_value": float(p_value),
-        "effect_size": float(effect_size),
+        "statistic": float(statistic) if np.isfinite(statistic) else math.nan,
+        "p_value": float(p_value) if np.isfinite(p_value) else math.nan,
+        "effect_size": float(effect_size) if np.isfinite(effect_size) else math.nan,
         "effect_size_name": "cramers_v",
-        "notes": f"dof={degrees_of_freedom}",
+        "notes": notes,
     }
 
     distribution_payload = {
         "covid": {
             "counts": {emotion: int(count) for emotion, count in covid_counts.items()},
-            "percentages": {
-                emotion: float(count / covid_counts.sum())
-                for emotion, count in covid_counts.items()
-            },
+            "percentages": safe_percentages(covid_counts),
         },
         "climate": {
             "counts": {emotion: int(count) for emotion, count in climate_counts.items()},
-            "percentages": {
-                emotion: float(count / climate_counts.sum())
-                for emotion, count in climate_counts.items()
-            },
+            "percentages": safe_percentages(climate_counts),
         },
         "expected_counts": {
             column: {

@@ -16,10 +16,11 @@ class StatsHelpersTest(unittest.TestCase):
     def test_rank_biserial_is_one_when_first_sample_dominates(self):
         self.assertEqual(rank_biserial_correlation(4.0, 2, 2), 1.0)
 
-    def test_benjamini_hochberg_is_monotonic_after_sorting(self):
-        adjusted = benjamini_hochberg([0.001, 0.01, 0.03, 0.2])
-        self.assertEqual(adjusted, sorted(adjusted))
-        self.assertTrue(all(0.0 <= value <= 1.0 for value in adjusted))
+    def test_benjamini_hochberg_reorders_unsorted_input_correctly(self):
+        adjusted = benjamini_hochberg([0.03, 0.001, 0.2, 0.01])
+        expected = [0.04, 0.004, 0.2, 0.02]
+        for actual, target in zip(adjusted, expected):
+            self.assertAlmostEqual(actual, target)
 
     def test_cramers_v_returns_zero_for_balanced_table(self):
         contingency = pd.DataFrame({"covid": [10, 10], "climate": [10, 10]})
@@ -62,6 +63,17 @@ class StatsHelpersTest(unittest.TestCase):
         self.assertEqual(payload["covid"]["counts"]["joy"], 1)
         self.assertEqual(payload["climate"]["counts"]["fear"], 2)
         self.assertTrue(math.isfinite(result["effect_size"]))
+
+    def test_dominant_emotion_result_handles_empty_inputs(self):
+        empty = pd.DataFrame(columns=["dominant_emotion"])
+
+        result, payload = dominant_emotion_result(empty, empty)
+
+        self.assertTrue(math.isnan(result["statistic"]))
+        self.assertTrue(math.isnan(result["p_value"]))
+        self.assertEqual(result["notes"], "insufficient_data")
+        self.assertTrue(all(value == 0.0 for value in payload["covid"]["percentages"].values()))
+        self.assertTrue(all(value == 0.0 for value in payload["climate"]["percentages"].values()))
 
     def test_numeric_test_result_reports_mwu_metadata_and_filters_nans(self):
         result = numeric_test_result(

@@ -219,7 +219,8 @@ def plot_all(
     if anger_row is not None:
         summary_lines.append(f"Anger: {format_p_value(anger_row['adjusted_p_value'])}")
     if summary is not None and summary.get("missing_trust_cue_columns"):
-        summary_lines.append("Trust cues pending Josh merge")
+        missing = ", ".join(summary["missing_trust_cue_columns"])
+        summary_lines.append(f"Missing trust-cue columns: {missing}")
     if summary_lines:
         ax.text(
             0.98,
