@@ -7,6 +7,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
+from src.features.vader import VADER_COLUMNS, get_vader_scores
+
 
 ANALYSIS_DIR = Path("data/analysis")
 COVID_PATH = ANALYSIS_DIR / "covid_emotions.csv"
@@ -23,34 +25,8 @@ EMOTION_COLUMNS = [
     "sadness",
     "surprise",
 ]
-VADER_COLUMNS = ["vader_neg", "vader_neu", "vader_pos", "vader_compound"]
 TRUST_CUE_COLUMNS = ["auth_score", "urg_score"]
 CORPUS_COLUMNS = ["char_count", "word_count"]
-
-
-def compute_vader_scores(texts):
-    try:
-        from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-    except ImportError as exc:
-        raise ImportError(
-            "vaderSentiment is required to run statistical analysis. "
-            "Install the project requirements first."
-        ) from exc
-
-    analyzer = SentimentIntensityAnalyzer()
-    rows = []
-    for text in texts:
-        clean_text = text if isinstance(text, str) else ""
-        scores = analyzer.polarity_scores(clean_text)
-        rows.append(
-            {
-                "vader_neg": scores["neg"],
-                "vader_neu": scores["neu"],
-                "vader_pos": scores["pos"],
-                "vader_compound": scores["compound"],
-            }
-        )
-    return pd.DataFrame(rows)
 
 
 def word_count(text):
@@ -138,8 +114,10 @@ def prepare_domain_frame(path):
     df["word_count"] = df["text"].map(word_count)
     df["dominant_emotion"] = df[EMOTION_COLUMNS].idxmax(axis=1)
 
-    vader_scores = compute_vader_scores(df["text"])
-    df = pd.concat([df.reset_index(drop=True), vader_scores], axis=1)
+    missing_vader_columns = [column for column in VADER_COLUMNS if column not in df.columns]
+    if missing_vader_columns:
+        vader_scores = get_vader_scores(df["text"].tolist())
+        df = pd.concat([df.reset_index(drop=True), vader_scores], axis=1)
     return df
 
 
