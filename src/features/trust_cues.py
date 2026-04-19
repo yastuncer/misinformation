@@ -1,3 +1,4 @@
+import math
 import spacy
 from spacy.matcher import PhraseMatcher
 
@@ -203,7 +204,7 @@ urg_matcher.add("URG", build_patterns(urg_lex))
 
 
 # Score post for authoritative language and urgency
-def score_post(text):
+def score_auth_urg(text):
     doc = nlp(text)
 
     # Match phrases to text
@@ -223,15 +224,30 @@ def score_post(text):
         (auth_count - 0.5 * hedge_count) # Deduct hedging from authoritative language score
         / len(doc) # Normalize by post length
     ) 
+    auth_score = max(auth_score, 0) # 0 as lower bound
+
     urg_score = (
         (urg_count 
         + 0.5 * min(exclam_count, 10) # Limit influence of exclamation marks
-        + 0.5 * min(cap_words, 5)) # Limit influence of words in all caps
+        + 0.5 * min(len(cap_words), 5)) # Limit influence of words in all caps
         / len(doc) # Normalize by post length
     )
 
-    return {
-        "auth_score": auth_score,
-        "urg_score": urg_score,
-    }
+    return auth_score, urg_score
 
+# Squash scores into a range [0, 1]
+def squash(x, k=10):
+    return 1 / (1 + math.exp(-k * x))
+
+def avg_auth_urg(texts):
+    avg_auth, avg_urg = 0, 0
+
+    for text in texts: 
+        auth_score, urg_score = score_auth_urg(text)
+        avg_auth += squash(auth_score)
+        avg_urg += squash(urg_score)
+
+    avg_auth /= len(texts) 
+    avg_urg /= len(texts)
+    
+    return avg_auth, avg_urg
