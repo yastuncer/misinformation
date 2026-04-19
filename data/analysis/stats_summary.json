@@ -1,0 +1,305 @@
+{
+  "domains": {
+    "covid": {
+      "rows": 4242,
+      "mean_char_count": 93.27887788778878,
+      "median_char_count": 80.0,
+      "mean_word_count": 15.715700141442715,
+      "median_word_count": 13.0,
+      "source_counts": {
+        "cdl": 2473,
+        "princeton": 1769
+      },
+      "dataset_counts": {
+        "covid_19_rumor": 2473,
+        "jns-covid_misinfo": 1769
+      }
+    },
+    "climate": {
+      "rows": 5118,
+      "mean_char_count": 287.8743649863228,
+      "median_char_count": 220.0,
+      "mean_word_count": 49.01524032825322,
+      "median_word_count": 38.0,
+      "source_counts": {
+        "quotaclimat": 4865,
+        "cdl": 251,
+        "climate_fever_direct": 2
+      },
+      "dataset_counts": {
+        "quotaclimat": 4865,
+        "climate_fever": 251,
+        "climate_fever_direct": 2
+      }
+    }
+  },
+  "dominant_emotions": {
+    "covid": {
+      "counts": {
+        "anger": 346,
+        "disgust": 275,
+        "fear": 482,
+        "joy": 98,
+        "neutral": 2418,
+        "sadness": 461,
+        "surprise": 162
+      },
+      "percentages": {
+        "anger": 0.08156529938708157,
+        "disgust": 0.06482791136256483,
+        "fear": 0.11362564827911363,
+        "joy": 0.0231023102310231,
+        "neutral": 0.57001414427157,
+        "sadness": 0.10867515322960868,
+        "surprise": 0.03818953323903819
+      }
+    },
+    "climate": {
+      "counts": {
+        "anger": 705,
+        "disgust": 196,
+        "fear": 605,
+        "joy": 318,
+        "neutral": 2696,
+        "sadness": 293,
+        "surprise": 305
+      },
+      "percentages": {
+        "anger": 0.13774912075029308,
+        "disgust": 0.03829620945681907,
+        "fear": 0.11821023837436499,
+        "joy": 0.06213364595545135,
+        "neutral": 0.5267682688550215,
+        "sadness": 0.057248925361469326,
+        "surprise": 0.059593591246580695
+      }
+    },
+    "expected_counts": {
+      "covid": {
+        "anger": 476.31858974358977,
+        "disgust": 213.45961538461538,
+        "fear": 492.63397435897434,
+        "joy": 188.53333333333333,
+        "neutral": 2317.6910256410256,
+        "sadness": 341.71666666666664,
+        "surprise": 211.64679487179487
+      },
+      "climate": {
+        "anger": 574.6814102564102,
+        "disgust": 257.5403846153846,
+        "fear": 594.3660256410257,
+        "joy": 227.46666666666667,
+        "neutral": 2796.3089743589744,
+        "sadness": 412.28333333333336,
+        "surprise": 255.35320512820513
+      }
+    }
+  },
+  "available_trust_cue_columns": [],
+  "missing_trust_cue_columns": [
+    "auth_score",
+    "urg_score"
+  ],
+  "top_findings": [
+    {
+      "feature_group": "corpus",
+      "feature": "char_count",
+      "test": "welch_t_test",
+      "covid_n": 4242,
+      "climate_n": 5118,
+      "covid_mean": 93.27887788778878,
+      "climate_mean": 287.8743649863228,
+      "covid_median": 80.0,
+      "climate_median": 220.0,
+      "mean_difference": -194.59548709853402,
+      "statistic": -51.63416338483868,
+      "p_value": 0.0,
+      "effect_size": -0.9841077874392529,
+      "effect_size_name": "cohens_d",
+      "notes": "",
+      "adjusted_p_value": 0.0,
+      "significant_0_05": true,
+      "fdr_significant_0_05": true
+    },
+    {
+      "feature_group": "corpus",
+      "feature": "word_count",
+      "test": "welch_t_test",
+      "covid_n": 4242,
+      "climate_n": 5118,
+      "covid_mean": 15.715700141442715,
+      "climate_mean": 49.01524032825322,
+      "covid_median": 13.0,
+      "climate_median": 38.0,
+      "mean_difference": -33.2995401868105,
+      "statistic": -52.384692186119494,
+      "p_value": 0.0,
+      "effect_size": -0.999232149110533,
+      "effect_size_name": "cohens_d",
+      "notes": "",
+      "adjusted_p_value": 0.0,
+      "significant_0_05": true,
+      "fdr_significant_0_05": true
+    },
+    {
+      "feature_group": "vader",
+      "feature": "vader_pos",
+      "test": "welch_t_test",
+      "covid_n": 4242,
+      "climate_n": 5118,
+      "covid_mean": 0.05683121169259783,
+      "climate_mean": 0.09350840171942164,
+      "covid_median": 0.0,
+      "climate_median": 0.082,
+      "mean_difference": -0.036677190026823805,
+      "statistic": -19.5116712630982,
+      "p_value": 5.651822342172401e-83,
+      "effect_size": -0.4102976577419979,
+      "effect_size_name": "cohens_d",
+      "notes": "",
+      "adjusted_p_value": 2.6375170930137874e-82,
+      "significant_0_05": true,
+      "fdr_significant_0_05": true
+    },
+    {
+      "feature_group": "vader",
+      "feature": "vader_compound",
+      "test": "welch_t_test",
+      "covid_n": 4242,
+      "climate_n": 5118,
+      "covid_mean": -0.09237072135785007,
+      "climate_mean": 0.07441270027354435,
+      "covid_median": 0.0,
+      "climate_median": 0.0258,
+      "mean_difference": -0.16678342163139442,
+      "statistic": -17.98208668660815,
+      "p_value": 4.558226152551848e-71,
+      "effect_size": -0.3612604878517755,
+      "effect_size_name": "cohens_d",
+      "notes": "",
+      "adjusted_p_value": 1.5953791533931466e-70,
+      "significant_0_05": true,
+      "fdr_significant_0_05": true
+    },
+    {
+      "feature_group": "emotion_distribution",
+      "feature": "dominant_emotion",
+      "test": "chi_square",
+      "covid_n": 4242,
+      "climate_n": 5118,
+      "covid_mean": NaN,
+      "climate_mean": NaN,
+      "covid_median": NaN,
+      "climate_median": NaN,
+      "mean_difference": NaN,
+      "statistic": 282.9683557983581,
+      "p_value": 3.6368629825068134e-58,
+      "effect_size": 0.17387254511356595,
+      "effect_size_name": "cramers_v",
+      "notes": "dof=6",
+      "adjusted_p_value": 1.0183216351019077e-57,
+      "significant_0_05": true,
+      "fdr_significant_0_05": true
+    },
+    {
+      "feature_group": "emotion",
+      "feature": "sadness",
+      "test": "welch_t_test",
+      "covid_n": 4242,
+      "climate_n": 5118,
+      "covid_mean": 0.1264274265518171,
+      "climate_mean": 0.0793369883101859,
+      "covid_median": 0.039757702499628,
+      "climate_median": 0.024205084890127147,
+      "mean_difference": 0.0470904382416312,
+      "statistic": 12.543036209561192,
+      "p_value": 9.577755991041867e-36,
+      "effect_size": 0.2669595305396684,
+      "effect_size_name": "cohens_d",
+      "notes": "",
+      "adjusted_p_value": 2.2348097312431024e-35,
+      "significant_0_05": true,
+      "fdr_significant_0_05": true
+    },
+    {
+      "feature_group": "emotion",
+      "feature": "joy",
+      "test": "welch_t_test",
+      "covid_n": 4242,
+      "climate_n": 5118,
+      "covid_mean": 0.03581789350676581,
+      "climate_mean": 0.07218055130755581,
+      "covid_median": 0.0061773797497153005,
+      "climate_median": 0.0080427732318639,
+      "mean_difference": -0.036362657800789996,
+      "statistic": -11.749253390988745,
+      "p_value": 1.272178788244173e-31,
+      "effect_size": -0.23213345852703704,
+      "effect_size_name": "cohens_d",
+      "notes": "",
+      "adjusted_p_value": 2.544357576488346e-31,
+      "significant_0_05": true,
+      "fdr_significant_0_05": true
+    },
+    {
+      "feature_group": "emotion",
+      "feature": "anger",
+      "test": "welch_t_test",
+      "covid_n": 4242,
+      "climate_n": 5118,
+      "covid_mean": 0.10036630850880099,
+      "climate_mean": 0.14884405631484704,
+      "covid_median": 0.02968083973973985,
+      "climate_median": 0.048123721033334704,
+      "mean_difference": -0.04847774780604605,
+      "statistic": -11.723569538666512,
+      "p_value": 1.6026799167871779e-31,
+      "effect_size": -0.23894632227408116,
+      "effect_size_name": "cohens_d",
+      "notes": "",
+      "adjusted_p_value": 2.804689854377561e-31,
+      "significant_0_05": true,
+      "fdr_significant_0_05": true
+    },
+    {
+      "feature_group": "vader",
+      "feature": "vader_neg",
+      "test": "welch_t_test",
+      "covid_n": 4242,
+      "climate_n": 5118,
+      "covid_mean": 0.09775129655822727,
+      "climate_mean": 0.07573153575615475,
+      "covid_median": 0.0,
+      "climate_median": 0.056,
+      "mean_difference": 0.02201976080207252,
+      "statistic": 9.406451070835221,
+      "p_value": 6.841995039651042e-21,
+      "effect_size": 0.20328474951013173,
+      "effect_size_name": "cohens_d",
+      "notes": "",
+      "adjusted_p_value": 1.0643103395012732e-20,
+      "significant_0_05": true,
+      "fdr_significant_0_05": true
+    },
+    {
+      "feature_group": "vader",
+      "feature": "vader_neu",
+      "test": "welch_t_test",
+      "covid_n": 4242,
+      "climate_n": 5118,
+      "covid_mean": 0.8454170202734559,
+      "climate_mean": 0.8307573270808911,
+      "covid_median": 0.856,
+      "climate_median": 0.838,
+      "mean_difference": 0.014659693192564771,
+      "statistic": 5.31169146838696,
+      "p_value": 1.1170453907397294e-07,
+      "effect_size": 0.11352254799515447,
+      "effect_size_name": "cohens_d",
+      "notes": "",
+      "adjusted_p_value": 1.563863547035621e-07,
+      "significant_0_05": true,
+      "fdr_significant_0_05": true
+    }
+  ]
+}
