@@ -6,6 +6,10 @@ import pandas as pd
 import seaborn as sns
 
 
+EMOTIONS = ["anger", "disgust", "fear", "joy", "neutral", "sadness", "surprise"]
+CONTEXT_EMOTIONS = ["anger", "disgust", "fear", "sadness", "neutral", "joy"]
+
+
 def significance_label(p_value):
     if p_value is None or pd.isna(p_value):
         return ""
@@ -62,6 +66,133 @@ def annotate_significance(ax, x_positions, left_values, right_values, rows, y_pa
         )
 
 
+def build_context_frame(term_context, domain, top_n=6):
+    rows = []
+    for entry in term_context.get(domain, {}).get("terms", [])[:top_n]:
+        row = {
+            "domain": domain,
+            "term": entry["term"],
+            "document_frequency": entry["document_frequency"],
+            "share_of_domain_docs": entry["share_of_domain_docs"],
+            "vader_compound": entry["average_vader"]["vader_compound"],
+        }
+        for emotion in CONTEXT_EMOTIONS:
+            row[emotion] = entry["average_emotions"][emotion]
+        rows.append(row)
+    return pd.DataFrame(rows)
+
+
+def annotate_context_examples(ax, entries):
+    lines = []
+    for entry in entries:
+        examples = entry.get("representative_examples", [])
+        if not examples:
+            continue
+        example = examples[0]
+        lines.append(f"{entry['term']}: \"{example['text']}\"")
+    ax.axis("off")
+    ax.text(
+        0.0,
+        1.0,
+        "\n\n".join(lines),
+        va="top",
+        ha="left",
+        fontsize=9,
+        wrap=True,
+    )
+
+
+def plot_tfidf_context(context_path, output_path, top_n=6, show=False):
+    with open(context_path, encoding="utf-8") as handle:
+        term_context = json.load(handle)
+
+    covid_df = build_context_frame(term_context, "covid", top_n=top_n)
+    climate_df = build_context_frame(term_context, "climate", top_n=top_n)
+    cov_color = "#E05C5C"
+    cli_color = "#4A90D9"
+
+    fig = plt.figure(figsize=(16, 12))
+    grid = fig.add_gridspec(3, 2, height_ratios=[1.1, 1.3, 1.0])
+    fig.suptitle(
+        "TF-IDF Context Differences Between COVID and Climate Misinformation",
+        fontsize=15,
+        fontweight="bold",
+        y=0.99,
+    )
+
+    ax = fig.add_subplot(grid[0, 0])
+    ax.barh(covid_df["term"][::-1], covid_df["vader_compound"][::-1], color=cov_color, alpha=0.85)
+    ax.axvline(0, color="black", linewidth=0.8, linestyle="--")
+    ax.set_xlabel("Average VADER Compound in Matching Posts")
+    ax.set_title("COVID Top-Term Context Sentiment")
+    ax.grid(axis="x", alpha=0.3)
+
+    ax = fig.add_subplot(grid[0, 1])
+    ax.barh(
+        climate_df["term"][::-1],
+        climate_df["vader_compound"][::-1],
+        color=cli_color,
+        alpha=0.85,
+    )
+    ax.axvline(0, color="black", linewidth=0.8, linestyle="--")
+    ax.set_xlabel("Average VADER Compound in Matching Posts")
+    ax.set_title("Climate Top-Term Context Sentiment")
+    ax.grid(axis="x", alpha=0.3)
+
+    ax = fig.add_subplot(grid[1, 0])
+    sns.heatmap(
+        covid_df.set_index("term")[CONTEXT_EMOTIONS],
+        cmap="Reds",
+        annot=True,
+        fmt=".2f",
+        linewidths=0.5,
+        cbar_kws={"label": "Mean emotion score"},
+        ax=ax,
+    )
+    ax.set_title("COVID Term-Context Emotion Mix")
+    ax.set_xlabel("Emotion")
+    ax.set_ylabel("")
+
+    ax = fig.add_subplot(grid[1, 1])
+    sns.heatmap(
+        climate_df.set_index("term")[CONTEXT_EMOTIONS],
+        cmap="Blues",
+        annot=True,
+        fmt=".2f",
+        linewidths=0.5,
+        cbar_kws={"label": "Mean emotion score"},
+        ax=ax,
+    )
+    ax.set_title("Climate Term-Context Emotion Mix")
+    ax.set_xlabel("Emotion")
+    ax.set_ylabel("")
+
+    ax = fig.add_subplot(grid[2, 0])
+    ax.set_title("COVID Example Posts")
+    annotate_context_examples(ax, term_context.get("covid", {}).get("terms", [])[:3])
+
+    ax = fig.add_subplot(grid[2, 1])
+    ax.set_title("Climate Example Posts")
+    annotate_context_examples(ax, term_context.get("climate", {}).get("terms", [])[:3])
+
+    fig.text(
+        0.5,
+        0.02,
+        (
+            "COVID top-term contexts skew more negative and threat-focused, while climate top-term "
+            "contexts show more policy/science language with anger/fear but milder overall sentiment."
+        ),
+        ha="center",
+        fontsize=10,
+    )
+    plt.tight_layout(rect=[0, 0.04, 1, 0.96])
+    plt.savefig(output_path, dpi=150, bbox_inches="tight")
+    print(f"Saved -> {output_path}")
+    if show:
+        plt.show()
+    plt.close(fig)
+
+
 def plot_all(
     covid_path,
     climate_path,
@@ -70,6 +201,7 @@ def plot_all(
     output_path,
     stats_path=None,
     summary_path=None,
+    show=False,
 ):
     covid = pd.read_csv(covid_path).dropna(subset=["anger"])
     climate = pd.read_csv(climate_path).dropna(subset=["anger"])
@@ -86,7 +218,6 @@ def plot_all(
             summary = json.load(handle)
     numeric_label = numeric_test_label(summary)
 
-    emotions = ["anger", "disgust", "fear", "joy", "neutral", "sadness", "surprise"]
     cov_color = "#E05C5C"
     cli_color = "#4A90D9"
 
@@ -95,16 +226,17 @@ def plot_all(
         "COVID vs Climate Misinformation - Linguistic and Emotional Analysis",
         fontsize=15,
         fontweight="bold",
+        y=0.99,
     )
 
     ax = axes[0, 0]
-    x, width = np.arange(len(emotions)), 0.35
-    covid_emotion_means = [covid[column].mean() for column in emotions]
-    climate_emotion_means = [climate[column].mean() for column in emotions]
+    x, width = np.arange(len(EMOTIONS)), 0.35
+    covid_emotion_means = [covid[column].mean() for column in EMOTIONS]
+    climate_emotion_means = [climate[column].mean() for column in EMOTIONS]
     ax.bar(x - width / 2, covid_emotion_means, width, label="COVID", color=cov_color, alpha=0.85)
     ax.bar(x + width / 2, climate_emotion_means, width, label="Climate", color=cli_color, alpha=0.85)
     ax.set_xticks(x)
-    ax.set_xticklabels(emotions, rotation=30, ha="right")
+    ax.set_xticklabels(EMOTIONS, rotation=30, ha="right")
     ax.set_ylabel("Mean Score")
     ax.set_title(f"Mean Emotion Scores by Domain\n(bars show means; {numeric_label})")
     ax.legend()
@@ -114,15 +246,15 @@ def plot_all(
         x,
         covid_emotion_means,
         climate_emotion_means,
-        [stat_lookup.get(("emotion", emotion)) for emotion in emotions],
+        [stat_lookup.get(("emotion", emotion)) for emotion in EMOTIONS],
     )
 
     ax = axes[0, 1]
-    covid_dom = covid[emotions].idxmax(axis=1).value_counts(normalize=True).mul(100).reindex(emotions, fill_value=0)
-    climate_dom = climate[emotions].idxmax(axis=1).value_counts(normalize=True).mul(100).reindex(emotions, fill_value=0)
-    palette = sns.color_palette("Set2", len(emotions))
+    covid_dom = covid[EMOTIONS].idxmax(axis=1).value_counts(normalize=True).mul(100).reindex(EMOTIONS, fill_value=0)
+    climate_dom = climate[EMOTIONS].idxmax(axis=1).value_counts(normalize=True).mul(100).reindex(EMOTIONS, fill_value=0)
+    palette = sns.color_palette("Set2", len(EMOTIONS))
     bottom_covid, bottom_climate = 0, 0
-    for index, emotion in enumerate(emotions):
+    for index, emotion in enumerate(EMOTIONS):
         ax.bar(0, covid_dom[emotion], bottom=bottom_covid, color=palette[index], label=emotion, width=0.4)
         ax.bar(1, climate_dom[emotion], bottom=bottom_climate, color=palette[index], width=0.4)
         bottom_covid += covid_dom[emotion]
@@ -223,13 +355,13 @@ def plot_all(
         summary_lines.append(f"Missing trust-cue columns: {missing}")
     if summary_lines:
         ax.text(
-            0.98,
+            0.02,
             0.98,
             "\n".join(summary_lines),
             transform=ax.transAxes,
-            ha="right",
+            ha="left",
             va="top",
-            fontsize=9,
+            fontsize=8.5,
             bbox=dict(boxstyle="round,pad=0.3", facecolor="white", alpha=0.85),
         )
 
@@ -249,10 +381,12 @@ def plot_all(
     ax.set_title("Top 15 TF-IDF Terms - Climate Misinformation")
     ax.grid(axis="x", alpha=0.3)
 
-    plt.tight_layout()
+    plt.tight_layout(rect=[0, 0, 1, 0.96])
     plt.savefig(output_path, dpi=150, bbox_inches="tight")
     print(f"Saved -> {output_path}")
-    plt.show()
+    if show:
+        plt.show()
+    plt.close(fig)
 
 
 if __name__ == "__main__":
@@ -264,4 +398,10 @@ if __name__ == "__main__":
         output_path="data/analysis/misinformation_analysis.png",
         stats_path="data/analysis/statistical_tests_mwu.csv",
         summary_path="data/analysis/stats_summary_mwu.json",
+        show=False,
+    )
+    plot_tfidf_context(
+        context_path="data/analysis/tfidf_term_context.json",
+        output_path="data/analysis/tfidf_context_comparison.png",
+        show=False,
     )

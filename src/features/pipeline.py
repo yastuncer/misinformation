@@ -7,12 +7,12 @@ import pandas as pd
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 from src.analysis.stats import SUMMARY_PATH, TEST_RESULTS_PATH, run_stats
-from src.analysis.tfidf_context import run_tfidf_context_analysis
+from src.analysis.tfidf_context import TFIDF_CONTEXT_PATH, run_tfidf_context_analysis
 from src.features.emotion import get_emotions_batch
 from src.features.lemmatization import lemmatize_series
 from src.features.tf_idf import print_top_terms, top_terms_per_domain
 from src.features.vader import get_vader_scores
-from src.features.visualize import plot_all
+from src.features.visualize import plot_all, plot_tfidf_context
 
 PROCESSED_DIR = "data/processed"
 ANALYSIS_DIR = "data/analysis"
@@ -116,6 +116,12 @@ def run_pipeline():
         output_path=f"{ANALYSIS_DIR}/misinformation_analysis.png",
         stats_path=str(TEST_RESULTS_PATH),
         summary_path=str(SUMMARY_PATH),
+        show=False,
+    )
+    plot_tfidf_context(
+        context_path=str(TFIDF_CONTEXT_PATH),
+        output_path=f"{ANALYSIS_DIR}/tfidf_context_comparison.png",
+        show=False,
     )
 
 
