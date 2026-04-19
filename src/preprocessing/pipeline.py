@@ -100,9 +100,10 @@ def run_pipeline():
     climate = climate.drop_duplicates(subset=['text']).dropna(subset=['text']).reset_index(drop=True)
     general = general.drop_duplicates(subset=['text']).dropna(subset=['text']).reset_index(drop=True)
 
-    # FILTER NON-ENGLISH TWEETS IN COVID DOMAIN
+    # FILTER NON-ENGLISH TWEETS IN COVID AND GENERAL
     print("Filtering non-English tweets...")
     covid = filter_english(covid, 'text')
+    general = filter_english(general, 'text')
 
     # save processed CSVs
     print("Saving processed files...")
