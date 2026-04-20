@@ -9,6 +9,7 @@ from src.features.tf_idf import top_terms_per_domain, print_top_terms
 from src.features.lemmatization import lemmatize_series
 from src.features.vader import avg_vader
 from src.features.emotion import get_emotions_batch
+from src.features.trust_cues import avg_auth_urg
 
 PROCESSED_DIR = 'data/processed'
 ANALYSIS_DIR  = 'data/analysis'
@@ -86,7 +87,27 @@ def run_pipeline():
         print(f"    Pos: {scores['pos']:.4f}")
         print(f"    Compound: {scores['compound']:.4f}")
 
-    # 6. save
+    # 6. Authoritative language and urgency scores
+    print("\nCalculating average authoritative language and urgency scores...")
+    covid_auth, covid_urg = avg_auth_urg(covid['text'].tolist())
+    climate_auth, climate_urg = avg_auth_urg(climate['text'].tolist())
+    auth_urg_results = {
+        'covid': {
+            "auth": covid_auth,
+            "urg": covid_urg
+        },
+        'climate': {
+            "auth": climate_auth,
+            "urg": climate_urg
+        }
+    }
+    print("\nAverage authoritative language and urgency scores (scaled 0 to 1):")
+    for domain, scores in sentiment_results.items():
+        print(f"  {domain.capitalize()}:")
+        print(f"    Authoritative language: {scores['auth']:.4f}")
+        print(f"    Urgency: {scores['urg']:.4f}")
+
+    # 7. save
     tfidf_serializable = {
         domain: [(term, float(score)) for term, score in terms]
         for domain, terms in results.items()
@@ -98,6 +119,10 @@ def run_pipeline():
     with open(f'{ANALYSIS_DIR}/vader_sentiment.json', 'w') as f:
         json.dump(sentiment_results, f, indent=2)
     print(f"Saved → {ANALYSIS_DIR}/vader_sentiment.json")
+
+    with open(f'{ANALYSIS_DIR}/auth_urg.json', 'w') as f:
+        json.dump(auth_urg_results, f, indent=2)
+    print(f"Saved → {ANALYSIS_DIR}/auth_urg.json")
     
 if __name__ == '__main__':
     run_pipeline()
