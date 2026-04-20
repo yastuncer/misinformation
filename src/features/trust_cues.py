@@ -2,7 +2,7 @@ import math
 import spacy
 from spacy.matcher import PhraseMatcher
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_sm") # Download with "python -m spacy download en_core_web_sm"
 
 auth_lex = [
     # Obligation / directive modality

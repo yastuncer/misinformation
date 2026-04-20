@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import json
 
-def plot_all(covid_path, climate_path, tfidf_path, vader_path, output_path):
+def plot_all(covid_path, climate_path, tfidf_path, vader_path, auth_urg_path, output_path):
 
     covid   = pd.read_csv(covid_path).dropna(subset=['anger'])
     climate = pd.read_csv(climate_path).dropna(subset=['anger'])
@@ -14,12 +14,14 @@ def plot_all(covid_path, climate_path, tfidf_path, vader_path, output_path):
         tfidf = json.load(f)
     with open(vader_path) as f:
         vader = json.load(f)
+    with open(auth_urg_path) as f:
+        auth_urg = json.load(f)
 
     emotions  = ['anger', 'disgust', 'fear', 'joy', 'neutral', 'sadness', 'surprise']
     COV_COLOR = '#E05C5C'
     CLI_COLOR = '#4A90D9'
 
-    fig, axes = plt.subplots(3, 2, figsize=(14, 16))
+    fig, axes = plt.subplots(4, 2, figsize=(14, 16))
     fig.suptitle('COVID vs Climate Misinformation — Linguistic & Emotional Analysis',
                  fontsize=15, fontweight='bold')
 
@@ -52,10 +54,10 @@ def plot_all(covid_path, climate_path, tfidf_path, vader_path, output_path):
     ax.set_title('Dominant Emotion Distribution')
     ax.legend(loc='upper right', fontsize=8)
 
-    # 3. VADER sentiment
+    # 3. VADER sentiment neg, neu, pos
     ax = axes[1, 0]
-    categories = ['neg', 'neu', 'pos', 'compound']
-    labels     = ['Negative', 'Neutral', 'Positive', 'Compound']
+    categories = ['neg', 'neu', 'pos']
+    labels     = ['Negative', 'Neutral', 'Positive']
     x2 = np.arange(len(categories))
     ax.bar(x2 - w/2, [vader['covid'][c]   for c in categories], w, label='COVID',   color=COV_COLOR, alpha=0.85)
     ax.bar(x2 + w/2, [vader['climate'][c] for c in categories], w, label='Climate', color=CLI_COLOR, alpha=0.85)
@@ -67,8 +69,20 @@ def plot_all(covid_path, climate_path, tfidf_path, vader_path, output_path):
     ax.legend()
     ax.grid(axis='y', alpha=0.3)
 
-    # 4. sadness & anger box plots
+    # 4. VADER sentiment compound
     ax = axes[1, 1]
+    ax.bar(0, vader['covid']['compound'],   color=COV_COLOR, alpha=0.85, width=0.4, label='COVID')
+    ax.bar(1, vader['climate']['compound'], color=CLI_COLOR, alpha=0.85, width=0.4, label='Climate')
+    ax.axhline(0, color='black', linewidth=0.8, linestyle='--')
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels(['COVID', 'Climate'])
+    ax.set_ylabel('Compound Score')
+    ax.set_title('VADER Compound Sentiment')
+    ax.legend()
+    ax.grid(axis='y', alpha=0.3)
+
+    # 5. sadness & anger box plots
+    ax = axes[2, 0]
     ax.boxplot([covid['sadness'].values],   positions=[1],   widths=0.35, patch_artist=True,
                boxprops=dict(facecolor=COV_COLOR, alpha=0.7), medianprops=dict(color='black', linewidth=2))
     ax.boxplot([climate['sadness'].values], positions=[1.5], widths=0.35, patch_artist=True,
@@ -85,8 +99,8 @@ def plot_all(covid_path, climate_path, tfidf_path, vader_path, output_path):
                plt.Rectangle((0,0),1,1, fc=CLI_COLOR, alpha=0.7)], ['COVID', 'Climate'])
     ax.grid(axis='y', alpha=0.3)
 
-    # 5. TF-IDF COVID
-    ax = axes[2, 0]
+    # 6. TF-IDF COVID
+    ax = axes[2, 1]
     terms  = [t[0] for t in tfidf['covid'][:15]]
     scores = [t[1] for t in tfidf['covid'][:15]]
     ax.barh(terms[::-1], scores[::-1], color=COV_COLOR, alpha=0.85)
@@ -94,8 +108,8 @@ def plot_all(covid_path, climate_path, tfidf_path, vader_path, output_path):
     ax.set_title('Top 15 TF-IDF Terms — COVID Misinformation')
     ax.grid(axis='x', alpha=0.3)
 
-    # 6. TF-IDF Climate
-    ax = axes[2, 1]
+    # 7. TF-IDF Climate
+    ax = axes[3, 0]
     terms  = [t[0] for t in tfidf['climate'][:15]]
     scores = [t[1] for t in tfidf['climate'][:15]]
     ax.barh(terms[::-1], scores[::-1], color=CLI_COLOR, alpha=0.85)
@@ -103,10 +117,29 @@ def plot_all(covid_path, climate_path, tfidf_path, vader_path, output_path):
     ax.set_title('Top 15 TF-IDF Terms — Climate Misinformation')
     ax.grid(axis='x', alpha=0.3)
 
+    # 8. Authoritative language and urgency scores
+    ax = axes[3, 1]
+    covid_auth = auth_urg['covid']['auth']
+    covid_urg  = auth_urg['covid']['urg']
+    climate_auth = auth_urg['climate']['auth']
+    climate_urg  = auth_urg['climate']['urg']
+
+    x3 = np.arange(2)
+    ax.bar(x3 - w/2, [covid_auth, covid_urg], width=w, color=COV_COLOR, alpha=0.85, label='COVID')
+    ax.bar(x3 + w/2, [climate_auth, climate_urg], width=w, color=CLI_COLOR, alpha=0.85, label='Climate')
+    ax.set_xticks(x3)
+    ax.set_xticklabels(['Authoritative language', 'Urgency'])
+    ax.set_ylabel('Average Score (scaled 0 to 1)')
+    ax.set_title('Authoritative Language & Urgency Comparison')
+    ax.legend()
+    ax.grid(axis='y', alpha=0.3)
+
     plt.tight_layout()
     plt.savefig(output_path, dpi=150, bbox_inches='tight')
     print(f"Saved → {output_path}")
     plt.show()
+
+
 
 
 if __name__ == '__main__':
@@ -115,5 +148,6 @@ if __name__ == '__main__':
         climate_path = 'data/analysis/climate_emotions.csv',
         tfidf_path   = 'data/analysis/top_tfidf_terms.json',
         vader_path   = 'data/analysis/vader_sentiment.json',
+        auth_urg_path = 'data/analysis/auth_urg.json',
         output_path  = 'data/analysis/misinformation_analysis.png'
     )

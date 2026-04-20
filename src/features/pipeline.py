@@ -93,16 +93,16 @@ def run_pipeline():
     climate_auth, climate_urg = avg_auth_urg(climate['text'].tolist())
     auth_urg_results = {
         'covid': {
-            "auth": covid_auth,
-            "urg": covid_urg
+            'auth': covid_auth,
+            'urg': covid_urg
         },
         'climate': {
-            "auth": climate_auth,
-            "urg": climate_urg
+            'auth': climate_auth,
+            'urg': climate_urg
         }
     }
     print("\nAverage authoritative language and urgency scores (scaled 0 to 1):")
-    for domain, scores in sentiment_results.items():
+    for domain, scores in auth_urg_results.items():
         print(f"  {domain.capitalize()}:")
         print(f"    Authoritative language: {scores['auth']:.4f}")
         print(f"    Urgency: {scores['urg']:.4f}")
