@@ -4,11 +4,11 @@ import json
 import pandas as pd
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
-
 from src.features.tf_idf import top_terms_per_domain, print_top_terms
 from src.features.lemmatization import lemmatize_series
 from src.features.vader import avg_vader
 from src.features.emotion import get_emotions_batch
+from src.features.rhetoric import extract_rhetoric_features, run_rhetoric_tests
 
 PROCESSED_DIR = 'data/processed'
 ANALYSIS_DIR  = 'data/analysis'
@@ -86,7 +86,18 @@ def run_pipeline():
         print(f"    Pos: {scores['pos']:.4f}")
         print(f"    Compound: {scores['compound']:.4f}")
 
-    # 6. save
+    # 6. rhetoric analysis
+    print("\nRunning rhetoric analysis...")
+    combined = pd.concat([covid, climate], ignore_index=True)
+    rhetoric_features = extract_rhetoric_features(combined)
+    rhetoric_stats = run_rhetoric_tests(rhetoric_features)
+
+    rhetoric_features.to_csv(f'{ANALYSIS_DIR}/rhetoric_features.csv', index=False)
+    rhetoric_stats.to_csv(f'{ANALYSIS_DIR}/rhetoric_stats.csv', index=False)
+    print(f"Saved → {ANALYSIS_DIR}/rhetoric_features.csv")
+    print(f"Saved → {ANALYSIS_DIR}/rhetoric_stats.csv")
+
+    # 7. save
     tfidf_serializable = {
         domain: [(term, float(score)) for term, score in terms]
         for domain, terms in results.items()
