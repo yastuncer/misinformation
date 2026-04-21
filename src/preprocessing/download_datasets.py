@@ -43,6 +43,11 @@ def download_quotaclimat():
     dataset.to_pandas().to_csv(f"{RAW_DIR}/quotaclimat.csv", index=False)
     print("Saved to data/raw/quotaclimat.csv!")
 
+def download_climatecheck():
+    dataset = load_dataset("rabuahmad/climatecheck", split="train")
+    dataset.to_pandas().to_csv(f"{RAW_DIR}/climatecheck.csv", index=False)
+    print("Saved to data/raw/climatecheck.csv!")
+
 if __name__ == "__main__":
     download_complexdatalab()
     download_covid_rumor()
@@ -50,4 +55,5 @@ if __name__ == "__main__":
     download_climate_fever()
     download_climate_fever_direct()
     download_quotaclimat()
+    download_climatecheck()
 

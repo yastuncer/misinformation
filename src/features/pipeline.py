@@ -10,6 +10,7 @@ from src.features.vader import avg_vader
 from src.features.emotion import get_emotions_batch
 from src.features.rhetoric import extract_rhetoric_features, run_rhetoric_tests
 
+
 PROCESSED_DIR = 'data/processed'
 ANALYSIS_DIR  = 'data/analysis'
 os.makedirs(ANALYSIS_DIR, exist_ok=True)

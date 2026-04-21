@@ -5,8 +5,10 @@ Cleaning the dataset - stripping URLs, emojis, mentions, hashtags and rt prefix
 import re
 import unicodedata
 from langdetect import detect, LangDetectException
+from multiprocessing import Pool, cpu_count
 
-# 1. Add this new helper function
+
+
 def decode_unicode_escapes(text):
     if not isinstance(text, str):
         return ""
