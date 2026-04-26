@@ -38,9 +38,17 @@ langdetect==1.0.9
 vaderSentiment==3.3.2
 
 # ==========================================
-# Deep Learning & Neural Networks
+# Setting up OLLAMA LLM
+# ==========================================
+# run "curl -fsSL https://ollama.com/install.sh | sh" in terminal to install OLLAMA
+# in venv terminal run "ollama pull llama3"
+
+
+# ==========================================
+# Deep Learning, Neural Networks
 # ==========================================
 torch==2.11.0
+
 
 # ==========================================
 # Hugging Face & Datasets
@@ -161,3 +169,4 @@ weasel==1.0.0
 wget==3.2
 wrapt==2.1.2
 xxhash==3.6.0
+

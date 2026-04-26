@@ -27,7 +27,7 @@ def get_emotions(text, max_length=512):
     except Exception:
         return {emotion: 0.0 for emotion in ['anger', 'disgust', 'fear', 'joy', 'neutral', 'sadness', 'surprise']}
     
-def get_emotions_batch(texts, batch_size=64):
+def get_emotions_batch(texts, batch_size=32):
     truncated = [str(t)[:2000] if isinstance(t, str) else "" for t in texts]
     print(f"  Running emotion model on {len(truncated):,} texts in batches of {batch_size}...")
     results = emotion_classifier(truncated, truncation=True, max_length=512, batch_size=batch_size)

@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..',
 
 from src.features.tf_idf import top_terms_per_domain, print_top_terms
 from src.features.lemmatization import lemmatize_series
-from src.features.vader import avg_vader
+from src.features.vader import avg_vader, vader_series
 from src.features.emotion import get_emotions_batch
 from src.features.rhetoric import extract_rhetoric_features, run_rhetoric_tests
 
@@ -78,6 +78,13 @@ def run_pipeline():
             'compound': climate_sentiment[3]
         }
     }
+    covid_vader_df = vader_series(covid['text'].tolist())
+    climate_vader_df = vader_series(climate['text'].tolist())
+    covid = pd.concat([covid.reset_index(drop=True), covid_vader_df], axis=1)
+    climate = pd.concat([climate.reset_index(drop=True), climate_vader_df], axis=1)
+    covid_vader_df.to_csv(f'{ANALYSIS_DIR}/covid_vader.csv', index=False)
+    climate_vader_df.to_csv(f'{ANALYSIS_DIR}/climate_vader.csv', index=False)
+    print("  Saved per-row VADER sentiment scores.")
 
     print("\nAverage VADER Sentiment Scores:")
     for domain, scores in sentiment_results.items():

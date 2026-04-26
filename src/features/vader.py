@@ -1,3 +1,5 @@
+from turtle import pd
+
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # Calculate the average sentiment scores of a list of texts
@@ -10,6 +12,16 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 #       avg_comp > 0.05 is positive
 #       avg_comp < -0.05 is negative
 #       -0.05 < avg_comp < 0.05 is neutral 
+
+def vader_series(texts):
+    analyzer = SentimentIntensityAnalyzer()
+    rows = []
+    for text in texts:
+        scores = analyzer.polarity_scores(text)
+        rows.append(scores)
+    return pd.DataFrame(rows)
+
+
 def avg_vader(texts):
     analyzer = SentimentIntensityAnalyzer()
     avg_neg, avg_neu, avg_pos, avg_comp = 0, 0, 0, 0
