@@ -24,6 +24,10 @@ def get_vader_scores(texts):
     return pd.DataFrame(rows, columns=VADER_COLUMNS)
 
 
+def vader_series(texts):
+    return get_vader_scores(texts)
+
+
 def avg_vader(texts):
     scores = get_vader_scores(texts)
     means = scores.mean()

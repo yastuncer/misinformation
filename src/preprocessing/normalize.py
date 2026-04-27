@@ -42,7 +42,10 @@ def normalize_princeton(df):
     return df[['text', 'label', 'domain', 'source', 'dataset']]
 
 def normalize_climate_fever(df):
-    # climate_fever uses 'claim' for text and 'veracity' for labels (true/false/unknown)
+    # drop existing 'label' column to avoid duplicate after renaming veracity → label
+    if 'label' in df.columns:
+        df = df.drop(columns=['label'])
+    
     df = df.rename(columns={'claim': 'text', 'veracity': 'label'})
     df['source'] = 'cdl'
     if 'dataset' not in df.columns:
@@ -50,6 +53,7 @@ def normalize_climate_fever(df):
     return df[['text', 'label', 'source', 'dataset']]
 
 def normalize_quotaclimat(df):
+    df = df[df['language'] == 'en'].reset_index(drop=True)  # ← add this
     df = df.rename(columns={'quote': 'text'})
     df['source'] = 'quotaclimat'
     if 'dataset' not in df.columns:
@@ -61,4 +65,12 @@ def normalize_climate_fever_direct(df):
     df['source'] = 'climate_fever_direct'
     if 'dataset' not in df.columns:
         df['dataset'] = 'climate_fever_direct'
+    return df[['text', 'label', 'source', 'dataset']]
+
+def normalize_climatecheck(df):
+    df = df.rename(columns={'claim': 'text', 'annotation': 'label'})
+    df['source'] = 'climatecheck'
+    df['dataset'] = 'climatecheck'
+    df = df.drop_duplicates(subset=['text']).reset_index(drop=True)
+    
     return df[['text', 'label', 'source', 'dataset']]

@@ -350,9 +350,6 @@ def plot_all(
         summary_lines.append(f"Sadness: {format_p_value(sadness_row['adjusted_p_value'])}")
     if anger_row is not None:
         summary_lines.append(f"Anger: {format_p_value(anger_row['adjusted_p_value'])}")
-    if summary is not None and summary.get("missing_trust_cue_columns"):
-        missing = ", ".join(summary["missing_trust_cue_columns"])
-        summary_lines.append(f"Missing trust-cue columns: {missing}")
     if summary_lines:
         ax.text(
             0.02,
@@ -389,6 +386,104 @@ def plot_all(
     plt.close(fig)
 
 
+def plot_rhetoric(rhetoric_path, output_path, show=False):
+    rhetoric = pd.read_csv(rhetoric_path)
+    cov_color = "#E05C5C"
+    cli_color = "#4A90D9"
+
+    score_features = ["urgency", "authority", "doubt"]
+    rate_features = ["urgency_presence", "authority_presence", "doubt_presence"]
+    score_labels = ["Urgency", "Authority", "Doubt"]
+    rate_labels = ["Urgency Cue", "Authority Cue", "Doubt Cue"]
+
+    score_rows = rhetoric[rhetoric["feature"].isin(score_features)].copy()
+    score_rows["feature"] = pd.Categorical(score_rows["feature"], score_features, ordered=True)
+    score_rows = score_rows.sort_values("feature")
+
+    rate_rows = rhetoric[rhetoric["feature"].isin(rate_features)].copy()
+    rate_rows["feature"] = pd.Categorical(rate_rows["feature"], rate_features, ordered=True)
+    rate_rows = rate_rows.sort_values("feature")
+    p_column = "adjusted_p_value" if "adjusted_p_value" in rhetoric.columns else "p_value"
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+    fig.suptitle(
+        "Rhetoric Differences Between COVID and Climate Misinformation",
+        fontsize=15,
+        fontweight="bold",
+        y=0.98,
+    )
+
+    ax = axes[0]
+    x = np.arange(len(score_rows))
+    width = 0.35
+    covid_scores = score_rows["covid_mean"].astype(float).to_list()
+    climate_scores = score_rows["climate_mean"].astype(float).to_list()
+    ax.bar(x - width / 2, covid_scores, width, label="COVID", color=cov_color, alpha=0.85)
+    ax.bar(x + width / 2, climate_scores, width, label="Climate", color=cli_color, alpha=0.85)
+    ax.set_xticks(x)
+    ax.set_xticklabels(score_labels)
+    ax.set_ylabel("Mean Score")
+    ax.set_title("Mean Rhetoric Scores")
+    ax.legend()
+    ax.grid(axis="y", alpha=0.3)
+    for xpos, left_value, right_value, row in zip(x, covid_scores, climate_scores, score_rows.to_dict("records")):
+        y_span = max(ax.get_ylim()[1] - ax.get_ylim()[0], 1e-6)
+        ax.text(
+            xpos,
+            max(left_value, right_value) + y_span * 0.03,
+            significance_label(row[p_column]),
+            ha="center",
+            va="bottom",
+            fontsize=10,
+            fontweight="bold",
+        )
+
+    ax = axes[1]
+    x2 = np.arange(len(rate_rows))
+    covid_rates = rate_rows["covid_rate"].astype(float).to_list()
+    climate_rates = rate_rows["climate_rate"].astype(float).to_list()
+    ax.bar(x2 - width / 2, covid_rates, width, label="COVID", color=cov_color, alpha=0.85)
+    ax.bar(x2 + width / 2, climate_rates, width, label="Climate", color=cli_color, alpha=0.85)
+    ax.set_xticks(x2)
+    ax.set_xticklabels(rate_labels)
+    ax.set_ylabel("Share of Posts")
+    ax.set_title("Rhetoric Cue Presence Rates")
+    ax.legend()
+    ax.grid(axis="y", alpha=0.3)
+    for xpos, left_value, right_value, row in zip(x2, covid_rates, climate_rates, rate_rows.to_dict("records")):
+        y_span = max(ax.get_ylim()[1] - ax.get_ylim()[0], 1e-6)
+        ax.text(
+            xpos,
+            max(left_value, right_value) + y_span * 0.03,
+            significance_label(row[p_column]),
+            ha="center",
+            va="bottom",
+            fontsize=10,
+            fontweight="bold",
+        )
+
+    direction_bits = []
+    for row in score_rows.to_dict("records"):
+        if row["climate_mean"] > row["covid_mean"]:
+            direction_bits.append(f"higher climate {row['feature']}")
+        elif row["covid_mean"] > row["climate_mean"]:
+            direction_bits.append(f"higher COVID {row['feature']}")
+
+    fig.text(
+        0.5,
+        0.02,
+        "; ".join(direction_bits[:3]).capitalize() + ".",
+        ha="center",
+        fontsize=10,
+    )
+    plt.tight_layout(rect=[0, 0.05, 1, 0.94])
+    plt.savefig(output_path, dpi=150, bbox_inches="tight")
+    print(f"Saved -> {output_path}")
+    if show:
+        plt.show()
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     plot_all(
         covid_path="data/analysis/covid_emotions.csv",
@@ -403,5 +498,10 @@ if __name__ == "__main__":
     plot_tfidf_context(
         context_path="data/analysis/tfidf_term_context.json",
         output_path="data/analysis/tfidf_context_comparison.png",
+        show=False,
+    )
+    plot_rhetoric(
+        rhetoric_path="data/analysis/rhetoric_stats.csv",
+        output_path="data/analysis/rhetoric_analysis.png",
         show=False,
     )

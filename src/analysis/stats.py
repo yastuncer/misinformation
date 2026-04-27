@@ -120,6 +120,10 @@ def prepare_domain_frame(path):
     df["char_count"] = df["text"].str.len()
     df["word_count"] = df["text"].map(word_count)
     df["dominant_emotion"] = df[EMOTION_COLUMNS].idxmax(axis=1)
+    if "authority" in df.columns and "auth_score" not in df.columns:
+        df["auth_score"] = pd.to_numeric(df["authority"], errors="coerce")
+    if "urgency" in df.columns and "urg_score" not in df.columns:
+        df["urg_score"] = pd.to_numeric(df["urgency"], errors="coerce")
 
     missing_vader_columns = [column for column in VADER_COLUMNS if column not in df.columns]
     if missing_vader_columns:

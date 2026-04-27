@@ -1,38 +1,30 @@
 {
   "covid": {
-    "document_count": 4242,
+    "document_count": 4255,
     "terms": [
       {
         "term": "coronavirus",
-        "mean_tfidf_score": 0.06434098948564757,
-        "document_frequency": 1597,
-        "share_of_domain_docs": 0.3764733616218765,
+        "mean_tfidf_score": 0.06215364844673872,
+        "document_frequency": 1603,
+        "share_of_domain_docs": 0.3767332549941246,
         "average_vader": {
-          "vader_neg": 0.10490544771446461,
-          "vader_neu": 0.8245898559799624,
-          "vader_pos": 0.07050532247964934,
-          "vader_compound": -0.08434076393237319
+          "vader_neg": 0.1022320648783531,
+          "vader_neu": 0.830264504054897,
+          "vader_pos": 0.06750592638802247,
+          "vader_compound": -0.08527448533998752
         },
         "average_emotions": {
-          "anger": 0.08415107868212925,
-          "disgust": 0.07250193940365073,
-          "fear": 0.1438481497755315,
-          "joy": 0.031246773491767525,
-          "neutral": 0.4364172380692987,
-          "sadness": 0.1160417500441298,
-          "surprise": 0.11579307225898332
+          "anger": 0.08230175826778714,
+          "disgust": 0.08306025891511477,
+          "fear": 0.14257097820280698,
+          "joy": 0.03356229083088797,
+          "neutral": 0.47319957747815367,
+          "sadness": 0.11470094278894294,
+          "surprise": 0.07060419480764134
         },
         "representative_examples": [
           {
             "text": "did the coronavirus mutated and became more agressive",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 1.0,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "rapper eminem contacted coronavirus",
             "dataset": "covid_19_rumor",
             "source": "cdl",
             "term_tfidf_score": 1.0,
@@ -46,51 +38,59 @@
             "term_tfidf_score": 1.0,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
+          },
+          {
+            "text": "rapper eminem contacted coronavirus",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 1.0,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
           }
         ]
       },
       {
         "term": "covid",
-        "mean_tfidf_score": 0.05266212446925498,
-        "document_frequency": 1187,
-        "share_of_domain_docs": 0.2798208392267798,
+        "mean_tfidf_score": 0.05128761249285915,
+        "document_frequency": 1191,
+        "share_of_domain_docs": 0.2799059929494712,
         "average_vader": {
-          "vader_neg": 0.09740101095197977,
-          "vader_neu": 0.8421625947767483,
-          "vader_pos": 0.06043470935130581,
-          "vader_compound": -0.08117438921651222
+          "vader_neg": 0.09422502099076406,
+          "vader_neu": 0.8479252728799328,
+          "vader_pos": 0.057848026868178005,
+          "vader_compound": -0.08026876574307304
         },
         "average_emotions": {
-          "anger": 0.0922495612101598,
-          "disgust": 0.04861026270102326,
-          "fear": 0.09763436017684692,
-          "joy": 0.03922991479742878,
-          "neutral": 0.44228222157818714,
-          "sadness": 0.13330098463659015,
-          "surprise": 0.14669269666744775
+          "anger": 0.09488490830035992,
+          "disgust": 0.05602694697082128,
+          "fear": 0.10096713984940324,
+          "joy": 0.04148934487522028,
+          "neutral": 0.4821455275242457,
+          "sadness": 0.13382204180697913,
+          "surprise": 0.09066408907538737
         },
         "representative_examples": [
           {
-            "text": "covid-19 was caused by 5g antennas",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.5970019495805058,
-            "vader_compound": 0.0,
-            "dominant_emotion": "sadness"
-          },
-          {
-            "text": "no, harvey staub the ?pharmacist? is not right about covid",
+            "text": "no, harvey staub the \u2018pharmacist\u2019 is not right about covid",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.5296533883535197,
+            "term_tfidf_score": 0.4960860998327439,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "raghuram rajan did not address imf webinar on covid-19",
+            "text": "a covid-19 vaccine is not being administered via covid-19 nasal swab tests",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.4699401639701302,
+            "term_tfidf_score": 0.4853356204415275,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "covid-19 is linked with 5g",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.4710372293050922,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
@@ -98,38 +98,30 @@
       },
       {
         "term": "video",
-        "mean_tfidf_score": 0.0210826729099613,
-        "document_frequency": 346,
-        "share_of_domain_docs": 0.08156529938708157,
+        "mean_tfidf_score": 0.02044766628064281,
+        "document_frequency": 347,
+        "share_of_domain_docs": 0.08155111633372503,
         "average_vader": {
-          "vader_neg": 0.08070809248554915,
-          "vader_neu": 0.8787630057803468,
-          "vader_pos": 0.04052890173410405,
-          "vader_compound": -0.09886358381502891
+          "vader_neg": 0.07919884726224784,
+          "vader_neu": 0.881063400576369,
+          "vader_pos": 0.03973775216138329,
+          "vader_compound": -0.09524639769452449
         },
         "average_emotions": {
-          "anger": 0.1307428309988672,
-          "disgust": 0.15923541784925774,
-          "fear": 0.12564595482891527,
-          "joy": 0.05055166510880233,
-          "neutral": 0.32782033728361615,
-          "sadness": 0.07356612907178872,
-          "surprise": 0.13243766176979316
+          "anger": 0.1322319014366952,
+          "disgust": 0.1747890696074124,
+          "fear": 0.12704266775523573,
+          "joy": 0.05193659398250676,
+          "neutral": 0.34606110836766385,
+          "sadness": 0.06954253223031535,
+          "surprise": 0.09839612466044269
         },
         "representative_examples": [
           {
             "text": "this video shows landmarks across china, but not wuhan",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.5499392394055934,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "the video has been taken at the wuhan market",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.5026474885464801,
+            "term_tfidf_score": 0.5497970296725777,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
@@ -137,31 +129,39 @@
             "text": "this video shows a hospital in india",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.5004658464251424,
+            "term_tfidf_score": 0.49975605279900265,
             "vader_compound": 0.0,
             "dominant_emotion": "disgust"
+          },
+          {
+            "text": "this video shows the cause of cov",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.48063369956957136,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
           }
         ]
       },
       {
         "term": "china",
-        "mean_tfidf_score": 0.018941220427312007,
+        "mean_tfidf_score": 0.0184084748680468,
         "document_frequency": 314,
-        "share_of_domain_docs": 0.07402168788307402,
+        "share_of_domain_docs": 0.07379553466509989,
         "average_vader": {
-          "vader_neg": 0.11086305732484077,
-          "vader_neu": 0.8396433121019109,
-          "vader_pos": 0.049519108280254784,
-          "vader_compound": -0.14296178343949045
+          "vader_neg": 0.10980254777070064,
+          "vader_neu": 0.8434044585987259,
+          "vader_pos": 0.046808917197452234,
+          "vader_compound": -0.14675955414012737
         },
         "average_emotions": {
-          "anger": 0.11599649168932098,
-          "disgust": 0.07537214832352979,
-          "fear": 0.12509559067841144,
-          "joy": 0.03839480600797699,
-          "neutral": 0.3682143074290895,
-          "sadness": 0.12860278384337367,
-          "surprise": 0.14832387323054533
+          "anger": 0.11689414142239478,
+          "disgust": 0.08048231976020002,
+          "fear": 0.12561284292954208,
+          "joy": 0.04314807474770383,
+          "neutral": 0.4006718797983667,
+          "sadness": 0.1303393739460267,
+          "surprise": 0.1028513670074056
         },
         "representative_examples": [
           {
@@ -173,65 +173,18 @@
             "dominant_emotion": "fear"
           },
           {
-            "text": "evacuation of yemeni students by the sultan of oman in china",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.5606336731956109,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
             "text": "this video shows landmarks across china, but not wuhan",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.5488697240185155,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          }
-        ]
-      },
-      {
-        "term": "virus",
-        "mean_tfidf_score": 0.01694517779049047,
-        "document_frequency": 272,
-        "share_of_domain_docs": 0.06412069778406412,
-        "average_vader": {
-          "vader_neg": 0.10168382352941177,
-          "vader_neu": 0.8406654411764706,
-          "vader_pos": 0.057665441176470586,
-          "vader_compound": -0.0969485294117647
-        },
-        "average_emotions": {
-          "anger": 0.08398565336264095,
-          "disgust": 0.09375264878882958,
-          "fear": 0.11674848065537363,
-          "joy": 0.03770640376965543,
-          "neutral": 0.4363723187812224,
-          "sadness": 0.09127627774646765,
-          "surprise": 0.14015822014548843
-        },
-        "representative_examples": [
-          {
-            "text": "this lysol desinfectant against coronavirus shows the virus is not new",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.6762908945157928,
+            "term_tfidf_score": 0.5501625891795351,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "you can get the virus through open wounds",
+            "text": "evacuation of yemeni students by the sultan of oman in china",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.6128212887790573,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "the virus will be conquered soon",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.5751933269521926,
+            "term_tfidf_score": 0.5449868900292211,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
@@ -239,38 +192,30 @@
       },
       {
         "term": "people",
-        "mean_tfidf_score": 0.016908931214706102,
-        "document_frequency": 353,
-        "share_of_domain_docs": 0.08321546440358321,
+        "mean_tfidf_score": 0.016896287588201785,
+        "document_frequency": 352,
+        "share_of_domain_docs": 0.0827262044653349,
         "average_vader": {
-          "vader_neg": 0.13327195467422095,
-          "vader_neu": 0.8160113314447592,
-          "vader_pos": 0.05070821529745042,
-          "vader_compound": -0.21877762039660056
+          "vader_neg": 0.13033522727272728,
+          "vader_neu": 0.8201022727272729,
+          "vader_pos": 0.049565340909090906,
+          "vader_compound": -0.2138883522727273
         },
         "average_emotions": {
-          "anger": 0.13913735014712306,
-          "disgust": 0.06655822795826978,
-          "fear": 0.1739927486248747,
-          "joy": 0.034601070097794034,
-          "neutral": 0.3142566131678523,
-          "sadness": 0.15758103879284716,
-          "surprise": 0.11387295449428292
+          "anger": 0.13618319722015504,
+          "disgust": 0.07719839007784847,
+          "fear": 0.16847786014279167,
+          "joy": 0.03743099591735116,
+          "neutral": 0.3511288534819786,
+          "sadness": 0.16021698443893742,
+          "surprise": 0.06936371541963701
         },
         "representative_examples": [
-          {
-            "text": "a bovine vaccine can be used to inoculate people against coronavirus",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.52592977548639,
-            "vader_compound": 0.0,
-            "dominant_emotion": "joy"
-          },
           {
             "text": "being in the library with other people is safe",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.47298632810910446,
+            "term_tfidf_score": 0.46643029545838727,
             "vader_compound": 0.4404,
             "dominant_emotion": "joy"
           },
@@ -278,54 +223,109 @@
             "text": "the french state gives more benefit to people who were unemployed before the covid-19 than it does for people who are partially unenmployed due to the coronavirus",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.4240617124577265,
+            "term_tfidf_score": 0.43162213058149795,
             "vader_compound": 0.5095,
             "dominant_emotion": "sadness"
+          },
+          {
+            "text": "people who have ace2 easily to be infected with 2019-ncov. especially people who have hypertension",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.42518666046722664,
+            "vader_compound": -0.2023,
+            "dominant_emotion": "neutral"
+          }
+        ]
+      },
+      {
+        "term": "virus",
+        "mean_tfidf_score": 0.01635233119292074,
+        "document_frequency": 271,
+        "share_of_domain_docs": 0.06368977673325499,
+        "average_vader": {
+          "vader_neg": 0.10037269372693727,
+          "vader_neu": 0.8456014760147601,
+          "vader_pos": 0.05402952029520296,
+          "vader_compound": -0.10602472324723247
+        },
+        "average_emotions": {
+          "anger": 0.08091254928836603,
+          "disgust": 0.10295635133954209,
+          "fear": 0.11742998985326641,
+          "joy": 0.03972585824014516,
+          "neutral": 0.4785446111779536,
+          "sadness": 0.09171307686032427,
+          "surprise": 0.08871756183847823
+        },
+        "representative_examples": [
+          {
+            "text": "you can get the virus through open wounds",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.6047540527715334,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "the virus will be conquered soon",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.564488541933283,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "almost all of these claims about viruses are wrong",
+            "dataset": "jns-covid_misinfo",
+            "source": "princeton",
+            "term_tfidf_score": 0.5600840001964373,
+            "vader_compound": -0.4767,
+            "dominant_emotion": "neutral"
           }
         ]
       },
       {
         "term": "claim",
-        "mean_tfidf_score": 0.016695747658703693,
-        "document_frequency": 356,
-        "share_of_domain_docs": 0.08392267798208393,
+        "mean_tfidf_score": 0.01632471397843186,
+        "document_frequency": 355,
+        "share_of_domain_docs": 0.08343125734430082,
         "average_vader": {
-          "vader_neg": 0.10422471910112359,
-          "vader_neu": 0.8375449438202246,
-          "vader_pos": 0.05824157303370787,
-          "vader_compound": -0.1024438202247191
+          "vader_neg": 0.10001408450704226,
+          "vader_neu": 0.8467661971830986,
+          "vader_pos": 0.0532338028169014,
+          "vader_compound": -0.1030557746478873
         },
         "average_emotions": {
-          "anger": 0.16854783901853193,
-          "disgust": 0.07313645695790053,
-          "fear": 0.11454559277593984,
-          "joy": 0.03979643992899807,
-          "neutral": 0.38336539788307683,
-          "sadness": 0.06914605135183122,
-          "surprise": 0.1514622188857338
+          "anger": 0.1749809343216967,
+          "disgust": 0.08641834540741881,
+          "fear": 0.1154368338234145,
+          "joy": 0.04358381066999303,
+          "neutral": 0.4141069141505155,
+          "sadness": 0.0689973062110907,
+          "surprise": 0.09647585136166599
         },
         "representative_examples": [
           {
             "text": "almost all of these claims about viruses are wrong",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.47835208854494776,
+            "term_tfidf_score": 0.47477736901861795,
             "vader_compound": -0.4767,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "claim: ?we have great numbers?",
+            "text": "claim: \u2018we have great numbers\u2019",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.4607411226623913,
-            "vader_compound": 0.6662,
-            "dominant_emotion": "surprise"
+            "term_tfidf_score": 0.44886377591780613,
+            "vader_compound": 0.6249,
+            "dominant_emotion": "neutral"
           },
           {
             "text": "a video of bat infested roof claimed to be from hubei-china claiming it to be the source of coronavirus",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.4300846159680886,
+            "term_tfidf_score": 0.43267203514978103,
             "vader_compound": 0.0,
             "dominant_emotion": "disgust"
           }
@@ -333,46 +333,46 @@
       },
       {
         "term": "false",
-        "mean_tfidf_score": 0.014969315375552912,
-        "document_frequency": 226,
-        "share_of_domain_docs": 0.053276756247053275,
+        "mean_tfidf_score": 0.014617971213211314,
+        "document_frequency": 227,
+        "share_of_domain_docs": 0.05334900117508813,
         "average_vader": {
-          "vader_neg": 0.07787610619469025,
-          "vader_neu": 0.8528230088495575,
-          "vader_pos": 0.06928761061946902,
-          "vader_compound": -0.022149557522123893
+          "vader_neg": 0.0773656387665198,
+          "vader_neu": 0.8564801762114538,
+          "vader_pos": 0.0661409691629956,
+          "vader_compound": -0.028545374449339203
         },
         "average_emotions": {
-          "anger": 0.14934684257064246,
-          "disgust": 0.055881114265535325,
-          "fear": 0.07811051780106582,
-          "joy": 0.005976809913743765,
-          "neutral": 0.4850776490932578,
-          "sadness": 0.11457752977164083,
-          "surprise": 0.11102953750384659
+          "anger": 0.15368645612175047,
+          "disgust": 0.06807244294897408,
+          "fear": 0.0769835799134496,
+          "joy": 0.006335777416979098,
+          "neutral": 0.5173292788564092,
+          "sadness": 0.11083105319212413,
+          "surprise": 0.06676141461839544
         },
         "representative_examples": [
           {
-            "text": "?we were giving a false sense of assurance.?",
+            "text": "\u201cwe were giving a false sense of assurance.\u201d",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.5909635952158656,
-            "vader_compound": 0.6322,
-            "dominant_emotion": "anger"
-          },
-          {
-            "text": "false: robredo says the virus, not people, should be restrained",
-            "dataset": "jns-covid_misinfo",
-            "source": "princeton",
-            "term_tfidf_score": 0.5630032188297425,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
+            "term_tfidf_score": 0.5636068935150408,
+            "vader_compound": 0.34,
+            "dominant_emotion": "disgust"
           },
           {
             "text": "false: photos of anakbayan, kmu rallying during quarantine",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.5280270459818834,
+            "term_tfidf_score": 0.5273064772450113,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "false: juba did not have 481 covid-19 cases on may 20",
+            "dataset": "jns-covid_misinfo",
+            "source": "princeton",
+            "term_tfidf_score": 0.470356671123438,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
@@ -380,38 +380,30 @@
       },
       {
         "term": "vaccine",
-        "mean_tfidf_score": 0.014211956786882331,
-        "document_frequency": 191,
-        "share_of_domain_docs": 0.04502593116454503,
+        "mean_tfidf_score": 0.013820218432061557,
+        "document_frequency": 190,
+        "share_of_domain_docs": 0.04465334900117509,
         "average_vader": {
-          "vader_neg": 0.06104712041884817,
-          "vader_neu": 0.8762722513089005,
-          "vader_pos": 0.06268062827225131,
-          "vader_compound": 0.002168586387434552
+          "vader_neg": 0.05957894736842105,
+          "vader_neu": 0.8826105263157896,
+          "vader_pos": 0.057800000000000004,
+          "vader_compound": -0.003506315789473685
         },
         "average_emotions": {
-          "anger": 0.07422810542782408,
-          "disgust": 0.02703093330062565,
-          "fear": 0.06461044311820875,
-          "joy": 0.05975903745549268,
-          "neutral": 0.5450897019658804,
-          "sadness": 0.08716539304864383,
-          "surprise": 0.1421163854742647
+          "anger": 0.07521103295669151,
+          "disgust": 0.030969860114304203,
+          "fear": 0.06317719640700437,
+          "joy": 0.06742187190592579,
+          "neutral": 0.5909538034643782,
+          "sadness": 0.08857170571389261,
+          "surprise": 0.08369453030295274
         },
         "representative_examples": [
-          {
-            "text": "a bovine vaccine can be used to inoculate people against coronavirus",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.7390270585361489,
-            "vader_compound": 0.0,
-            "dominant_emotion": "joy"
-          },
           {
             "text": "the pfizer covid-19 candidate vaccine is not too cold to be called a vaccine",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.5646692408476458,
+            "term_tfidf_score": 0.555423493712842,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
@@ -419,93 +411,54 @@
             "text": "vaccine for covid-19 has been found",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.5138773892167364,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          }
-        ]
-      },
-      {
-        "term": "wuhan",
-        "mean_tfidf_score": 0.013241581795709848,
-        "document_frequency": 194,
-        "share_of_domain_docs": 0.04573314474304573,
-        "average_vader": {
-          "vader_neg": 0.10579896907216495,
-          "vader_neu": 0.845520618556701,
-          "vader_pos": 0.04868041237113402,
-          "vader_compound": -0.16304226804123712
-        },
-        "average_emotions": {
-          "anger": 0.10321480487731342,
-          "disgust": 0.056841917169615196,
-          "fear": 0.14488319263114838,
-          "joy": 0.03578437384627231,
-          "neutral": 0.33970888774540786,
-          "sadness": 0.12416019369296,
-          "surprise": 0.19540663065986477
-        },
-        "representative_examples": [
-          {
-            "text": "crows are flocking to wuhan",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 1.0,
+            "term_tfidf_score": 0.5155166938840477,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "this video shows landmarks across china, but not wuhan",
-            "dataset": "jns-covid_misinfo",
-            "source": "princeton",
-            "term_tfidf_score": 0.6295306656691444,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "this is a snow artwork from wuhan",
+            "text": "vaccine for covid-19 has been found in tobacco",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.6133304921380724,
+            "term_tfidf_score": 0.5155166938840477,
             "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
+            "dominant_emotion": "disgust"
           }
         ]
       },
       {
         "term": "test",
-        "mean_tfidf_score": 0.013223478850033528,
-        "document_frequency": 197,
-        "share_of_domain_docs": 0.04644035832154644,
+        "mean_tfidf_score": 0.013087961351572853,
+        "document_frequency": 198,
+        "share_of_domain_docs": 0.04653349001175088,
         "average_vader": {
-          "vader_neg": 0.07131472081218275,
-          "vader_neu": 0.8130253807106598,
-          "vader_pos": 0.11569035532994923,
-          "vader_compound": 0.11886091370558376
+          "vader_neg": 0.0681919191919192,
+          "vader_neu": 0.8187222222222222,
+          "vader_pos": 0.11311111111111112,
+          "vader_compound": 0.11864292929292929
         },
         "average_emotions": {
-          "anger": 0.08889786264183104,
-          "disgust": 0.04295439435154918,
-          "fear": 0.08546942876011303,
-          "joy": 0.037650487700661615,
-          "neutral": 0.4615144599843676,
-          "sadness": 0.1489517464772869,
-          "surprise": 0.13456161781409187
+          "anger": 0.09122411915185773,
+          "disgust": 0.05173021223574798,
+          "fear": 0.0833780967772731,
+          "joy": 0.04197792754058176,
+          "neutral": 0.49614062587109703,
+          "sadness": 0.15159813692496918,
+          "surprise": 0.08395088636851396
         },
         "representative_examples": [
           {
-            "text": "the who coronavirus test ?was a bad test.?",
+            "text": "the who coronavirus test \u201cwas a bad test.\u201d",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.6521962649234297,
-            "vader_compound": -0.594,
-            "dominant_emotion": "surprise"
+            "term_tfidf_score": 0.6506078228995087,
+            "vader_compound": -0.5423,
+            "dominant_emotion": "disgust"
           },
           {
             "text": "we do not test 330,000 people a day for covid-19",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.578275556835271,
+            "term_tfidf_score": 0.5714541559819097,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
@@ -513,31 +466,78 @@
             "text": "saliva tests for covid-19 exist, but less accurate than nasal tests",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.5525405551417591,
+            "term_tfidf_score": 0.5529834100581806,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
         ]
       },
       {
-        "term": "photo",
-        "mean_tfidf_score": 0.01268114987572916,
-        "document_frequency": 182,
-        "share_of_domain_docs": 0.0429042904290429,
+        "term": "wuhan",
+        "mean_tfidf_score": 0.012739499371429827,
+        "document_frequency": 195,
+        "share_of_domain_docs": 0.045828437132784956,
         "average_vader": {
-          "vader_neg": 0.08974725274725275,
-          "vader_neu": 0.871967032967033,
-          "vader_pos": 0.038285714285714284,
-          "vader_compound": -0.11682417582417581
+          "vader_neg": 0.10361538461538461,
+          "vader_neu": 0.8514871794871796,
+          "vader_pos": 0.0449025641025641,
+          "vader_compound": -0.16830871794871793
         },
         "average_emotions": {
-          "anger": 0.07021276740476254,
-          "disgust": 0.11207675272957064,
-          "fear": 0.10505543368840385,
-          "joy": 0.04797074167859986,
-          "neutral": 0.36748553690971336,
-          "sadness": 0.13281427205867738,
-          "surprise": 0.16438449300751398
+          "anger": 0.1048531081470756,
+          "disgust": 0.0633808498349912,
+          "fear": 0.14909698985328967,
+          "joy": 0.04229804010620003,
+          "neutral": 0.37848232716071206,
+          "sadness": 0.12926453395316806,
+          "surprise": 0.13262414168267964
+        },
+        "representative_examples": [
+          {
+            "text": "this video shows landmarks across china, but not wuhan",
+            "dataset": "jns-covid_misinfo",
+            "source": "princeton",
+            "term_tfidf_score": 0.6285255377711243,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "this is a snow artwork from wuhan",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.5993163146990403,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "bullet shot in wuhan now",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.5556034720349873,
+            "vader_compound": 0.0,
+            "dominant_emotion": "surprise"
+          }
+        ]
+      },
+      {
+        "term": "photo",
+        "mean_tfidf_score": 0.01246376550464065,
+        "document_frequency": 182,
+        "share_of_domain_docs": 0.0427732079905993,
+        "average_vader": {
+          "vader_neg": 0.08826373626373626,
+          "vader_neu": 0.8747857142857144,
+          "vader_pos": 0.03696153846153846,
+          "vader_compound": -0.11664505494505494
+        },
+        "average_emotions": {
+          "anger": 0.0710668606225626,
+          "disgust": 0.1312432837228618,
+          "fear": 0.10439303671623894,
+          "joy": 0.04775153058705781,
+          "neutral": 0.42274310592060477,
+          "sadness": 0.12842105901390719,
+          "surprise": 0.094381124260298
         },
         "representative_examples": [
           {
@@ -549,143 +549,96 @@
             "dominant_emotion": "disgust"
           },
           {
+            "text": "these photos show the aftermath of a powerful earthquake in croatia",
+            "dataset": "jns-covid_misinfo",
+            "source": "princeton",
+            "term_tfidf_score": 0.5812277628549293,
+            "vader_compound": 0.4215,
+            "dominant_emotion": "fear"
+          },
+          {
             "text": "false: photos of anakbayan, kmu rallying during quarantine",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.5620324930277637,
+            "term_tfidf_score": 0.5607119945694926,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
-          },
-          {
-            "text": "this photo shows the italian president crying over covid-19",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.511961770428704,
-            "vader_compound": -0.4767,
-            "dominant_emotion": "sadness"
           }
         ]
       },
       {
         "term": "outbreak",
-        "mean_tfidf_score": 0.012421005941256906,
+        "mean_tfidf_score": 0.012128574519665824,
         "document_frequency": 195,
-        "share_of_domain_docs": 0.04596888260254597,
+        "share_of_domain_docs": 0.045828437132784956,
         "average_vader": {
-          "vader_neg": 0.07544102564102563,
-          "vader_neu": 0.8742256410256409,
-          "vader_pos": 0.050323076923076915,
-          "vader_compound": -0.0663923076923077
+          "vader_neg": 0.07224102564102564,
+          "vader_neu": 0.8787692307692309,
+          "vader_pos": 0.04897948717948717,
+          "vader_compound": -0.06252666666666666
         },
         "average_emotions": {
-          "anger": 0.11473347746337262,
-          "disgust": 0.05953453634626781,
-          "fear": 0.17842989718326582,
-          "joy": 0.02755178164792223,
-          "neutral": 0.3968160099803637,
-          "sadness": 0.08370287301084504,
-          "surprise": 0.13923142387543638
+          "anger": 0.1070911193767992,
+          "disgust": 0.07394851137680977,
+          "fear": 0.18475028595719964,
+          "joy": 0.03009810020926236,
+          "neutral": 0.4288748015769017,
+          "sadness": 0.08071149962249757,
+          "surprise": 0.09452568101756366
         },
         "representative_examples": [
           {
             "text": "videograph shows covid-19 is more dangerous than former outbreaks",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.5927194837009999,
+            "term_tfidf_score": 0.5868287353275234,
             "vader_compound": -0.5256,
             "dominant_emotion": "fear"
           },
           {
-            "text": "covid-19 was known to humans before its outbreak in 2020",
+            "text": "women\u2019s inhouse gatherings are banned due to the outbreak",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.5872027224028428,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
+            "term_tfidf_score": 0.47894484392393716,
+            "vader_compound": -0.4588,
+            "dominant_emotion": "sadness"
           },
           {
             "text": "cerberus (pluto) - infested outbreak - goal: 38,000 - rewards: corpus: 2 mutagen mass",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.48494893904335873,
+            "term_tfidf_score": 0.4709403251080532,
             "vader_compound": 0.4767,
             "dominant_emotion": "neutral"
           }
         ]
       },
       {
-        "term": "chinese",
-        "mean_tfidf_score": 0.01158801359969935,
-        "document_frequency": 182,
-        "share_of_domain_docs": 0.0429042904290429,
-        "average_vader": {
-          "vader_neg": 0.10087362637362636,
-          "vader_neu": 0.8465989010989009,
-          "vader_pos": 0.052538461538461534,
-          "vader_compound": -0.1124434065934066
-        },
-        "average_emotions": {
-          "anger": 0.12955424653373884,
-          "disgust": 0.04807286352641333,
-          "fear": 0.1085668927041627,
-          "joy": 0.07356728173493009,
-          "neutral": 0.3636203359366026,
-          "sadness": 0.1035244554680373,
-          "surprise": 0.17309393144819046
-        },
-        "representative_examples": [
-          {
-            "text": "videos stating that 25,000 chinese are being killed",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.5273665528249147,
-            "vader_compound": -0.6705,
-            "dominant_emotion": "sadness"
-          },
-          {
-            "text": "this entire chinese singaporeans buying off everything on the shelves, ridiculous. this is why wuhan virus only attack chinese, cause chinese stupid. and this is coming from a chinese himself",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.4941459729057412,
-            "vader_compound": -0.8402,
-            "dominant_emotion": "anger"
-          },
-          {
-            "text": "a chinese man has been lynched because he pretended to have coronavirus",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.4895440720106462,
-            "vader_compound": 0.0,
-            "dominant_emotion": "sadness"
-          }
-        ]
-      },
-      {
         "term": "say",
-        "mean_tfidf_score": 0.011483814923419483,
-        "document_frequency": 237,
-        "share_of_domain_docs": 0.05586987270155587,
+        "mean_tfidf_score": 0.011620530204023509,
+        "document_frequency": 236,
+        "share_of_domain_docs": 0.0554641598119859,
         "average_vader": {
-          "vader_neg": 0.08086919831223627,
-          "vader_neu": 0.8680210970464135,
-          "vader_pos": 0.05111814345991561,
-          "vader_compound": -0.09127088607594937
+          "vader_neg": 0.07098728813559323,
+          "vader_neu": 0.8802330508474577,
+          "vader_pos": 0.048771186440677974,
+          "vader_compound": -0.07270550847457627
         },
         "average_emotions": {
-          "anger": 0.08455668857128591,
-          "disgust": 0.043381413492277844,
-          "fear": 0.11993382365603927,
-          "joy": 0.025818649128046014,
-          "neutral": 0.4037363776575601,
-          "sadness": 0.15424628974968088,
-          "surprise": 0.16832675860127835
+          "anger": 0.08113195117211787,
+          "disgust": 0.057229379697118735,
+          "fear": 0.11926977498500242,
+          "joy": 0.03670824490886145,
+          "neutral": 0.4713366469092099,
+          "sadness": 0.16251842173653008,
+          "surprise": 0.07180558297076749
         },
         "representative_examples": [
           {
-            "text": "false: robredo says the virus, not people, should be restrained",
+            "text": "says kamala harris said, \u201cthe american people aren\u2019t equipped to make these decisions for themselves.\u201d",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.45277412980644793,
+            "term_tfidf_score": 0.4174859432991297,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
@@ -693,93 +646,140 @@
             "text": "nan-shan zhong said there is no vegetarian getting covid-19",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.39518964472011187,
+            "term_tfidf_score": 0.4147791377285483,
             "vader_compound": -0.296,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "coronavirus won't turn you into a 'zombie,' says malaysia",
+            "text": "coronavirus will not turn you into a 'zombie,' says malaysia",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.3620878004503607,
+            "term_tfidf_score": 0.37714213832820953,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
         ]
       },
       {
-        "term": "new",
-        "mean_tfidf_score": 0.011271314954731106,
-        "document_frequency": 205,
-        "share_of_domain_docs": 0.04832626119754833,
+        "term": "chinese",
+        "mean_tfidf_score": 0.011178799269148732,
+        "document_frequency": 182,
+        "share_of_domain_docs": 0.0427732079905993,
         "average_vader": {
-          "vader_neg": 0.08241463414634147,
-          "vader_neu": 0.8665268292682927,
-          "vader_pos": 0.051082926829268294,
-          "vader_compound": -0.09092048780487805
+          "vader_neg": 0.09936813186813187,
+          "vader_neu": 0.849835164835165,
+          "vader_pos": 0.05081318681318681,
+          "vader_compound": -0.11135824175824177
         },
         "average_emotions": {
-          "anger": 0.08074854903218405,
-          "disgust": 0.04597888916912602,
-          "fear": 0.11610073630595807,
-          "joy": 0.03230461818563593,
-          "neutral": 0.461406221683705,
-          "sadness": 0.09959274341619187,
-          "surprise": 0.16386824397018135
+          "anger": 0.1297137081088334,
+          "disgust": 0.057886281982064205,
+          "fear": 0.11031182047768344,
+          "joy": 0.07764738278670084,
+          "neutral": 0.3867144024864371,
+          "sadness": 0.10279384041000358,
+          "surprise": 0.13493255846641167
         },
         "representative_examples": [
           {
-            "text": "this lysol desinfectant against coronavirus shows the virus is not new",
+            "text": "videos stating that 25,000 chinese are being killed",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.6076607043011414,
+            "term_tfidf_score": 0.5181262811165878,
+            "vader_compound": -0.6705,
+            "dominant_emotion": "sadness"
+          },
+          {
+            "text": "this entire chinese singaporeans buying off everything on the shelves, ridiculous. this is why wuhan virus only attack chinese, cause chinese stupid. and this is coming from a chinese himself",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.48760042280756166,
+            "vader_compound": -0.8402,
+            "dominant_emotion": "anger"
+          },
+          {
+            "text": "a chinese man has been lynched because he pretended to have coronavirus",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.4821152267262934,
             "vader_compound": 0.0,
+            "dominant_emotion": "sadness"
+          }
+        ]
+      },
+      {
+        "term": "hospital",
+        "mean_tfidf_score": 0.010963737161143806,
+        "document_frequency": 157,
+        "share_of_domain_docs": 0.036897767332549944,
+        "average_vader": {
+          "vader_neg": 0.08271337579617835,
+          "vader_neu": 0.869592356687898,
+          "vader_pos": 0.047694267515923566,
+          "vader_compound": -0.094
+        },
+        "average_emotions": {
+          "anger": 0.08820972571173191,
+          "disgust": 0.06042355435061009,
+          "fear": 0.13616851607269373,
+          "joy": 0.03969566475423523,
+          "neutral": 0.35027280453129844,
+          "sadness": 0.2211454167389637,
+          "surprise": 0.1040843186416562
+        },
+        "representative_examples": [
+          {
+            "text": "hospitals are overran stem from outside the hospital",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.7931817832437141,
+            "vader_compound": 0.0,
+            "dominant_emotion": "sadness"
+          },
+          {
+            "text": "fake prescription viral in the name of sir ganga ram hospital debunked by the hospital",
+            "dataset": "jns-covid_misinfo",
+            "source": "princeton",
+            "term_tfidf_score": 0.6310669597074364,
+            "vader_compound": -0.4767,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "new cov comes from rhino horns",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.45028805978236414,
+            "text": "this video shows a hospital in india",
+            "dataset": "jns-covid_misinfo",
+            "source": "princeton",
+            "term_tfidf_score": 0.59692105837665,
             "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "another new disease called ?hanta virus? in china",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.43680522278133505,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
+            "dominant_emotion": "disgust"
           }
         ]
       },
       {
         "term": "novel",
-        "mean_tfidf_score": 0.011216493699833517,
+        "mean_tfidf_score": 0.010933042504259607,
         "document_frequency": 193,
-        "share_of_domain_docs": 0.0454974068835455,
+        "share_of_domain_docs": 0.04535840188014101,
         "average_vader": {
-          "vader_neg": 0.07325906735751295,
-          "vader_neu": 0.7537512953367875,
-          "vader_pos": 0.17298445595854925,
-          "vader_compound": 0.23230518134715028
+          "vader_neg": 0.0716839378238342,
+          "vader_neu": 0.7584041450777202,
+          "vader_pos": 0.16990155440414506,
+          "vader_compound": 0.22742538860103628
         },
         "average_emotions": {
-          "anger": 0.07253652370481757,
-          "disgust": 0.03792759474038769,
-          "fear": 0.13313270619119774,
-          "joy": 0.05003620702453643,
-          "neutral": 0.5067340297916412,
-          "sadness": 0.07132382830725549,
-          "surprise": 0.12830911083038357
+          "anger": 0.0733022053093876,
+          "disgust": 0.04592522061846114,
+          "fear": 0.13298807086041822,
+          "joy": 0.05463338530998808,
+          "neutral": 0.5343887221962069,
+          "sadness": 0.07340983413413182,
+          "surprise": 0.08535255918549514
         },
         "representative_examples": [
           {
             "text": "has the novel coronavirus been patented?",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.48353603947104445,
+            "term_tfidf_score": 0.4823905067511547,
             "vader_compound": 0.3182,
             "dominant_emotion": "neutral"
           },
@@ -787,7 +787,7 @@
             "text": "no, dean koontz did not predict the coronavirus in a 1981 novel",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.45807908065622865,
+            "term_tfidf_score": 0.4587288512592162,
             "vader_compound": 0.3182,
             "dominant_emotion": "neutral"
           },
@@ -795,85 +795,38 @@
             "text": "dean koontz predicted 2019 coronavirus in 1981 novel? no",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.45807908065622865,
+            "term_tfidf_score": 0.4587288512592162,
             "vader_compound": 0.0258,
             "dominant_emotion": "surprise"
           }
         ]
       },
       {
-        "term": "hospital",
-        "mean_tfidf_score": 0.011191493625984296,
-        "document_frequency": 158,
-        "share_of_domain_docs": 0.037246581801037244,
-        "average_vader": {
-          "vader_neg": 0.08436708860759493,
-          "vader_neu": 0.8635822784810127,
-          "vader_pos": 0.052069620253164556,
-          "vader_compound": -0.08412088607594936
-        },
-        "average_emotions": {
-          "anger": 0.08760962488285938,
-          "disgust": 0.04996614395202391,
-          "fear": 0.13385370074656402,
-          "joy": 0.038537568085210964,
-          "neutral": 0.3252985460589392,
-          "sadness": 0.2158038494585353,
-          "surprise": 0.14893056943797495
-        },
-        "representative_examples": [
-          {
-            "text": "hospitals are overran stem from outside the hospital",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.6368012899808133,
-            "vader_compound": 0.0,
-            "dominant_emotion": "sadness"
-          },
-          {
-            "text": "this video shows a hospital in india",
-            "dataset": "jns-covid_misinfo",
-            "source": "princeton",
-            "term_tfidf_score": 0.5969000290128978,
-            "vader_compound": 0.0,
-            "dominant_emotion": "disgust"
-          },
-          {
-            "text": "this video was made by a uk public hospital trust in 2010 about infections in hospitals",
-            "dataset": "jns-covid_misinfo",
-            "source": "princeton",
-            "term_tfidf_score": 0.5723332955189493,
-            "vader_compound": 0.5106,
-            "dominant_emotion": "neutral"
-          }
-        ]
-      },
-      {
         "term": "spread",
-        "mean_tfidf_score": 0.01101624329614584,
-        "document_frequency": 177,
-        "share_of_domain_docs": 0.04172560113154172,
+        "mean_tfidf_score": 0.0109149317377342,
+        "document_frequency": 178,
+        "share_of_domain_docs": 0.0418331374853114,
         "average_vader": {
-          "vader_neg": 0.1041186440677966,
-          "vader_neu": 0.8535875706214688,
-          "vader_pos": 0.042305084745762715,
-          "vader_compound": -0.152535593220339
+          "vader_neg": 0.10257303370786516,
+          "vader_neu": 0.8560617977528091,
+          "vader_pos": 0.04136516853932584,
+          "vader_compound": -0.14911404494382022
         },
         "average_emotions": {
-          "anger": 0.14926599391136255,
-          "disgust": 0.10489953358116359,
-          "fear": 0.18822133479939807,
-          "joy": 0.01625079814493288,
-          "neutral": 0.3738223330530806,
-          "sadness": 0.08150077687963149,
-          "surprise": 0.08603924055620607
+          "anger": 0.14863320638025387,
+          "disgust": 0.11381142399551113,
+          "fear": 0.18696635297049632,
+          "joy": 0.0161478154448232,
+          "neutral": 0.3932262054066373,
+          "sadness": 0.0810364554459595,
+          "surprise": 0.06017853696425074
         },
         "representative_examples": [
           {
             "text": "clapping together is enough to destroy and reduce the spread of the infection",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.45733796519537034,
+            "term_tfidf_score": 0.45563620532938165,
             "vader_compound": -0.5423,
             "dominant_emotion": "neutral"
           },
@@ -881,7 +834,7 @@
             "text": "muslims licking plates to spread corona",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.44234689856118375,
+            "term_tfidf_score": 0.44512377641720596,
             "vader_compound": 0.0,
             "dominant_emotion": "disgust"
           },
@@ -889,85 +842,46 @@
             "text": "hackers made their own coronavirus map to spread malware, feds warn",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.4420838594328613,
+            "term_tfidf_score": 0.4412809593156557,
             "vader_compound": -0.1027,
             "dominant_emotion": "fear"
           }
         ]
       },
       {
-        "term": "novel coronavirus",
-        "mean_tfidf_score": 0.010928321296272294,
-        "document_frequency": 188,
-        "share_of_domain_docs": 0.04431871758604432,
-        "average_vader": {
-          "vader_neg": 0.07096276595744681,
-          "vader_neu": 0.7552393617021277,
-          "vader_pos": 0.17379255319148937,
-          "vader_compound": 0.2408468085106383
-        },
-        "average_emotions": {
-          "anger": 0.07352267407584301,
-          "disgust": 0.038299767003255956,
-          "fear": 0.12894096094223254,
-          "joy": 0.051197545249027476,
-          "neutral": 0.5107898785685625,
-          "sadness": 0.07055732176733262,
-          "surprise": 0.1266918532727435
-        },
-        "representative_examples": [
-          {
-            "text": "has the novel coronavirus been patented?",
-            "dataset": "jns-covid_misinfo",
-            "source": "princeton",
-            "term_tfidf_score": 0.48714976123652043,
-            "vader_compound": 0.3182,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "this photo purports to show the novel coronavirus",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.4223575590324924,
-            "vader_compound": 0.3182,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "children under 8 are immune to the novel coronavirus",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.4116102574131929,
-            "vader_compound": 0.5423,
-            "dominant_emotion": "neutral"
-          }
-        ]
-      },
-      {
         "term": "cure",
-        "mean_tfidf_score": 0.010842684369532365,
-        "document_frequency": 155,
-        "share_of_domain_docs": 0.03653936822253654,
+        "mean_tfidf_score": 0.010875592903944407,
+        "document_frequency": 158,
+        "share_of_domain_docs": 0.037132784958871914,
         "average_vader": {
-          "vader_neg": 0.04255483870967742,
-          "vader_neu": 0.9020903225806453,
-          "vader_pos": 0.05535483870967743,
-          "vader_compound": 0.02413225806451613
+          "vader_neg": 0.041373417721518986,
+          "vader_neu": 0.9047468354430381,
+          "vader_pos": 0.053873417721518976,
+          "vader_compound": 0.02263987341772152
         },
         "average_emotions": {
-          "anger": 0.039727094335361354,
-          "disgust": 0.08495058388253975,
-          "fear": 0.030737437058668285,
-          "joy": 0.08693185861582958,
-          "neutral": 0.5738787470685859,
-          "sadness": 0.07878214347837192,
-          "surprise": 0.10499214301892226
+          "anger": 0.038885340258137197,
+          "disgust": 0.0967731716448759,
+          "fear": 0.03129134075351414,
+          "joy": 0.08977956622043219,
+          "neutral": 0.6182329128142682,
+          "sadness": 0.07043956220002628,
+          "surprise": 0.05459811224283858
         },
         "representative_examples": [
+          {
+            "text": "arbido is a miracle cure for covid-19",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.5863619386464815,
+            "vader_compound": 0.5859,
+            "dominant_emotion": "neutral"
+          },
           {
             "text": "go to china and cure everybody",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.5136567630836035,
+            "term_tfidf_score": 0.5003447393970166,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
@@ -975,93 +889,179 @@
             "text": "false: getting a new tattoo is not a cure for covid-19",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.47667481953501,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "cuba discovered a serum that cures covid-19",
-            "dataset": "covid_19_rumor",
-            "source": "cdl",
-            "term_tfidf_score": 0.466007703060278,
+            "term_tfidf_score": 0.47687621639363914,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
         ]
       },
       {
-        "term": "mask",
-        "mean_tfidf_score": 0.010790084111195397,
-        "document_frequency": 150,
-        "share_of_domain_docs": 0.03536067892503536,
+        "term": "new",
+        "mean_tfidf_score": 0.010814180949495817,
+        "document_frequency": 204,
+        "share_of_domain_docs": 0.047943595769682726,
         "average_vader": {
-          "vader_neg": 0.08220666666666666,
-          "vader_neu": 0.8571,
-          "vader_pos": 0.06068666666666667,
-          "vader_compound": -0.056734
+          "vader_neg": 0.07829901960784313,
+          "vader_neu": 0.8717009803921572,
+          "vader_pos": 0.05002450980392158,
+          "vader_compound": -0.08553774509803921
         },
         "average_emotions": {
-          "anger": 0.10307482153487703,
-          "disgust": 0.07597566825376513,
-          "fear": 0.12218340075264375,
-          "joy": 0.025000932642724363,
-          "neutral": 0.4375028822477907,
-          "sadness": 0.08033904178068042,
-          "surprise": 0.15592325784110775
+          "anger": 0.07838133368846574,
+          "disgust": 0.06150046824825714,
+          "fear": 0.11659057099028605,
+          "joy": 0.037189625486087785,
+          "neutral": 0.5006818981942784,
+          "sadness": 0.09888232602337235,
+          "surprise": 0.10677377308699454
         },
         "representative_examples": [
+          {
+            "text": "new cov comes from rhino horns",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.4447981850385654,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "children can\u2019t get the new coronavirus",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.42380089611853256,
+            "vader_compound": 0.0,
+            "dominant_emotion": "sadness"
+          },
+          {
+            "text": "china benefited financially from new coronavirus",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.4060520781026237,
+            "vader_compound": 0.0,
+            "dominant_emotion": "joy"
+          }
+        ]
+      },
+      {
+        "term": "mask",
+        "mean_tfidf_score": 0.010802319140248961,
+        "document_frequency": 150,
+        "share_of_domain_docs": 0.03525264394829612,
+        "average_vader": {
+          "vader_neg": 0.07778666666666667,
+          "vader_neu": 0.8637800000000001,
+          "vader_pos": 0.05842666666666666,
+          "vader_compound": -0.05686333333333333
+        },
+        "average_emotions": {
+          "anger": 0.10389551238312073,
+          "disgust": 0.08797657572586705,
+          "fear": 0.1182881449325941,
+          "joy": 0.025201838021166576,
+          "neutral": 0.49469458490299684,
+          "sadness": 0.07922399460648492,
+          "surprise": 0.09071935168312237
+        },
+        "representative_examples": [
+          {
+            "text": "no, osha does not say that 'masks don\u2019t work' against covid-19",
+            "dataset": "jns-covid_misinfo",
+            "source": "princeton",
+            "term_tfidf_score": 0.6556786287927708,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
           {
             "text": "in may, wisconsin had its own test of mask effectiveness, when \"we went from masks, to no masks, and there (was) no significant difference in cases.\"",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.6254628477859855,
+            "term_tfidf_score": 0.6167310431251845,
             "vader_compound": -0.4199,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "did christopher harrington patent a ?cv19-n95? mask in 2015?",
+            "text": "did christopher harrington patent a \u2018cv19-n95\u2019 mask in 2015?",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.6008822823936951,
+            "term_tfidf_score": 0.5992860087590264,
             "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          }
+        ]
+      },
+      {
+        "term": "novel coronavirus",
+        "mean_tfidf_score": 0.010634013849768326,
+        "document_frequency": 188,
+        "share_of_domain_docs": 0.04418331374853114,
+        "average_vader": {
+          "vader_neg": 0.06934574468085106,
+          "vader_neu": 0.7600159574468086,
+          "vader_pos": 0.1706276595744681,
+          "vader_compound": 0.23583723404255322
+        },
+        "average_emotions": {
+          "anger": 0.07432067458161169,
+          "disgust": 0.04629252208774519,
+          "fear": 0.12889701815970994,
+          "joy": 0.05591433616218827,
+          "neutral": 0.5391580320980172,
+          "sadness": 0.07232240698500929,
+          "surprise": 0.0830950079252943
+        },
+        "representative_examples": [
+          {
+            "text": "has the novel coronavirus been patented?",
+            "dataset": "jns-covid_misinfo",
+            "source": "princeton",
+            "term_tfidf_score": 0.48552186951093435,
+            "vader_compound": 0.3182,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "fact check: not wearing masks for tuberculosis in the u.s. does not mean masks are not needed for covid-19",
-            "dataset": "jns-covid_misinfo",
-            "source": "princeton",
-            "term_tfidf_score": 0.5109476258519766,
-            "vader_compound": 0.0,
+            "text": "this photo purports to show the novel coronavirus",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.42019820615179065,
+            "vader_compound": 0.3182,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "children under 8 are immune to the novel coronavirus",
+            "dataset": "covid_19_rumor",
+            "source": "cdl",
+            "term_tfidf_score": 0.40532631439402517,
+            "vader_compound": 0.5423,
             "dominant_emotion": "neutral"
           }
         ]
       },
       {
         "term": "case",
-        "mean_tfidf_score": 0.010585905666874668,
-        "document_frequency": 162,
-        "share_of_domain_docs": 0.03818953323903819,
+        "mean_tfidf_score": 0.010609142813477072,
+        "document_frequency": 161,
+        "share_of_domain_docs": 0.03783783783783784,
         "average_vader": {
-          "vader_neg": 0.06402469135802469,
-          "vader_neu": 0.8852160493827163,
-          "vader_pos": 0.050759259259259254,
-          "vader_compound": -0.05103395061728396
+          "vader_neg": 0.06140372670807453,
+          "vader_neu": 0.8896211180124223,
+          "vader_pos": 0.04897515527950311,
+          "vader_compound": -0.05042981366459626
         },
         "average_emotions": {
-          "anger": 0.04858586675757657,
-          "disgust": 0.021554040937773584,
-          "fear": 0.1441954551609578,
-          "joy": 0.029103083089770127,
-          "neutral": 0.4386312145650686,
-          "sadness": 0.1279755037868637,
-          "surprise": 0.18995484885225003
+          "anger": 0.052220876315631715,
+          "disgust": 0.026998808818958903,
+          "fear": 0.1538664336324964,
+          "joy": 0.03187242770344824,
+          "neutral": 0.4641393289311286,
+          "sadness": 0.132154724938847,
+          "surprise": 0.13874740301781788
         },
         "representative_examples": [
           {
             "text": "one case infects other 14",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.6587852190611044,
+            "term_tfidf_score": 0.668857663677226,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
@@ -1069,7 +1069,7 @@
             "text": "cov case in ethiopia",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.5714295478453829,
+            "term_tfidf_score": 0.5798826746411097,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
@@ -1077,7 +1077,7 @@
             "text": "we only have 1-2 cases of ncov",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.5608855993676819,
+            "term_tfidf_score": 0.572797391939099,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
@@ -1085,23 +1085,23 @@
       },
       {
         "term": "infect",
-        "mean_tfidf_score": 0.010193736863744926,
+        "mean_tfidf_score": 0.010039323830984485,
         "document_frequency": 136,
-        "share_of_domain_docs": 0.03206034889203206,
+        "share_of_domain_docs": 0.031962397179788486,
         "average_vader": {
-          "vader_neg": 0.208625,
-          "vader_neu": 0.7499117647058824,
-          "vader_pos": 0.04146323529411765,
-          "vader_compound": -0.3952595588235294
+          "vader_neg": 0.2070735294117647,
+          "vader_neu": 0.7541102941176471,
+          "vader_pos": 0.03880882352941177,
+          "vader_compound": -0.4033073529411765
         },
         "average_emotions": {
-          "anger": 0.0614308912824045,
-          "disgust": 0.12201008841528914,
-          "fear": 0.09559091649562641,
-          "joy": 0.023846883009622722,
-          "neutral": 0.40287858930070586,
-          "sadness": 0.16758733010090723,
-          "surprise": 0.1266553075855721
+          "anger": 0.060730827153961615,
+          "disgust": 0.13214856285434073,
+          "fear": 0.09378916843150573,
+          "joy": 0.02756339430518834,
+          "neutral": 0.42548279195205607,
+          "sadness": 0.17919768091943458,
+          "surprise": 0.08108757099612639
         },
         "representative_examples": [
           {
@@ -1116,46 +1116,46 @@
             "text": "one case infects other 14",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.7523310675139054,
+            "term_tfidf_score": 0.7433904934422035,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "infected taxi driver demands money from his government otherwise he?ll infect others",
+            "text": "infected taxi driver demands money from his government otherwise he\u2019ll infect others",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.5720450767574902,
+            "term_tfidf_score": 0.6116499544090546,
             "vader_compound": -0.4939,
-            "dominant_emotion": "anger"
+            "dominant_emotion": "disgust"
           }
         ]
       },
       {
         "term": "patient",
-        "mean_tfidf_score": 0.010193357178020689,
-        "document_frequency": 148,
-        "share_of_domain_docs": 0.03488920320603489,
+        "mean_tfidf_score": 0.009889552531861814,
+        "document_frequency": 147,
+        "share_of_domain_docs": 0.0345475910693302,
         "average_vader": {
-          "vader_neg": 0.08552027027027027,
-          "vader_neu": 0.8515270270270269,
-          "vader_pos": 0.0629391891891892,
-          "vader_compound": -0.04527364864864865
+          "vader_neg": 0.08567346938775511,
+          "vader_neu": 0.8560680272108844,
+          "vader_pos": 0.05824489795918367,
+          "vader_compound": -0.0564265306122449
         },
         "average_emotions": {
-          "anger": 0.1027266541826287,
-          "disgust": 0.07068894780083634,
-          "fear": 0.10765280856729667,
-          "joy": 0.0700925609090592,
-          "neutral": 0.34156359434820005,
-          "sadness": 0.1717573125576097,
-          "surprise": 0.13551812712417766
+          "anger": 0.10108297723060355,
+          "disgust": 0.08024673655131816,
+          "fear": 0.10589157355506583,
+          "joy": 0.07503101576379413,
+          "neutral": 0.3830726285699476,
+          "sadness": 0.16915461117224323,
+          "surprise": 0.0855204557372751
         },
         "representative_examples": [
           {
             "text": "video of pak patient in uk shared as pak doctor who died after treating patients",
             "dataset": "jns-covid_misinfo",
             "source": "princeton",
-            "term_tfidf_score": 0.5570664821693257,
+            "term_tfidf_score": 0.5543712796252915,
             "vader_compound": -0.296,
             "dominant_emotion": "sadness"
           },
@@ -1163,7 +1163,7 @@
             "text": "ssm slu hospital didn't have a flood of patients",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.5377687730789014,
+            "term_tfidf_score": 0.5389024563822955,
             "vader_compound": 0.0,
             "dominant_emotion": "surprise"
           },
@@ -1171,7 +1171,7 @@
             "text": "there were coronavirus patients at kettering hospital",
             "dataset": "covid_19_rumor",
             "source": "cdl",
-            "term_tfidf_score": 0.5163546522152269,
+            "term_tfidf_score": 0.5186718606206643,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
@@ -1180,50 +1180,50 @@
     ]
   },
   "climate": {
-    "document_count": 5118,
+    "document_count": 4588,
     "terms": [
       {
         "term": "climate",
-        "mean_tfidf_score": 0.044111417300807865,
-        "document_frequency": 1799,
-        "share_of_domain_docs": 0.35150449394294647,
+        "mean_tfidf_score": 0.04722558720043326,
+        "document_frequency": 1747,
+        "share_of_domain_docs": 0.38077593722755015,
         "average_vader": {
-          "vader_neg": 0.08777709838799333,
-          "vader_neu": 0.8267237354085603,
-          "vader_pos": 0.08551139521956642,
-          "vader_compound": 0.01265036131183991
+          "vader_neg": 0.08667258156840296,
+          "vader_neu": 0.8315140240412134,
+          "vader_pos": 0.08182541499713795,
+          "vader_compound": -0.0032773325701202062
         },
         "average_emotions": {
-          "anger": 0.16457358680459971,
-          "disgust": 0.04664519067622088,
-          "fear": 0.17186317885707866,
-          "joy": 0.050912398630763515,
-          "neutral": 0.35546906667829387,
-          "sadness": 0.07638461848139413,
-          "surprise": 0.13415195966562518
+          "anger": 0.15585142370946728,
+          "disgust": 0.06045668908655687,
+          "fear": 0.16698361211123172,
+          "joy": 0.04854758436298212,
+          "neutral": 0.40391638659282775,
+          "sadness": 0.07757309617572762,
+          "surprise": 0.0866712087064778
         },
         "representative_examples": [
           {
             "text": "what about the dem climate change scamcarbontaxingaghost",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.5264161104949536,
+            "term_tfidf_score": 0.5230659121248293,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "so climate change is?.. good?",
+            "text": "so climate change is\u2026.. good?",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.3907859752826162,
-            "vader_compound": 0.504,
+            "term_tfidf_score": 0.38076845845814405,
+            "vader_compound": 0.4404,
             "dominant_emotion": "surprise"
           },
           {
-            "text": "it is chinese overfishing. not climate change.",
+            "text": "climate change has existed for millennia, because climate is always changing.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.3780963202640766,
+            "term_tfidf_score": 0.3474063911746196,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
@@ -1231,93 +1231,93 @@
       },
       {
         "term": "change",
-        "mean_tfidf_score": 0.03584247983005483,
-        "document_frequency": 1335,
-        "share_of_domain_docs": 0.2608440797186401,
+        "mean_tfidf_score": 0.03793666974526215,
+        "document_frequency": 1265,
+        "share_of_domain_docs": 0.2757192676547515,
         "average_vader": {
-          "vader_neg": 0.08173333333333334,
-          "vader_neu": 0.8346659176029962,
-          "vader_pos": 0.08360749063670411,
-          "vader_compound": 0.03172554307116105
+          "vader_neg": 0.08303083003952569,
+          "vader_neu": 0.8389343873517786,
+          "vader_pos": 0.07804268774703557,
+          "vader_compound": 0.005848774703557318
         },
         "average_emotions": {
-          "anger": 0.1577835527088664,
-          "disgust": 0.04488559177628028,
-          "fear": 0.16682415481845148,
-          "joy": 0.046045172359133385,
-          "neutral": 0.3680799857219062,
-          "sadness": 0.07164356332513842,
-          "surprise": 0.14473798010936043
+          "anger": 0.15277580207350877,
+          "disgust": 0.056774980354324316,
+          "fear": 0.16637364831735127,
+          "joy": 0.04421783386041284,
+          "neutral": 0.41161870094312525,
+          "sadness": 0.07448946888376347,
+          "surprise": 0.09374956705376479
         },
         "representative_examples": [
           {
             "text": "what about the dem climate change scamcarbontaxingaghost",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.5845473348159261,
+            "term_tfidf_score": 0.5862552617760931,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "climate change jeff there is nothing anyone can do to change or control the weather",
+            "text": "it\u2019s been changing, as others pointed out, it\u2019s been changing for millennia.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.5240880332173118,
+            "term_tfidf_score": 0.4746680689639833,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "it?s been changing, as others pointed out, it?s been changing for millennia.",
+            "text": "so climate change is\u2026.. good?",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.4805876471517484,
-            "vader_compound": 0.0,
+            "term_tfidf_score": 0.4267674629811961,
+            "vader_compound": 0.4404,
             "dominant_emotion": "surprise"
           }
         ]
       },
       {
         "term": "climate change",
-        "mean_tfidf_score": 0.03138369128647666,
-        "document_frequency": 1139,
-        "share_of_domain_docs": 0.22254787026182102,
+        "mean_tfidf_score": 0.033046719165378026,
+        "document_frequency": 1083,
+        "share_of_domain_docs": 0.236050566695728,
         "average_vader": {
-          "vader_neg": 0.08585601404741001,
-          "vader_neu": 0.8305004389815627,
-          "vader_pos": 0.08364969271290605,
-          "vader_compound": 0.01568700614574188
+          "vader_neg": 0.08726500461680517,
+          "vader_neu": 0.8342096029547553,
+          "vader_pos": 0.07853924284395197,
+          "vader_compound": -0.005292336103416436
         },
         "average_emotions": {
-          "anger": 0.1634781803042772,
-          "disgust": 0.04580333452485032,
-          "fear": 0.17470398813081764,
-          "joy": 0.04625044449865597,
-          "neutral": 0.35655257130748286,
-          "sadness": 0.07359637228682714,
-          "surprise": 0.13961510930599358
+          "anger": 0.158366273551638,
+          "disgust": 0.058127775239580355,
+          "fear": 0.1745606789006974,
+          "joy": 0.04454534092658114,
+          "neutral": 0.3983248805539405,
+          "sadness": 0.07657768806212148,
+          "surprise": 0.08949736370901777
         },
         "representative_examples": [
           {
             "text": "what about the dem climate change scamcarbontaxingaghost",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.6174062616875233,
+            "term_tfidf_score": 0.6186330249937072,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "so climate change is?.. good?",
+            "text": "so climate change is\u2026.. good?",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.4583326826610598,
-            "vader_compound": 0.504,
+            "term_tfidf_score": 0.4503370183716677,
+            "vader_compound": 0.4404,
             "dominant_emotion": "surprise"
           },
           {
-            "text": "it is chinese overfishing. not climate change.",
+            "text": "climate change has existed for millennia, because climate is always changing.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.44344964182909424,
+            "term_tfidf_score": 0.41087951191744315,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
@@ -1325,234 +1325,234 @@
       },
       {
         "term": "global",
-        "mean_tfidf_score": 0.0291587091259759,
-        "document_frequency": 1086,
-        "share_of_domain_docs": 0.21219226260257915,
+        "mean_tfidf_score": 0.031692423037382324,
+        "document_frequency": 1068,
+        "share_of_domain_docs": 0.23278116826503922,
         "average_vader": {
-          "vader_neg": 0.08118876611418048,
-          "vader_neu": 0.8119907918968693,
-          "vader_pos": 0.10681860036832413,
-          "vader_compound": 0.06747661141804787
+          "vader_neg": 0.07901872659176029,
+          "vader_neu": 0.8142331460674157,
+          "vader_pos": 0.10674906367041198,
+          "vader_compound": 0.06633735955056179
         },
         "average_emotions": {
-          "anger": 0.14328766309900182,
-          "disgust": 0.04145890030815672,
-          "fear": 0.17527224033422215,
-          "joy": 0.04897052083695826,
-          "neutral": 0.37206674368470405,
-          "sadness": 0.07328742445443549,
-          "surprise": 0.14565650814933861
+          "anger": 0.13712460520478448,
+          "disgust": 0.04984381621177179,
+          "fear": 0.16421381309954952,
+          "joy": 0.0530979911017267,
+          "neutral": 0.4145620300045716,
+          "sadness": 0.07783835530124099,
+          "surprise": 0.10331939089110671
         },
         "representative_examples": [
           {
-            "text": "here?s the truth ? there?s been no global warming since the 1990s,",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.3880613094556112,
-            "vader_compound": -0.2225,
+            "text": "turns out, global warming didn't kick in until 1910!",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.39707695455832986,
+            "vader_compound": 0.2244,
             "dominant_emotion": "surprise"
           },
           {
-            "text": "thank you very much. can we all say that. global warming is??",
+            "text": "here\u2019s the truth \u2013 there\u2019s been no global warming since the 1990s,",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.36450556868016387,
-            "vader_compound": 0.5362,
-            "dominant_emotion": "surprise"
-          },
-          {
-            "text": "global warming doesn't exist -- or at least hasn't for 19 years",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.35962884945370654,
-            "vader_compound": 0.1531,
+            "term_tfidf_score": 0.38040553797334203,
+            "vader_compound": -0.0885,
             "dominant_emotion": "neutral"
+          },
+          {
+            "text": "this global warming is freezing my azz off !!!",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.3596770985732309,
+            "vader_compound": 0.2677,
+            "dominant_emotion": "sadness"
           }
         ]
       },
       {
         "term": "warming",
-        "mean_tfidf_score": 0.028304040560726853,
-        "document_frequency": 1002,
-        "share_of_domain_docs": 0.19577960140679954,
+        "mean_tfidf_score": 0.031309299975274735,
+        "document_frequency": 1010,
+        "share_of_domain_docs": 0.22013949433304272,
         "average_vader": {
-          "vader_neg": 0.08461277445109781,
-          "vader_neu": 0.796873253493014,
-          "vader_pos": 0.11851197604790421,
-          "vader_compound": 0.07544980039920161
+          "vader_neg": 0.08030693069306931,
+          "vader_neu": 0.8005425742574257,
+          "vader_pos": 0.11914554455445546,
+          "vader_compound": 0.08283871287128713
         },
         "average_emotions": {
-          "anger": 0.14504597603716143,
-          "disgust": 0.04059659595739635,
-          "fear": 0.1802736932251806,
-          "joy": 0.04251660383768271,
-          "neutral": 0.3685077294936063,
-          "sadness": 0.06944519504470223,
-          "surprise": 0.15361420680033813
+          "anger": 0.13463620578531305,
+          "disgust": 0.0480194273085643,
+          "fear": 0.16719587019049345,
+          "joy": 0.04744723514828938,
+          "neutral": 0.42360635410036457,
+          "sadness": 0.07035979726651478,
+          "surprise": 0.10873511241423887
         },
         "representative_examples": [
           {
-            "text": "here?s the truth ? there?s been no global warming since the 1990s,",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.3992343459049731,
-            "vader_compound": -0.2225,
+            "text": "turns out, global warming didn't kick in until 1910!",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.4056469783022003,
+            "vader_compound": 0.2244,
             "dominant_emotion": "surprise"
           },
           {
-            "text": "thank you very much. can we all say that. global warming is??",
+            "text": "here\u2019s the truth \u2013 there\u2019s been no global warming since the 1990s,",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.3750003897448356,
-            "vader_compound": 0.5362,
-            "dominant_emotion": "surprise"
-          },
-          {
-            "text": "global warming doesn't exist -- or at least hasn't for 19 years",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.36998326032972295,
-            "vader_compound": 0.1531,
+            "term_tfidf_score": 0.38861574623475464,
+            "vader_compound": -0.0885,
             "dominant_emotion": "neutral"
+          },
+          {
+            "text": "this global warming is freezing my azz off !!!",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.367439929529582,
+            "vader_compound": 0.2677,
+            "dominant_emotion": "sadness"
           }
         ]
       },
       {
         "term": "global warming",
-        "mean_tfidf_score": 0.022784976850589653,
-        "document_frequency": 757,
-        "share_of_domain_docs": 0.1479093395857757,
+        "mean_tfidf_score": 0.024723930138487636,
+        "document_frequency": 747,
+        "share_of_domain_docs": 0.16281604184829992,
         "average_vader": {
-          "vader_neg": 0.091667107001321,
-          "vader_neu": 0.7894451783355348,
-          "vader_pos": 0.11888507265521796,
-          "vader_compound": 0.037562615587846765
+          "vader_neg": 0.08878045515394914,
+          "vader_neu": 0.7913708165997323,
+          "vader_pos": 0.11983534136546184,
+          "vader_compound": 0.04477215528781794
         },
         "average_emotions": {
-          "anger": 0.15771153666259896,
-          "disgust": 0.043645661795306386,
-          "fear": 0.199214455370651,
-          "joy": 0.042276982314411925,
-          "neutral": 0.3411813938557023,
-          "sadness": 0.07287087413845916,
-          "surprise": 0.1430990967418675
+          "anger": 0.1485870719590901,
+          "disgust": 0.051994350303765896,
+          "fear": 0.188597406864525,
+          "joy": 0.04552544527392584,
+          "neutral": 0.3891103183818698,
+          "sadness": 0.07328918930489087,
+          "surprise": 0.10289622021095955
         },
         "representative_examples": [
           {
-            "text": "here?s the truth ? there?s been no global warming since the 1990s,",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.43381315170372137,
-            "vader_compound": -0.2225,
+            "text": "turns out, global warming didn't kick in until 1910!",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.4442162516167886,
+            "vader_compound": 0.2244,
             "dominant_emotion": "surprise"
           },
           {
-            "text": "thank you very much. can we all say that. global warming is??",
+            "text": "here\u2019s the truth \u2013 there\u2019s been no global warming since the 1990s,",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.4074802246699802,
-            "vader_compound": 0.5362,
-            "dominant_emotion": "surprise"
-          },
-          {
-            "text": "global warming doesn't exist -- or at least hasn't for 19 years",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.4020285476126322,
-            "vader_compound": 0.1531,
+            "term_tfidf_score": 0.4255656749476826,
+            "vader_compound": -0.0885,
             "dominant_emotion": "neutral"
+          },
+          {
+            "text": "this global warming is freezing my azz off !!!",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.40237644286941926,
+            "vader_compound": 0.2677,
+            "dominant_emotion": "sadness"
           }
         ]
       },
       {
         "term": "year",
-        "mean_tfidf_score": 0.02051417888111708,
-        "document_frequency": 752,
-        "share_of_domain_docs": 0.14693239546697928,
+        "mean_tfidf_score": 0.021576648633307823,
+        "document_frequency": 682,
+        "share_of_domain_docs": 0.14864864864864866,
         "average_vader": {
-          "vader_neg": 0.05934175531914894,
-          "vader_neu": 0.8612553191489362,
-          "vader_pos": 0.07940292553191489,
-          "vader_compound": 0.09506808510638297
+          "vader_neg": 0.05690175953079179,
+          "vader_neu": 0.869799120234604,
+          "vader_pos": 0.07329472140762464,
+          "vader_compound": 0.07054604105571846
         },
         "average_emotions": {
-          "anger": 0.11076080160815531,
-          "disgust": 0.03169540071771638,
-          "fear": 0.1138218830194014,
-          "joy": 0.049463178452300624,
-          "neutral": 0.4124778685693448,
-          "sadness": 0.08166893331616983,
-          "surprise": 0.2001119333878531
+          "anger": 0.10241342040480048,
+          "disgust": 0.03677808069428554,
+          "fear": 0.10645595523485223,
+          "joy": 0.047372125802639095,
+          "neutral": 0.4747993748396419,
+          "sadness": 0.08147023085066417,
+          "surprise": 0.15071081233318737
         },
         "representative_examples": [
           {
-            "text": "i am referring to anything you find that should have been recused but he did it. because it was a one-year when it should have been a two-year. you know what i?m saying.",
+            "text": "in fact, this year was cooler than years such as 1762, 1779 and 1826, and more than a degree colder than 1783.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.4395374587480423,
+            "term_tfidf_score": 0.4163795491428208,
             "vader_compound": 0.0,
-            "dominant_emotion": "sadness"
-          },
-          {
-            "text": "global warming doesn't exist -- or at least hasn't for 19 years",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.39164581997792974,
-            "vader_compound": 0.1531,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "?over 20 years of almost no change in temperatures?",
+            "text": "\u201cover 20 years of almost no change in temperatures\u201d",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.36724781843750615,
-            "vader_compound": -0.3109,
-            "dominant_emotion": "surprise"
+            "term_tfidf_score": 0.37179891810509,
+            "vader_compound": -0.228,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "the temperature has been static for 20 years.",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.35977297697035304,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
           }
         ]
       },
       {
         "term": "temperature",
-        "mean_tfidf_score": 0.017552339193107357,
-        "document_frequency": 540,
-        "share_of_domain_docs": 0.10550996483001172,
+        "mean_tfidf_score": 0.020020666092730306,
+        "document_frequency": 561,
+        "share_of_domain_docs": 0.12227550130775937,
         "average_vader": {
-          "vader_neg": 0.05687592592592593,
-          "vader_neu": 0.8712203703703704,
-          "vader_pos": 0.07189259259259259,
-          "vader_compound": 0.09858185185185185
+          "vader_neg": 0.054896613190730845,
+          "vader_neu": 0.8745953654188948,
+          "vader_pos": 0.07050089126559715,
+          "vader_compound": 0.08539750445632799
         },
         "average_emotions": {
-          "anger": 0.10028718834143581,
-          "disgust": 0.03606780427777536,
-          "fear": 0.10318879977480888,
-          "joy": 0.03904541851359816,
-          "neutral": 0.4816372629298173,
-          "sadness": 0.06983930250711705,
-          "surprise": 0.16993422569702724
+          "anger": 0.09493176835305227,
+          "disgust": 0.04122464397129243,
+          "fear": 0.09185108303132053,
+          "joy": 0.04297440994257823,
+          "neutral": 0.5354572377528094,
+          "sadness": 0.07176878662081015,
+          "surprise": 0.12179206982533046
         },
         "representative_examples": [
           {
             "text": "co2 has no effect on the temperatures. the levels of co2 are driven by temperatures.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.5050902978317012,
+            "term_tfidf_score": 0.4171293822415576,
             "vader_compound": -0.296,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "?over 20 years of almost no change in temperatures?",
+            "text": "\u201cover 20 years of almost no change in temperatures\u201d",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.4110098271519988,
-            "vader_compound": -0.3109,
-            "dominant_emotion": "surprise"
+            "term_tfidf_score": 0.4021992726765303,
+            "vader_compound": -0.228,
+            "dominant_emotion": "neutral"
           },
           {
             "text": "the temperature has been static for 20 years.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.39594638478479094,
+            "term_tfidf_score": 0.3891900234772767,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
@@ -1560,469 +1560,234 @@
       },
       {
         "term": "carbon",
-        "mean_tfidf_score": 0.016271473639710553,
-        "document_frequency": 548,
-        "share_of_domain_docs": 0.10707307542008597,
+        "mean_tfidf_score": 0.019304174467936974,
+        "document_frequency": 561,
+        "share_of_domain_docs": 0.12227550130775937,
         "average_vader": {
-          "vader_neg": 0.06783394160583942,
-          "vader_neu": 0.8494160583941606,
-          "vader_pos": 0.08272627737226278,
-          "vader_compound": 0.08412700729927008
+          "vader_neg": 0.06559893048128343,
+          "vader_neu": 0.8559180035650624,
+          "vader_pos": 0.07846345811051693,
+          "vader_compound": 0.05848181818181818
         },
         "average_emotions": {
-          "anger": 0.15172715446952964,
-          "disgust": 0.06047572325249109,
-          "fear": 0.13329709339370682,
-          "joy": 0.053352147155423496,
-          "neutral": 0.40931399880854685,
-          "sadness": 0.07283164586350968,
-          "surprise": 0.11900223797898023
+          "anger": 0.1431407905027059,
+          "disgust": 0.07882288912627754,
+          "fear": 0.11078691783060447,
+          "joy": 0.05856337892536965,
+          "neutral": 0.4580692690354627,
+          "sadness": 0.07308293623582467,
+          "surprise": 0.07753381583862061
         },
         "representative_examples": [
           {
             "text": "if there were [carbon emissions], we could not see because most carbon is black.",
             "dataset": "climate_fever",
             "source": "cdl",
-            "term_tfidf_score": 0.4776451012592234,
+            "term_tfidf_score": 0.46746488984153806,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "by the way, it's not really \"carbon\"; it's carbon dioxide. want to fix it? plant more trees.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.4125111310265724,
-            "vader_compound": 0.0772,
+            "text": "there are 800gigatonnes of carbon already stuck in the atmosphere",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.4162923412526041,
+            "vader_compound": -0.25,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "carbon dioxide is not a pollutant. carbon dioxide is a nutrient.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.4117143855993705,
-            "vader_compound": 0.0,
-            "dominant_emotion": "disgust"
+            "text": "cement production alone is around 9% of carbon emissions.",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.3740405329072758,
+            "vader_compound": -0.25,
+            "dominant_emotion": "neutral"
           }
         ]
       },
       {
         "term": "energy",
-        "mean_tfidf_score": 0.015068189872261455,
-        "document_frequency": 521,
-        "share_of_domain_docs": 0.10179757717858538,
+        "mean_tfidf_score": 0.015312048576687123,
+        "document_frequency": 451,
+        "share_of_domain_docs": 0.09829991281604185,
         "average_vader": {
-          "vader_neg": 0.06808829174664106,
-          "vader_neu": 0.7737082533589251,
-          "vader_pos": 0.15823032629558542,
-          "vader_compound": 0.3747600767754319
+          "vader_neg": 0.07163192904656321,
+          "vader_neu": 0.7714168514412416,
+          "vader_pos": 0.15696895787139692,
+          "vader_compound": 0.3305951219512196
         },
         "average_emotions": {
-          "anger": 0.17295593464516476,
-          "disgust": 0.039331918877520196,
-          "fear": 0.13868857450251898,
-          "joy": 0.11497694615289415,
-          "neutral": 0.3248770150750153,
-          "sadness": 0.10448699171637899,
-          "surprise": 0.10468261690601177
+          "anger": 0.1686135086046631,
+          "disgust": 0.05489615388286859,
+          "fear": 0.12552138441623015,
+          "joy": 0.11688014144101641,
+          "neutral": 0.3635911643844534,
+          "sadness": 0.11159133494851237,
+          "surprise": 0.05890630668766396
         },
         "representative_examples": [
+          {
+            "text": "greenwashing of energy corps shall be stoped.",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.6158644373644419,
+            "vader_compound": 0.1779,
+            "dominant_emotion": "anger"
+          },
+          {
+            "text": "energy storage technologies are critical to renewable energy systems",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.4176101873785704,
+            "vader_compound": 0.2263,
+            "dominant_emotion": "neutral"
+          },
           {
             "text": "britain needs to re-order energy policy putting energy security first, affordability second and environmentally clean energy third.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.3695579208196856,
+            "term_tfidf_score": 0.36865918182021945,
             "vader_compound": 0.8555,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "energy myths and realities: bringing science to the energy policy debate,",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.3655530032440572,
-            "vader_compound": 0.4939,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "the amount of energy necessary for humans to do everything we do is simply too large. as that demand for energy grows, the amount of renewable energy also has to grow, just to maintain only a 15-20 % fraction of the total.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.35950829311402893,
-            "vader_compound": 0.5859,
-            "dominant_emotion": "neutral"
-          }
-        ]
-      },
-      {
-        "term": "science",
-        "mean_tfidf_score": 0.012797031337837172,
-        "document_frequency": 412,
-        "share_of_domain_docs": 0.08050019538882376,
-        "average_vader": {
-          "vader_neg": 0.08314320388349516,
-          "vader_neu": 0.8224805825242718,
-          "vader_pos": 0.09438106796116505,
-          "vader_compound": 0.05829247572815536
-        },
-        "average_emotions": {
-          "anger": 0.18209671665497862,
-          "disgust": 0.04710100680641667,
-          "fear": 0.22530935228888727,
-          "joy": 0.05223358518631057,
-          "neutral": 0.31172851124299167,
-          "sadness": 0.06164446490386148,
-          "surprise": 0.11988636050291374
-        },
-        "representative_examples": [
-          {
-            "text": "science that changes as quickly as this science has is called a lie.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.5755650946870448,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "interested as i am as a chartered aerospace engineer who used to work on thermodynamics, with an msc in computer science, capable of understanding models ? fascinated as i am, i am not having that conversation about the science. but i ha...",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.42996467823344164,
-            "vader_compound": 0.5719,
-            "dominant_emotion": "surprise"
-          },
-          {
-            "text": "i always think that, you know, when you have to call things science, you know they aren?t, like climate science or political science,",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.41746864011710394,
-            "vader_compound": 0.3612,
-            "dominant_emotion": "neutral"
-          }
-        ]
-      },
-      {
-        "term": "think",
-        "mean_tfidf_score": 0.012587977578989901,
-        "document_frequency": 392,
-        "share_of_domain_docs": 0.07659241891363815,
-        "average_vader": {
-          "vader_neg": 0.06838265306122449,
-          "vader_neu": 0.8265433673469388,
-          "vader_pos": 0.10506377551020409,
-          "vader_compound": 0.17161581632653064
-        },
-        "average_emotions": {
-          "anger": 0.14498878225781575,
-          "disgust": 0.03572075483862136,
-          "fear": 0.13400725322453025,
-          "joy": 0.10985028103073555,
-          "neutral": 0.2517242890048228,
-          "sadness": 0.07175816423826903,
-          "surprise": 0.2519504773998942
-        },
-        "representative_examples": [
-          {
-            "text": "i think he?s also said, and we believe, that humans have a part in that. i think what the real question is [?] what are we going to do about it?",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.47777951972660127,
-            "vader_compound": 0.0,
-            "dominant_emotion": "surprise"
-          },
-          {
-            "text": "i just don?t think there?s a crisis. it is arrogant to think that we, as human beings, can make any difference to this planet.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.4212617785910651,
-            "vader_compound": -0.8253,
-            "dominant_emotion": "anger"
-          },
-          {
-            "text": "there are scientists who think lots of different things about climate change. there?s some who think we?re warming, there?s some who think we?re cooling, there?s some who think that the last 16 years have shown a pretty stable climate en...",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.4016577320173804,
-            "vader_compound": 0.7882,
             "dominant_emotion": "neutral"
           }
         ]
       },
       {
         "term": "emission",
-        "mean_tfidf_score": 0.01238598072711631,
-        "document_frequency": 409,
-        "share_of_domain_docs": 0.07991402891754591,
+        "mean_tfidf_score": 0.014310026860262767,
+        "document_frequency": 402,
+        "share_of_domain_docs": 0.08761987794245858,
         "average_vader": {
-          "vader_neg": 0.06951833740831295,
-          "vader_neu": 0.8386968215158924,
-          "vader_pos": 0.09176528117359414,
-          "vader_compound": 0.10684889975550123
+          "vader_neg": 0.06481840796019901,
+          "vader_neu": 0.8487139303482587,
+          "vader_pos": 0.08643781094527364,
+          "vader_compound": 0.08850621890547264
         },
         "average_emotions": {
-          "anger": 0.15444380539076058,
-          "disgust": 0.04625797464276327,
-          "fear": 0.16094254608813122,
-          "joy": 0.054384109340403185,
-          "neutral": 0.4004286355197385,
-          "sadness": 0.07012306792564203,
-          "surprise": 0.11341986261464172
+          "anger": 0.14666416723641973,
+          "disgust": 0.060703481113148904,
+          "fear": 0.13905167888571385,
+          "joy": 0.05397459967319608,
+          "neutral": 0.4495716343258956,
+          "sadness": 0.07308292529121181,
+          "surprise": 0.07695151125940963
         },
         "representative_examples": [
           {
-            "text": "global human emissions are only 3 per cent of total annual emissions.",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.4482470668018526,
+            "text": "emissions rose by 3.4% in 2018",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.6918766868603675,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "?global human emissions are only 3 per cent of total annual emissions.?",
+            "text": "\u201cglobal human emissions are only 3 per cent of total annual emissions.\u201d",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.4482470668018526,
+            "term_tfidf_score": 0.441345673828214,
             "vader_compound": 0.0,
-            "dominant_emotion": "surprise"
+            "dominant_emotion": "neutral"
           },
           {
-            "text": "on all timescales it can be shown that there is no correlation between co2 emissions and global warming.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.42368686145553763,
-            "vader_compound": -0.1531,
+            "text": "global human emissions are only 3 per cent of total annual emissions.",
+            "dataset": "climate_fever",
+            "source": "cdl",
+            "term_tfidf_score": 0.441345673828214,
+            "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
         ]
       },
       {
-        "term": "gas",
-        "mean_tfidf_score": 0.012370504406169987,
-        "document_frequency": 416,
-        "share_of_domain_docs": 0.08128175068386088,
+        "term": "science",
+        "mean_tfidf_score": 0.014040556926263421,
+        "document_frequency": 397,
+        "share_of_domain_docs": 0.08653007846556234,
         "average_vader": {
-          "vader_neg": 0.058658653846153846,
-          "vader_neu": 0.8286105769230769,
-          "vader_pos": 0.11273076923076923,
-          "vader_compound": 0.24934615384615386
+          "vader_neg": 0.07858942065491184,
+          "vader_neu": 0.828670025188917,
+          "vader_pos": 0.09275566750629723,
+          "vader_compound": 0.05112695214105793
         },
         "average_emotions": {
-          "anger": 0.15201216020376215,
-          "disgust": 0.05919659055993739,
-          "fear": 0.1287824183714642,
-          "joy": 0.07464634370444401,
-          "neutral": 0.4003645187325534,
-          "sadness": 0.06707644583982003,
-          "surprise": 0.11792152293030365
+          "anger": 0.1736700715680703,
+          "disgust": 0.06489915335384489,
+          "fear": 0.21039433663460821,
+          "joy": 0.04835769160137794,
+          "neutral": 0.3579339644261278,
+          "sadness": 0.06998702063358922,
+          "surprise": 0.07475776624937963
         },
         "representative_examples": [
           {
-            "text": "because the friday outage started around 6:30 p.m., when solar is ramping down and gas-fired plants are ramping up, gas is the likely immediate culprit, wara said. ?the timing of all this strongly suggests problems with gas plants,",
+            "text": "science that changes as quickly as this science has is called a lie.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.37700488920014946,
-            "vader_compound": -0.0836,
+            "term_tfidf_score": 0.5696686268657593,
+            "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "more gas is the answer to a gas crisis. we need it to heat our homes and fuel our factories. we also need it as back up for electricity generation when the wind does not blow or blows too much. let?s have some more u.k. sourced gas as we...",
+            "text": "i always think that, you know, when you have to call things science, you know they aren\u2019t, like climate science or political science,",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.3135021392283118,
-            "vader_compound": -0.4588,
+            "term_tfidf_score": 0.43352399413716675,
+            "vader_compound": 0.3612,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "\"greenhouse-gas emissions that cause climate change\". you should have stopped with green house gas emissions. the climate is always changing.",
+            "text": "interested as i am as a chartered aerospace engineer who used to work on thermodynamics, with an msc in computer science, capable of understanding models \u2013 fascinated as i am, i am not having that conversation about the science. but i ha...",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.3029281909524317,
-            "vader_compound": -0.2263,
-            "dominant_emotion": "neutral"
+            "term_tfidf_score": 0.38583718681557067,
+            "vader_compound": 0.5719,
+            "dominant_emotion": "surprise"
           }
         ]
       },
       {
         "term": "increase",
-        "mean_tfidf_score": 0.012192479390653486,
-        "document_frequency": 385,
-        "share_of_domain_docs": 0.07522469714732317,
+        "mean_tfidf_score": 0.013822442823922542,
+        "document_frequency": 384,
+        "share_of_domain_docs": 0.08369659982563209,
         "average_vader": {
-          "vader_neg": 0.060470129870129875,
-          "vader_neu": 0.8226467532467532,
-          "vader_pos": 0.11686753246753247,
-          "vader_compound": 0.25580493506493507
+          "vader_neg": 0.05602604166666667,
+          "vader_neu": 0.8255651041666666,
+          "vader_pos": 0.11839843750000001,
+          "vader_compound": 0.258040625
         },
         "average_emotions": {
-          "anger": 0.11707722724947546,
-          "disgust": 0.0381949898569887,
-          "fear": 0.1234895806301494,
-          "joy": 0.06664441907415529,
-          "neutral": 0.4314037167444499,
-          "sadness": 0.07317965389047931,
-          "surprise": 0.15001041490853728
+          "anger": 0.11164418517364534,
+          "disgust": 0.04509090557363982,
+          "fear": 0.11857962323733769,
+          "joy": 0.07659181135083293,
+          "neutral": 0.4792396121359464,
+          "sadness": 0.06856753034602052,
+          "surprise": 0.10028634099277645
         },
         "representative_examples": [
           {
-            "text": "every increase in the minimum wage has led to a direct, visible increase in teenage?unemployment.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.40590170761172806,
-            "vader_compound": 0.5574,
-            "dominant_emotion": "sadness"
-          },
-          {
-            "text": "co2 increase is natural, not human-caused",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.38525537554891087,
-            "vader_compound": 0.5859,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "co2 increase is natural, not human-caused.",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.38525537554891087,
-            "vader_compound": 0.5859,
-            "dominant_emotion": "neutral"
-          }
-        ]
-      },
-      {
-        "term": "world",
-        "mean_tfidf_score": 0.011787174711356955,
-        "document_frequency": 418,
-        "share_of_domain_docs": 0.08167252833137945,
-        "average_vader": {
-          "vader_neg": 0.08234210526315788,
-          "vader_neu": 0.8200287081339712,
-          "vader_pos": 0.09765550239234451,
-          "vader_compound": 0.06083540669856459
-        },
-        "average_emotions": {
-          "anger": 0.15019712469715438,
-          "disgust": 0.05178161812284053,
-          "fear": 0.18936274923455487,
-          "joy": 0.06492754425694743,
-          "neutral": 0.3068168215602904,
-          "sadness": 0.089675598446966,
-          "surprise": 0.14723854249136625
-        },
-        "representative_examples": [
-          {
-            "text": "calling co2 a pollutant is doing a disservice the country, and i believe a disservice to the world,",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.40229290674823576,
-            "vader_compound": 0.0,
-            "dominant_emotion": "anger"
-          },
-          {
-            "text": "1200 of the worlds scientists say there is no climate crisis",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.3839147876372322,
-            "vader_compound": 0.2718,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "the world is going to have to continue using fossil fuels, whether they like it or not.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.35657846721553327,
-            "vader_compound": 0.3612,
-            "dominant_emotion": "neutral"
-          }
-        ]
-      },
-      {
-        "term": "human",
-        "mean_tfidf_score": 0.011742746930405352,
-        "document_frequency": 387,
-        "share_of_domain_docs": 0.07561547479484174,
-        "average_vader": {
-          "vader_neg": 0.07531782945736434,
-          "vader_neu": 0.8309457364341084,
-          "vader_pos": 0.0937390180878553,
-          "vader_compound": 0.05572894056847545
-        },
-        "average_emotions": {
-          "anger": 0.16810681815084685,
-          "disgust": 0.05793375514163569,
-          "fear": 0.16532358846423223,
-          "joy": 0.053388104599886105,
-          "neutral": 0.37599809942673773,
-          "sadness": 0.05867899904789846,
-          "surprise": 0.1205706362017233
-        },
-        "representative_examples": [
-          {
-            "text": "in fact , human wellbeing has never been higher.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.5418104139929828,
+            "text": "forest cover is increasing",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.42030049920097173,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "it is again the old misesian and hayekian dilemma asking what is and what should be dominant: human action or human design.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.39606116377973133,
-            "vader_compound": -0.1779,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "co2 increase is natural, not human-caused.",
+            "text": "you're going to have an increase in the amount of ice in antarctica because of global warming.",
             "dataset": "climate_fever",
             "source": "cdl",
-            "term_tfidf_score": 0.38073745799240394,
-            "vader_compound": 0.5859,
+            "term_tfidf_score": 0.3828985701725959,
+            "vader_compound": 0.4404,
             "dominant_emotion": "neutral"
-          }
-        ]
-      },
-      {
-        "term": "people",
-        "mean_tfidf_score": 0.011635273175593335,
-        "document_frequency": 452,
-        "share_of_domain_docs": 0.088315748339195,
-        "average_vader": {
-          "vader_neg": 0.09046902654867256,
-          "vader_neu": 0.80579203539823,
-          "vader_pos": 0.1037433628318584,
-          "vader_compound": 0.06714756637168143
-        },
-        "average_emotions": {
-          "anger": 0.1950109132459445,
-          "disgust": 0.05911247804905808,
-          "fear": 0.16149649955525447,
-          "joy": 0.08034957573526082,
-          "neutral": 0.2532749991907493,
-          "sadness": 0.08709811229494181,
-          "surprise": 0.16365742476219702
-        },
-        "representative_examples": [
-          {
-            "text": "i, i?m not sure why, uh, people have tried to make something of that. but people have to have jobs. and that?s the way it works.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.3905354596091955,
-            "vader_compound": -0.2122,
-            "dominant_emotion": "surprise"
           },
           {
-            "text": "i would call myself what some people describe as a ?lukewarmer? in that the co2 effect that people have done thousands of studies on is in fact real. however, it is not a crisis. the reason it is not a crisis is because most people do no...",
+            "text": "antarctic land ice increasing (zwally 2018)",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.3624610690484532,
-            "vader_compound": 0.7875,
-            "dominant_emotion": "surprise"
-          },
-          {
-            "text": "fewer people are dying from heat",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.33287444768607416,
+            "term_tfidf_score": 0.37869910600862094,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
@@ -2030,171 +1795,77 @@
       },
       {
         "term": "earth",
-        "mean_tfidf_score": 0.01111506230173845,
-        "document_frequency": 323,
-        "share_of_domain_docs": 0.06311059007424775,
+        "mean_tfidf_score": 0.01375217303790155,
+        "document_frequency": 353,
+        "share_of_domain_docs": 0.07693984306887533,
         "average_vader": {
-          "vader_neg": 0.06025077399380806,
-          "vader_neu": 0.8520650154798761,
-          "vader_pos": 0.08768111455108359,
-          "vader_compound": 0.1118421052631579
+          "vader_neg": 0.05295750708215297,
+          "vader_neu": 0.8603144475920679,
+          "vader_pos": 0.08671671388101983,
+          "vader_compound": 0.13180311614730877
         },
         "average_emotions": {
-          "anger": 0.12873064528865272,
-          "disgust": 0.0519470785320185,
-          "fear": 0.15519923153178386,
-          "joy": 0.05896094946559063,
-          "neutral": 0.39436442026095003,
-          "sadness": 0.0590802301939623,
-          "surprise": 0.15171744250068903
+          "anger": 0.11530857517452585,
+          "disgust": 0.06076773398119831,
+          "fear": 0.13338687526960472,
+          "joy": 0.0576328102572789,
+          "neutral": 0.46556141641145643,
+          "sadness": 0.05852895136955573,
+          "surprise": 0.10881363561610416
         },
         "representative_examples": [
           {
             "text": "below 150 ppm, 99% of life on earth goes extinct. earth is co2 starved.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.4822259710577805,
+            "term_tfidf_score": 0.47246095932549514,
             "vader_compound": -0.5574,
             "dominant_emotion": "sadness"
           },
           {
-            "text": "we didn?t create the earth so how can we save it?",
+            "text": "we didn\u2019t create the earth so how can we save it?",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.4085978024280475,
-            "vader_compound": 0.6868,
-            "dominant_emotion": "surprise"
-          },
-          {
-            "text": "climate change is apart of the earth's natural cycle. check out the 26,000 year processional cycle of the earth's axis.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.3955739479530475,
-            "vader_compound": 0.3612,
-            "dominant_emotion": "neutral"
-          }
-        ]
-      },
-      {
-        "term": "carbon dioxide",
-        "mean_tfidf_score": 0.010972763772055043,
-        "document_frequency": 337,
-        "share_of_domain_docs": 0.06584603360687769,
-        "average_vader": {
-          "vader_neg": 0.062486646884272995,
-          "vader_neu": 0.8599050445103857,
-          "vader_pos": 0.07757863501483679,
-          "vader_compound": 0.09070118694362019
-        },
-        "average_emotions": {
-          "anger": 0.14757836646696093,
-          "disgust": 0.06453608939972034,
-          "fear": 0.14798977913542924,
-          "joy": 0.05122590903866378,
-          "neutral": 0.4096489654508839,
-          "sadness": 0.0631933978037461,
-          "surprise": 0.1158274945829586
-        },
-        "representative_examples": [
-          {
-            "text": "carbon dioxide is not a pollutant. carbon dioxide is a nutrient.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.463894470775204,
-            "vader_compound": 0.0,
-            "dominant_emotion": "disgust"
-          },
-          {
-            "text": "the ?atmospheric residency time of carbon dioxide is five years",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.41278202036381506,
-            "vader_compound": 0.0,
+            "term_tfidf_score": 0.4713493068686535,
+            "vader_compound": 0.6486,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "?carbon dioxide hurts nobody?s health.",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.3886753257702252,
-            "vader_compound": -0.5362,
-            "dominant_emotion": "sadness"
-          }
-        ]
-      },
-      {
-        "term": "dioxide",
-        "mean_tfidf_score": 0.010955521776220115,
-        "document_frequency": 337,
-        "share_of_domain_docs": 0.06584603360687769,
-        "average_vader": {
-          "vader_neg": 0.062486646884272995,
-          "vader_neu": 0.8599050445103857,
-          "vader_pos": 0.07757863501483679,
-          "vader_compound": 0.09070118694362019
-        },
-        "average_emotions": {
-          "anger": 0.14757836646696093,
-          "disgust": 0.06453608939972034,
-          "fear": 0.14798977913542924,
-          "joy": 0.05122590903866378,
-          "neutral": 0.4096489654508839,
-          "sadness": 0.0631933978037461,
-          "surprise": 0.1158274945829586
-        },
-        "representative_examples": [
-          {
-            "text": "carbon dioxide is not a pollutant. carbon dioxide is a nutrient.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.46169884543406814,
-            "vader_compound": 0.0,
-            "dominant_emotion": "disgust"
-          },
-          {
-            "text": "the ?atmospheric residency time of carbon dioxide is five years",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.4108283116620029,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "?carbon dioxide hurts nobody?s health.",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.3868357147196574,
-            "vader_compound": -0.5362,
-            "dominant_emotion": "sadness"
+            "text": "the earth is destroyed by floods",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.4425309687221365,
+            "vader_compound": -0.4939,
+            "dominant_emotion": "anger"
           }
         ]
       },
       {
         "term": "level",
-        "mean_tfidf_score": 0.010499313422374527,
-        "document_frequency": 289,
-        "share_of_domain_docs": 0.0564673700664322,
+        "mean_tfidf_score": 0.013524512210737053,
+        "document_frequency": 330,
+        "share_of_domain_docs": 0.07192676547515257,
         "average_vader": {
-          "vader_neg": 0.056249134948096885,
-          "vader_neu": 0.8712249134948098,
-          "vader_pos": 0.07249134948096886,
-          "vader_compound": 0.09200242214532871
+          "vader_neg": 0.04695151515151515,
+          "vader_neu": 0.8885636363636363,
+          "vader_pos": 0.06446363636363636,
+          "vader_compound": 0.08808212121212122
         },
         "average_emotions": {
-          "anger": 0.10563780020223125,
-          "disgust": 0.03407614009783549,
-          "fear": 0.14051033903693194,
-          "joy": 0.0449311210700169,
-          "neutral": 0.469716974960682,
-          "sadness": 0.063661579234416,
-          "surprise": 0.14146604478116723
+          "anger": 0.09718687931132132,
+          "disgust": 0.03568791769705991,
+          "fear": 0.13367912462607348,
+          "joy": 0.05254160531965842,
+          "neutral": 0.48970430214275523,
+          "sadness": 0.058027671948851355,
+          "surprise": 0.1331724992357053
         },
         "representative_examples": [
           {
-            "text": "cfcs contribute to global waerming at a small level.",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.450161104912994,
+            "text": "microwaves can actually heat things up at the molecular level",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.43497725899355194,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
@@ -2202,158 +1873,487 @@
             "text": "there's still record levels of ice in the antarctic.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.41147874671549467,
+            "term_tfidf_score": 0.4127108172551424,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "therefore, co2 levels could not have forced temperatures to rise.",
+            "text": "tuvalu sea level isn't rising",
             "dataset": "climate_fever",
             "source": "cdl",
-            "term_tfidf_score": 0.39643144926465207,
-            "vader_compound": 0.357,
+            "term_tfidf_score": 0.3973215258036479,
+            "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           }
         ]
       },
       {
-        "term": "say",
-        "mean_tfidf_score": 0.010451093934449013,
+        "term": "gas",
+        "mean_tfidf_score": 0.013503200847232747,
         "document_frequency": 386,
-        "share_of_domain_docs": 0.07542008597108245,
+        "share_of_domain_docs": 0.08413251961639058,
         "average_vader": {
-          "vader_neg": 0.06973575129533678,
-          "vader_neu": 0.8361683937823835,
-          "vader_pos": 0.09410103626943003,
-          "vader_compound": 0.13603911917098446
+          "vader_neg": 0.060422279792746114,
+          "vader_neu": 0.8356891191709845,
+          "vader_pos": 0.10388860103626943,
+          "vader_compound": 0.1841367875647668
         },
         "average_emotions": {
-          "anger": 0.16466621755395527,
-          "disgust": 0.04365081619463772,
-          "fear": 0.11971770534340119,
-          "joy": 0.06992875058291398,
-          "neutral": 0.30878428884762593,
-          "sadness": 0.07851652717223835,
-          "surprise": 0.21473569385411817
+          "anger": 0.14766343913000038,
+          "disgust": 0.09082889460306792,
+          "fear": 0.1120204857414542,
+          "joy": 0.07960649223279186,
+          "neutral": 0.4305886271437739,
+          "sadness": 0.07044127724921193,
+          "surprise": 0.06885078991054544
         },
         "representative_examples": [
           {
-            "text": "the house of lords says i?m not a member of it. my passport says i am ? get used to it.",
+            "text": "fossil gas is not green!!",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.5109185555688255,
+            "vader_compound": 0.0,
+            "dominant_emotion": "surprise"
+          },
+          {
+            "text": "co2 is the most important non-condensing greeenhouse gases",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.44798457953064613,
+            "vader_compound": 0.2716,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "how to absorb greenhouse gasses: afforestation..",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.3957232617049399,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          }
+        ]
+      },
+      {
+        "term": "scientist",
+        "mean_tfidf_score": 0.013387117098937426,
+        "document_frequency": 353,
+        "share_of_domain_docs": 0.07693984306887533,
+        "average_vader": {
+          "vader_neg": 0.06554107648725212,
+          "vader_neu": 0.8447620396600567,
+          "vader_pos": 0.08970821529745043,
+          "vader_compound": 0.06434532577903683
+        },
+        "average_emotions": {
+          "anger": 0.13874059079001225,
+          "disgust": 0.04961861424901975,
+          "fear": 0.16498971073400154,
+          "joy": 0.041829863922649334,
+          "neutral": 0.43273635289223505,
+          "sadness": 0.05559288643210827,
+          "surprise": 0.1164919847651205
+        },
+        "representative_examples": [
+          {
+            "text": "love the 97% part as well, it's not even 97 scientists, it's 75 out of 77, so yea!",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.6126274327199883,
+            "term_tfidf_score": 0.5045424784927796,
+            "vader_compound": 0.7644,
+            "dominant_emotion": "surprise"
+          },
+          {
+            "text": "1200 of the worlds scientists say there is no climate crisis",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.39746311305708315,
+            "vader_compound": 0.2718,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "well, there are a lot of other scientists that don\u2019t agree with them.",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.35934067946123005,
+            "vader_compound": 0.5574,
+            "dominant_emotion": "neutral"
+          }
+        ]
+      },
+      {
+        "term": "human",
+        "mean_tfidf_score": 0.013288022735602626,
+        "document_frequency": 387,
+        "share_of_domain_docs": 0.08435047951176984,
+        "average_vader": {
+          "vader_neg": 0.07126614987080103,
+          "vader_neu": 0.8360930232558139,
+          "vader_pos": 0.09262273901808785,
+          "vader_compound": 0.06139870801033592
+        },
+        "average_emotions": {
+          "anger": 0.15844255123733847,
+          "disgust": 0.07203079544879235,
+          "fear": 0.15892551068927385,
+          "joy": 0.051341017070605365,
+          "neutral": 0.4231075974038708,
+          "sadness": 0.05750914167032817,
+          "surprise": 0.07864338599337328
+        },
+        "representative_examples": [
+          {
+            "text": "only humans cuts down trees",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.4249290815741135,
+            "vader_compound": -0.296,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "humans contribute roughly 3-5% of atmospheric c02.",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.3374422526048739,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "that's when they said we were fo sho going into another ice age.",
-            "dataset": "quotaclimat",
-            "source": "quotaclimat",
-            "term_tfidf_score": 0.3756809965403368,
+            "text": "the human contribution to global warming was about 0.01\u00b0c.",
+            "dataset": "climate_fever",
+            "source": "cdl",
+            "term_tfidf_score": 0.33308716764290186,
+            "vader_compound": 0.1531,
+            "dominant_emotion": "neutral"
+          }
+        ]
+      },
+      {
+        "term": "rise",
+        "mean_tfidf_score": 0.01320656031233386,
+        "document_frequency": 327,
+        "share_of_domain_docs": 0.07127288578901482,
+        "average_vader": {
+          "vader_neg": 0.04895718654434251,
+          "vader_neu": 0.8875626911314987,
+          "vader_pos": 0.06344954128440367,
+          "vader_compound": 0.07290611620795107
+        },
+        "average_emotions": {
+          "anger": 0.10389140404088686,
+          "disgust": 0.03005957863457704,
+          "fear": 0.14173171570549847,
+          "joy": 0.04077502721187224,
+          "neutral": 0.4721129927552798,
+          "sadness": 0.08392928895043542,
+          "surprise": 0.1274999883901669
+        },
+        "representative_examples": [
+          {
+            "text": "emissions rose by 3.4% in 2018",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.7220156855492277,
             "vader_compound": 0.0,
             "dominant_emotion": "neutral"
           },
           {
-            "text": "this is awful. this is terrible. this is much worse than anything president trump said at that rally, which, by the way, he said you know do everything?peacefully.",
+            "text": "tuvalu sea level isn't rising",
+            "dataset": "climate_fever",
+            "source": "cdl",
+            "term_tfidf_score": 0.39869134085055435,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "sea level rise is decelerating.",
+            "dataset": "climate_fever",
+            "source": "cdl",
+            "term_tfidf_score": 0.39869134085055435,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          }
+        ]
+      },
+      {
+        "term": "carbon dioxide",
+        "mean_tfidf_score": 0.012340758744876498,
+        "document_frequency": 336,
+        "share_of_domain_docs": 0.07323452484742807,
+        "average_vader": {
+          "vader_neg": 0.05982738095238095,
+          "vader_neu": 0.8646815476190477,
+          "vader_pos": 0.07547321428571428,
+          "vader_compound": 0.08072886904761906
+        },
+        "average_emotions": {
+          "anger": 0.14003747559174715,
+          "disgust": 0.07900831143589515,
+          "fear": 0.13268452839102313,
+          "joy": 0.05440602709114453,
+          "neutral": 0.45013497561705573,
+          "sadness": 0.06246363122426413,
+          "surprise": 0.08126504776772063
+        },
+        "representative_examples": [
+          {
+            "text": "carbon dioxide is not a pollutant. carbon dioxide is a nutrient.",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.3279522391569168,
-            "vader_compound": -0.8481,
+            "term_tfidf_score": 0.4096095447403018,
+            "vader_compound": 0.0,
+            "dominant_emotion": "disgust"
+          },
+          {
+            "text": "the \u00adatmospheric residency time of carbon dioxide is five years",
+            "dataset": "climate_fever",
+            "source": "cdl",
+            "term_tfidf_score": 0.40907322655360157,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "\u201ccarbon dioxide hurts nobody\u2019s health.",
+            "dataset": "climate_fever",
+            "source": "cdl",
+            "term_tfidf_score": 0.38707361872565066,
+            "vader_compound": -0.4767,
+            "dominant_emotion": "disgust"
+          }
+        ]
+      },
+      {
+        "term": "dioxide",
+        "mean_tfidf_score": 0.01231982456084468,
+        "document_frequency": 336,
+        "share_of_domain_docs": 0.07323452484742807,
+        "average_vader": {
+          "vader_neg": 0.05982738095238095,
+          "vader_neu": 0.8646815476190477,
+          "vader_pos": 0.0754732142857143,
+          "vader_compound": 0.08072886904761906
+        },
+        "average_emotions": {
+          "anger": 0.14003747559174715,
+          "disgust": 0.07900831143589515,
+          "fear": 0.13268452839102313,
+          "joy": 0.05440602709114453,
+          "neutral": 0.45013497561705573,
+          "sadness": 0.06246363122426413,
+          "surprise": 0.08126504776772063
+        },
+        "representative_examples": [
+          {
+            "text": "carbon dioxide is not a pollutant. carbon dioxide is a nutrient.",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.40764061727152623,
+            "vader_compound": 0.0,
+            "dominant_emotion": "disgust"
+          },
+          {
+            "text": "the \u00adatmospheric residency time of carbon dioxide is five years",
+            "dataset": "climate_fever",
+            "source": "cdl",
+            "term_tfidf_score": 0.40710687708044,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "\u201ccarbon dioxide hurts nobody\u2019s health.",
+            "dataset": "climate_fever",
+            "source": "cdl",
+            "term_tfidf_score": 0.3852130178433385,
+            "vader_compound": -0.4767,
             "dominant_emotion": "disgust"
           }
         ]
       },
       {
         "term": "cause",
-        "mean_tfidf_score": 0.010441069698777172,
-        "document_frequency": 359,
-        "share_of_domain_docs": 0.07014458772958186,
+        "mean_tfidf_score": 0.011965483793818002,
+        "document_frequency": 358,
+        "share_of_domain_docs": 0.07802964254577158,
         "average_vader": {
-          "vader_neg": 0.08055431754874652,
-          "vader_neu": 0.8194651810584958,
-          "vader_pos": 0.09995821727019498,
-          "vader_compound": 0.0724100278551532
+          "vader_neg": 0.0766899441340782,
+          "vader_neu": 0.8233631284916202,
+          "vader_pos": 0.09993854748603352,
+          "vader_compound": 0.07266452513966482
         },
         "average_emotions": {
-          "anger": 0.17982366073501754,
-          "disgust": 0.04542437333246877,
-          "fear": 0.18573791534973252,
-          "joy": 0.03892194921239007,
-          "neutral": 0.3520357821086126,
-          "sadness": 0.07430363885706814,
-          "surprise": 0.12375267686369028
+          "anger": 0.16854786754529869,
+          "disgust": 0.05037867108245465,
+          "fear": 0.17105816710991043,
+          "joy": 0.03864842382332504,
+          "neutral": 0.4088493006522754,
+          "sadness": 0.07277759453626449,
+          "surprise": 0.08973997567263922
         },
         "representative_examples": [
           {
-            "text": "co2 increase is natural, not human-caused.",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.3794238764200205,
-            "vader_compound": 0.5859,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "co2 increase is natural, not human-caused",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.3794238764200205,
-            "vader_compound": 0.5859,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "it is caused by lots of different things, and you can?t say that climate change is only caused by humans,",
+            "text": "it is caused by lots of different things, and you can\u2019t say that climate change is only caused by humans,",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.3391055580738981,
+            "term_tfidf_score": 0.33432437407435167,
             "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "some folks are saying co2 does not cause global warming.",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.32723061483249494,
+            "vader_compound": -0.1139,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "climate changes naturally all the time, sometimes dramatically. the hypothesis that our emissions of co2 have caused, or will cause, dangerous warming is not supported by the evidence.",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.3193480634442943,
+            "vader_compound": -0.5365,
+            "dominant_emotion": "anger"
+          }
+        ]
+      },
+      {
+        "term": "ice",
+        "mean_tfidf_score": 0.011722560868433662,
+        "document_frequency": 262,
+        "share_of_domain_docs": 0.05710549258936356,
+        "average_vader": {
+          "vader_neg": 0.0493969465648855,
+          "vader_neu": 0.8832328244274809,
+          "vader_pos": 0.06736641221374046,
+          "vader_compound": 0.07860763358778626
+        },
+        "average_emotions": {
+          "anger": 0.084073769040619,
+          "disgust": 0.027301638202856332,
+          "fear": 0.1300338493810721,
+          "joy": 0.033175444217773735,
+          "neutral": 0.43837491553636687,
+          "sadness": 0.10174462016101368,
+          "surprise": 0.18529576753627844
+        },
+        "representative_examples": [
+          {
+            "text": "that's when they said we were fo sho going into another ice age.",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.45982633311217125,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "there's still record levels of ice in the antarctic.",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.4327156000514194,
+            "vader_compound": 0.0,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "greenland's ice sheet is losing ice, but not everywhere. climateaction",
+            "dataset": "climatecheck",
+            "source": "climatecheck",
+            "term_tfidf_score": 0.42401143616000364,
+            "vader_compound": -0.2023,
             "dominant_emotion": "neutral"
           }
         ]
       },
       {
-        "term": "time",
-        "mean_tfidf_score": 0.010121100553653362,
-        "document_frequency": 354,
-        "share_of_domain_docs": 0.06916764361078546,
+        "term": "world",
+        "mean_tfidf_score": 0.011691896210453785,
+        "document_frequency": 363,
+        "share_of_domain_docs": 0.07911944202266782,
         "average_vader": {
-          "vader_neg": 0.07028531073446327,
-          "vader_neu": 0.8439124293785311,
-          "vader_pos": 0.08581920903954803,
-          "vader_compound": 0.12644632768361583
+          "vader_neg": 0.08257575757575758,
+          "vader_neu": 0.8233691460055097,
+          "vader_pos": 0.09404958677685951,
+          "vader_compound": 0.04377630853994491
         },
         "average_emotions": {
-          "anger": 0.13373155030685,
-          "disgust": 0.03128375938959028,
-          "fear": 0.1654113242889381,
-          "joy": 0.06270137805778449,
-          "neutral": 0.33706073809183584,
-          "sadness": 0.07861750059179688,
-          "surprise": 0.19119374781168239
+          "anger": 0.14478112834559612,
+          "disgust": 0.06805617841054905,
+          "fear": 0.18321512155172276,
+          "joy": 0.06489690316866017,
+          "neutral": 0.3467173581184773,
+          "sadness": 0.09756488341885582,
+          "surprise": 0.09476842837678855
         },
         "representative_examples": [
           {
-            "text": "etna has already put more than 10,000 times the co2 into the atmosphere than mankind has in our entire time on the earth.",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.5292766197460634,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "the ?atmospheric residency time of carbon dioxide is five years",
-            "dataset": "climate_fever",
-            "source": "cdl",
-            "term_tfidf_score": 0.38916732816185506,
-            "vader_compound": 0.0,
-            "dominant_emotion": "neutral"
-          },
-          {
-            "text": "honeywell?s hfo products are roughly ten times as costly as hfcs,",
+            "text": "calling co2 a pollutant is doing a disservice the country, and i believe a disservice to the world,",
             "dataset": "quotaclimat",
             "source": "quotaclimat",
-            "term_tfidf_score": 0.3297393060545782,
-            "vader_compound": -0.1027,
-            "dominant_emotion": "surprise"
+            "term_tfidf_score": 0.4022088606124234,
+            "vader_compound": 0.0,
+            "dominant_emotion": "anger"
+          },
+          {
+            "text": "1200 of the worlds scientists say there is no climate crisis",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.3920674920219949,
+            "vader_compound": 0.2718,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "climate alarmists scare us with ever more fire. but satellites show the world is burning ever less. in 2022, the world burned the least ever in the satellite era.",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.32220378081184364,
+            "vader_compound": -0.5418,
+            "dominant_emotion": "fear"
+          }
+        ]
+      },
+      {
+        "term": "think",
+        "mean_tfidf_score": 0.011609112002530536,
+        "document_frequency": 309,
+        "share_of_domain_docs": 0.06734960767218831,
+        "average_vader": {
+          "vader_neg": 0.06660194174757282,
+          "vader_neu": 0.839715210355987,
+          "vader_pos": 0.09368284789644013,
+          "vader_compound": 0.11243300970873787
+        },
+        "average_emotions": {
+          "anger": 0.136307881779601,
+          "disgust": 0.0482183577048081,
+          "fear": 0.14260137822191923,
+          "joy": 0.09866682964212838,
+          "neutral": 0.354304166523699,
+          "sadness": 0.0743489909832724,
+          "surprise": 0.14555239838489228
+        },
+        "representative_examples": [
+          {
+            "text": "i just don\u2019t think there\u2019s a crisis. it is arrogant to think that we, as human beings, can make any difference to this planet.",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.4320803222762813,
+            "vader_compound": -0.8074,
+            "dominant_emotion": "anger"
+          },
+          {
+            "text": "there are scientists who think lots of different things about climate change. there\u2019s some who think we\u2019re warming, there\u2019s some who think we\u2019re cooling, there\u2019s some who think that the last 16 years have shown a pretty stable climate en...",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.41074773871637327,
+            "vader_compound": 0.7184,
+            "dominant_emotion": "neutral"
+          },
+          {
+            "text": "i think if it can\u2019t be done with technology, the only route, if you\u2019re insistent on the goals, is rationing and demand control and i think we risk going down that road. in fact we already see some signs of it. i don\u2019t think people will w...",
+            "dataset": "quotaclimat",
+            "source": "quotaclimat",
+            "term_tfidf_score": 0.3953890340173003,
+            "vader_compound": -0.7506,
+            "dominant_emotion": "fear"
           }
         ]
       }
