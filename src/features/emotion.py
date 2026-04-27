@@ -3,8 +3,9 @@ Emotion analysis using j-hartmann/emotion-english-distilroberta-base.
 Labels: anger, disgust, fear, joy, neutral, sadness, surprise.
 Runs on CPU but is slow — batching is essential for large datasets.
 """
-from transformers import pipeline
 import pandas as pd
+from tqdm.auto import tqdm
+from transformers import pipeline
 
 emotion_classifier = pipeline(
     "text-classification", 
@@ -30,14 +31,20 @@ def get_emotions(text, max_length=512):
 def get_emotions_batch(texts, batch_size=32):
     truncated = [str(t)[:2000] if isinstance(t, str) else "" for t in texts]
     print(f"  Running emotion model on {len(truncated):,} texts in batches of {batch_size}...")
-    results = emotion_classifier(truncated, truncation=True, max_length=512, batch_size=batch_size)
-
     rows = []
-    for result in results:
-        # handle both [[{...}]] and [{...}] output formats across transformers versions
-        if isinstance(result, dict):
-            result = [result]
-        rows.append({item['label']: item['score'] for item in result})
+    for start in tqdm(range(0, len(truncated), batch_size), desc="  Emotion batches", unit="batch"):
+        batch = truncated[start : start + batch_size]
+        batch_results = emotion_classifier(
+            batch,
+            truncation=True,
+            max_length=512,
+            batch_size=batch_size,
+        )
+        for result in batch_results:
+            # handle both [[{...}]] and [{...}] output formats across transformers versions
+            if isinstance(result, dict):
+                result = [result]
+            rows.append({item['label']: item['score'] for item in result})
 
     return pd.DataFrame(rows)
 
