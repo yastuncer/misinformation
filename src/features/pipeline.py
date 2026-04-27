@@ -9,6 +9,7 @@ from src.features.lemmatization import lemmatize_series
 from src.features.vader import avg_vader, vader_series
 from src.features.emotion import get_emotions_batch
 from src.features.rhetoric import extract_rhetoric_features, run_rhetoric_tests
+from scipy.stats import mannwhitneyu
 
 
 PROCESSED_DIR = 'data/processed'
@@ -94,16 +95,31 @@ def run_pipeline():
         print(f"    Pos: {scores['pos']:.4f}")
         print(f"    Compound: {scores['compound']:.4f}")
 
-    # 6. rhetoric analysis
-    print("\nRunning rhetoric analysis...")
-    combined = pd.concat([covid, climate], ignore_index=True)
-    rhetoric_features = extract_rhetoric_features(combined)
-    rhetoric_stats = run_rhetoric_tests(rhetoric_features)
 
-    rhetoric_features.to_csv(f'{ANALYSIS_DIR}/rhetoric_features.csv', index=False)
-    rhetoric_stats.to_csv(f'{ANALYSIS_DIR}/rhetoric_stats.csv', index=False)
-    print(f"Saved → {ANALYSIS_DIR}/rhetoric_features.csv")
-    print(f"Saved → {ANALYSIS_DIR}/rhetoric_stats.csv")
+    stat, p = mannwhitneyu(
+        covid_vader_df['compound'],
+        climate_vader_df['compound'],
+        alternative='two-sided'
+    )
+    print(f"\nVADER compound Mann-Whitney U: p={p:.4e}")
+    vader_results = {
+        'compound_mwu_p': p,
+        'covid_compound_mean': covid_vader_df['compound'].mean(),
+        'climate_compound_mean': climate_vader_df['compound'].mean()
+    }
+    with open(f'{ANALYSIS_DIR}/vader_stats.json', 'w') as f:
+        json.dump(vader_results, f, indent=2)
+
+    # 6. rhetoric analysis
+    # print("\nRunning rhetoric analysis...")
+    # combined = pd.concat([covid, climate], ignore_index=True)
+    # rhetoric_features = extract_rhetoric_features(combined)
+    # rhetoric_stats = run_rhetoric_tests(rhetoric_features)
+
+    # rhetoric_features.to_csv(f'{ANALYSIS_DIR}/rhetoric_features.csv', index=False)
+    # rhetoric_stats.to_csv(f'{ANALYSIS_DIR}/rhetoric_stats.csv', index=False)
+    # print(f"Saved → {ANALYSIS_DIR}/rhetoric_features.csv")
+    # print(f"Saved → {ANALYSIS_DIR}/rhetoric_stats.csv")
 
     # 7. save
     tfidf_serializable = {

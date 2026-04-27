@@ -173,10 +173,3 @@ Key packages: `pandas`, `numpy`, `scipy`, `scikit-learn`, `spacy`, `transformers
 See `requirements.txt` for full pinned versions.
 
 ---
-
-## Notes and Limitations
-
-- **Source imbalance:** 93% of climate data comes from QuotaClimat (newspaper/media quotes), while COVID data is predominantly social media. Observed differences may partly reflect medium rather than domain.
-- **LLM rhetoric scoring** is non-deterministic — scores vary slightly between runs. Results are cached after first run.
-- **`general.csv`** is not used in the comparative analysis — it serves as a potential baseline corpus for future work.
-- Language filtering is skipped for climate datasets since all sources are English-only. It is applied only to the COVID corpus where multilingual contamination was detected (primarily `esoc` and `jns-covid_misinfo`).

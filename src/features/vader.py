@@ -1,5 +1,4 @@
-from turtle import pd
-
+import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # Calculate the average sentiment scores of a list of texts
