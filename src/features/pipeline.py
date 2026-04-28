@@ -4,11 +4,14 @@ import json
 import pandas as pd
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
+from src.analysis.stats import run_stats
+from src.analysis.tfidf_context import TFIDF_CONTEXT_PATH, run_tfidf_context_analysis
 from src.features.tf_idf import top_terms_per_domain, print_top_terms
 from src.features.lemmatization import lemmatize_series
 from src.features.vader import avg_vader, vader_series
 from src.features.emotion import get_emotions_batch
 from src.features.rhetoric import extract_rhetoric_features, run_rhetoric_tests
+from src.features.visualize import plot_tfidf_context
 from scipy.stats import mannwhitneyu
 
 
@@ -35,7 +38,7 @@ def run_pipeline():
     covid = covid[covid['text_lemma'].str.strip() != ''].reset_index(drop=True)
     climate = climate[climate['text_lemma'].str.strip() != ''].reset_index(drop=True)
 
-    print(f"  After lemmatization — COVID: {len(covid):,}, Climate: {len(climate):,}")
+    print(f"  After lemmatization - COVID: {len(covid):,}, Climate: {len(climate):,}")
 
     # 3. emotion analysis
     # after lemmatization, before TF-IDF:
@@ -118,8 +121,8 @@ def run_pipeline():
 
     # rhetoric_features.to_csv(f'{ANALYSIS_DIR}/rhetoric_features.csv', index=False)
     # rhetoric_stats.to_csv(f'{ANALYSIS_DIR}/rhetoric_stats.csv', index=False)
-    # print(f"Saved → {ANALYSIS_DIR}/rhetoric_features.csv")
-    # print(f"Saved → {ANALYSIS_DIR}/rhetoric_stats.csv")
+    # print(f"Saved -> {ANALYSIS_DIR}/rhetoric_features.csv")
+    # print(f"Saved -> {ANALYSIS_DIR}/rhetoric_stats.csv")
 
     # 7. save
     tfidf_serializable = {
@@ -128,11 +131,27 @@ def run_pipeline():
     }
     with open(f'{ANALYSIS_DIR}/top_tfidf_terms.json', 'w') as f:
         json.dump(tfidf_serializable, f, indent=2)
-    print(f"\nSaved → {ANALYSIS_DIR}/top_tfidf_terms.json")
+    print(f"\nSaved -> {ANALYSIS_DIR}/top_tfidf_terms.json")
 
     with open(f'{ANALYSIS_DIR}/vader_sentiment.json', 'w') as f:
         json.dump(sentiment_results, f, indent=2)
-    print(f"Saved → {ANALYSIS_DIR}/vader_sentiment.json")
+    print(f"Saved -> {ANALYSIS_DIR}/vader_sentiment.json")
+
+    print("\nBuilding TF-IDF context summaries...")
+    run_tfidf_context_analysis(covid, climate, vectorizer, tfidf_matrix, results)
+
+    print("\nRunning statistical comparisons...")
+    run_stats(
+        covid_path=f'{ANALYSIS_DIR}/covid_emotions.csv',
+        climate_path=f'{ANALYSIS_DIR}/climate_emotions.csv',
+    )
+
+    print("\nRendering TF-IDF context figure...")
+    plot_tfidf_context(
+        context_path=str(TFIDF_CONTEXT_PATH),
+        output_path=f'{ANALYSIS_DIR}/tfidf_context_comparison.png',
+        show=False,
+    )
     
 if __name__ == '__main__':
     run_pipeline()
