@@ -84,8 +84,26 @@ def run_pipeline():
     }
     covid_vader_df = vader_series(covid['text'].tolist())
     climate_vader_df = vader_series(climate['text'].tolist())
-    covid = pd.concat([covid.reset_index(drop=True), covid_vader_df], axis=1)
-    climate = pd.concat([climate.reset_index(drop=True), climate_vader_df], axis=1)
+    covid_vader_columns = covid_vader_df.rename(
+        columns={
+            'neg': 'vader_neg',
+            'neu': 'vader_neu',
+            'pos': 'vader_pos',
+            'compound': 'vader_compound',
+        }
+    )
+    climate_vader_columns = climate_vader_df.rename(
+        columns={
+            'neg': 'vader_neg',
+            'neu': 'vader_neu',
+            'pos': 'vader_pos',
+            'compound': 'vader_compound',
+        }
+    )
+    covid = pd.concat([covid.reset_index(drop=True), covid_vader_columns], axis=1)
+    climate = pd.concat([climate.reset_index(drop=True), climate_vader_columns], axis=1)
+    covid.to_csv(f'{ANALYSIS_DIR}/covid_emotions.csv', index=False)
+    climate.to_csv(f'{ANALYSIS_DIR}/climate_emotions.csv', index=False)
     covid_vader_df.to_csv(f'{ANALYSIS_DIR}/covid_vader.csv', index=False)
     climate_vader_df.to_csv(f'{ANALYSIS_DIR}/climate_vader.csv', index=False)
     print("  Saved per-row VADER sentiment scores.")
