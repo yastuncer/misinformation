@@ -6,6 +6,164 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import json
 
+CONTEXT_EMOTIONS = ['anger', 'disgust', 'fear', 'sadness', 'neutral', 'joy']
+
+
+def build_context_frame(term_context, domain, top_n=6):
+    rows = []
+    for entry in term_context.get(domain, {}).get('terms', [])[:top_n]:
+        row = {
+            'domain': domain,
+            'term': entry['term'],
+            'document_frequency': entry['document_frequency'],
+            'share_of_domain_docs': entry['share_of_domain_docs'],
+            'vader_compound': entry['average_vader']['vader_compound'],
+        }
+        for emotion in CONTEXT_EMOTIONS:
+            row[emotion] = entry['average_emotions'][emotion]
+        rows.append(row)
+    return pd.DataFrame(
+        rows,
+        columns=[
+            'domain',
+            'term',
+            'document_frequency',
+            'share_of_domain_docs',
+            'vader_compound',
+            *CONTEXT_EMOTIONS,
+        ],
+    )
+
+
+def render_empty_context_axis(ax, title, message):
+    ax.set_title(title)
+    ax.axis('off')
+    ax.text(0.5, 0.5, message, ha='center', va='center', fontsize=10)
+
+
+def annotate_context_examples(ax, entries):
+    lines = []
+    for entry in entries:
+        examples = entry.get('representative_examples', [])
+        if not examples:
+            continue
+        example = examples[0]
+        lines.append(f"{entry['term']}: \"{example['text']}\"")
+    ax.axis('off')
+    ax.text(
+        0.0,
+        1.0,
+        '\n\n'.join(lines),
+        va='top',
+        ha='left',
+        fontsize=9,
+        wrap=True,
+    )
+
+
+def plot_tfidf_context(context_path, output_path, top_n=6, show=False):
+    with open(context_path, encoding='utf-8') as handle:
+        term_context = json.load(handle)
+
+    covid_df = build_context_frame(term_context, 'covid', top_n=top_n)
+    climate_df = build_context_frame(term_context, 'climate', top_n=top_n)
+    cov_color = '#E05C5C'
+    cli_color = '#4A90D9'
+
+    fig = plt.figure(figsize=(16, 12))
+    grid = fig.add_gridspec(3, 2, height_ratios=[1.1, 1.3, 1.0])
+    fig.suptitle(
+        'TF-IDF Context Differences Between COVID and Climate Misinformation',
+        fontsize=15,
+        fontweight='bold',
+        y=0.99,
+    )
+
+    ax = fig.add_subplot(grid[0, 0])
+    if covid_df.empty:
+        render_empty_context_axis(ax, 'COVID Top-Term Context Sentiment', 'No TF-IDF context data available.')
+    else:
+        ax.barh(covid_df['term'][::-1], covid_df['vader_compound'][::-1], color=cov_color, alpha=0.85)
+        ax.axvline(0, color='black', linewidth=0.8, linestyle='--')
+        ax.set_xlabel('Average VADER Compound in Matching Posts')
+        ax.set_title('COVID Top-Term Context Sentiment')
+        ax.grid(axis='x', alpha=0.3)
+
+    ax = fig.add_subplot(grid[0, 1])
+    if climate_df.empty:
+        render_empty_context_axis(ax, 'Climate Top-Term Context Sentiment', 'No TF-IDF context data available.')
+    else:
+        ax.barh(
+            climate_df['term'][::-1],
+            climate_df['vader_compound'][::-1],
+            color=cli_color,
+            alpha=0.85,
+        )
+        ax.axvline(0, color='black', linewidth=0.8, linestyle='--')
+        ax.set_xlabel('Average VADER Compound in Matching Posts')
+        ax.set_title('Climate Top-Term Context Sentiment')
+        ax.grid(axis='x', alpha=0.3)
+
+    ax = fig.add_subplot(grid[1, 0])
+    if covid_df.empty:
+        render_empty_context_axis(ax, 'COVID Term-Context Emotion Mix', 'No TF-IDF context data available.')
+    else:
+        sns.heatmap(
+            covid_df.set_index('term')[CONTEXT_EMOTIONS],
+            cmap='Reds',
+            annot=True,
+            fmt='.2f',
+            linewidths=0.5,
+            cbar_kws={'label': 'Mean emotion score'},
+            ax=ax,
+        )
+        ax.set_title('COVID Term-Context Emotion Mix')
+        ax.set_xlabel('Emotion')
+        ax.set_ylabel('')
+
+    ax = fig.add_subplot(grid[1, 1])
+    if climate_df.empty:
+        render_empty_context_axis(ax, 'Climate Term-Context Emotion Mix', 'No TF-IDF context data available.')
+    else:
+        sns.heatmap(
+            climate_df.set_index('term')[CONTEXT_EMOTIONS],
+            cmap='Blues',
+            annot=True,
+            fmt='.2f',
+            linewidths=0.5,
+            cbar_kws={'label': 'Mean emotion score'},
+            ax=ax,
+        )
+        ax.set_title('Climate Term-Context Emotion Mix')
+        ax.set_xlabel('Emotion')
+        ax.set_ylabel('')
+
+    ax = fig.add_subplot(grid[2, 0])
+    ax.set_title('COVID Example Posts')
+    annotate_context_examples(ax, term_context.get('covid', {}).get('terms', [])[:3])
+
+    ax = fig.add_subplot(grid[2, 1])
+    ax.set_title('Climate Example Posts')
+    annotate_context_examples(ax, term_context.get('climate', {}).get('terms', [])[:3])
+
+    fig.text(
+        0.5,
+        0.02,
+        (
+            'COVID top-term contexts skew more negative and threat-focused, while climate top-term '
+            'contexts show more policy/science language with anger/fear but milder overall sentiment.'
+        ),
+        ha='center',
+        fontsize=10,
+    )
+    plt.tight_layout(rect=[0, 0.04, 1, 0.96])
+    plt.savefig(output_path, dpi=150, bbox_inches='tight')
+    print(f"Saved -> {output_path}")
+    if show:
+        plt.show()
+    plt.close(fig)
+
+
 def plot_all(covid_path, climate_path, tfidf_path, vader_path, output_path):
 
     covid   = pd.read_csv(covid_path).dropna(subset=['anger'])
