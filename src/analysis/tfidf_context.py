@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from src.features.vader import VADER_COLUMNS, get_vader_scores
+from src.features.vader import vader_series
 
 
 ANALYSIS_DIR = Path("data/analysis")
@@ -18,6 +18,7 @@ EMOTION_COLUMNS = [
     "sadness",
     "surprise",
 ]
+VADER_COLUMNS = ["vader_neg", "vader_neu", "vader_pos", "vader_compound"]
 
 
 def _column_scores(matrix, row_indices, column_index):
@@ -32,7 +33,14 @@ def _ensure_vader_columns(df):
     if not missing:
         return df
 
-    vader_scores = get_vader_scores(df["text"].tolist())
+    vader_scores = vader_series([text if isinstance(text, str) else "" for text in df["text"].tolist()]).rename(
+        columns={
+            "neg": "vader_neg",
+            "neu": "vader_neu",
+            "pos": "vader_pos",
+            "compound": "vader_compound",
+        }
+    )
     return pd.concat(
         [df.drop(columns=VADER_COLUMNS, errors="ignore").reset_index(drop=True), vader_scores],
         axis=1,

@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-from src.features.vader import VADER_COLUMNS, get_vader_scores
+from src.features.vader import vader_series
 
 
 ANALYSIS_DIR = Path("data/analysis")
@@ -27,6 +27,7 @@ EMOTION_COLUMNS = [
 ]
 TRUST_CUE_COLUMNS = ["auth_score", "urg_score"]
 CORPUS_COLUMNS = ["char_count", "word_count"]
+VADER_COLUMNS = ["vader_neg", "vader_neu", "vader_pos", "vader_compound"]
 
 
 def word_count(text):
@@ -105,6 +106,18 @@ def safe_percentages(counts):
     return {emotion: float(count / total) for emotion, count in counts.items()}
 
 
+def build_vader_scores(texts):
+    scores = vader_series([text if isinstance(text, str) else "" for text in texts]).copy()
+    return scores.rename(
+        columns={
+            "neg": "vader_neg",
+            "neu": "vader_neu",
+            "pos": "vader_pos",
+            "compound": "vader_compound",
+        }
+    )
+
+
 def prepare_domain_frame(path):
     df = pd.read_csv(path).copy()
     if "text" not in df.columns:
@@ -123,7 +136,7 @@ def prepare_domain_frame(path):
 
     missing_vader_columns = [column for column in VADER_COLUMNS if column not in df.columns]
     if missing_vader_columns:
-        vader_scores = get_vader_scores(df["text"].tolist())
+        vader_scores = build_vader_scores(df["text"].tolist())
         df = df.drop(columns=VADER_COLUMNS, errors="ignore")
         df = pd.concat([df.reset_index(drop=True), vader_scores], axis=1)
     return df
