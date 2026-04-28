@@ -216,4 +216,3 @@ data/processed/**/*.json
 
 # Environment variables (API keys etc.)
 .env
-.venvcheck/
