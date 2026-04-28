@@ -1,13 +1,350 @@
 import json
 
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from matplotlib.patches import FancyBboxPatch
+from scipy import stats as scipy_stats
 
 
 EMOTIONS = ["anger", "disgust", "fear", "joy", "neutral", "sadness", "surprise"]
 CONTEXT_EMOTIONS = ["anger", "disgust", "fear", "sadness", "neutral", "joy"]
+REFERENCE_BACKGROUND = "#f6f0e6"
+REFERENCE_PANEL = "#fbf8f3"
+REFERENCE_BORDER = "#c7b69d"
+COVID_COLOR = "#f08b78"
+CLIMATE_COLOR = "#78aeea"
+SIGNIFICANT_COLOR = "#2fa66b"
+TEXT_COLOR = "#2f2a26"
+
+
+def holm_bonferroni(p_values):
+    p_values = np.asarray(p_values, dtype=float)
+    adjusted = np.full(p_values.shape, np.nan)
+    valid_mask = np.isfinite(p_values)
+    valid = p_values[valid_mask]
+    if valid.size == 0:
+        return adjusted.tolist()
+
+    order = np.argsort(valid)
+    ranked = valid[order]
+    m = len(ranked)
+    adjusted_ranked = np.empty_like(ranked)
+    running_max = 0.0
+
+    for index, p_value in enumerate(ranked):
+        candidate = min((m - index) * p_value, 1.0)
+        running_max = max(running_max, candidate)
+        adjusted_ranked[index] = running_max
+
+    adjusted_valid = np.empty_like(valid)
+    adjusted_valid[order] = adjusted_ranked
+    adjusted[valid_mask] = adjusted_valid
+    return adjusted.tolist()
+
+
+def bootstrap_mean_ci(values, n_boot=2000, seed=42, ci=95, batch_size=250):
+    values = pd.to_numeric(pd.Series(values), errors="coerce").dropna().to_numpy(dtype=float)
+    if len(values) == 0:
+        return (np.nan, np.nan)
+
+    rng = np.random.default_rng(seed)
+    mean_samples = []
+    for start in range(0, n_boot, batch_size):
+        draw_count = min(batch_size, n_boot - start)
+        draw_indices = rng.integers(0, len(values), size=(draw_count, len(values)))
+        mean_samples.append(values[draw_indices].mean(axis=1))
+
+    boot_means = np.concatenate(mean_samples)
+    alpha = (100 - ci) / 2
+    lower, upper = np.percentile(boot_means, [alpha, 100 - alpha])
+    return (float(lower), float(upper))
+
+
+def format_mean(value):
+    if pd.isna(value):
+        return "n/a"
+    return f"{value:.2f}"
+
+
+def format_compact_p_value(p_value):
+    if p_value is None or pd.isna(p_value):
+        return "n/a"
+    if p_value == 0:
+        return "0.0"
+    if p_value < 0.001:
+        return f"{p_value:.1e}"
+    return f"{p_value:.3f}"
+
+
+def key_finding_specifications():
+    return [
+        {
+            "title": "1. Sadness / post",
+            "feature": "sadness",
+            "x_label": "Mean sadness score",
+        },
+        {
+            "title": "2. Overall sentiment / post",
+            "feature": "vader_compound",
+            "x_label": "Mean compound score",
+        },
+        {
+            "title": "3. Anger / post",
+            "feature": "anger",
+            "x_label": "Mean anger score",
+        },
+        {
+            "title": "4. Authority cues / post",
+            "feature": "auth_score",
+            "x_label": "Mean authority score",
+        },
+    ]
+
+
+def build_key_findings_rows(covid_df, climate_df, n_boot=2000, seed=42):
+    rows = []
+    specs = key_finding_specifications()
+
+    for index, spec in enumerate(specs):
+        covid_values = pd.to_numeric(covid_df[spec["feature"]], errors="coerce").dropna().to_numpy()
+        climate_values = pd.to_numeric(climate_df[spec["feature"]], errors="coerce").dropna().to_numpy()
+        try:
+            statistic, p_value = scipy_stats.mannwhitneyu(
+                covid_values,
+                climate_values,
+                alternative="two-sided",
+                method="asymptotic",
+            )
+        except TypeError:
+            statistic, p_value = scipy_stats.mannwhitneyu(
+                covid_values,
+                climate_values,
+                alternative="two-sided",
+            )
+        rows.append(
+            {
+                **spec,
+                "covid_mean": float(covid_values.mean()),
+                "climate_mean": float(climate_values.mean()),
+                "covid_ci": bootstrap_mean_ci(covid_values, n_boot=n_boot, seed=seed + index),
+                "climate_ci": bootstrap_mean_ci(
+                    climate_values,
+                    n_boot=n_boot,
+                    seed=seed + len(specs) + index,
+                ),
+                "p_value": float(p_value),
+                "statistic": float(statistic),
+            }
+        )
+
+    adjusted_p_values = holm_bonferroni([row["p_value"] for row in rows])
+    for row, adjusted_p_value in zip(rows, adjusted_p_values):
+        row["adjusted_p_value"] = float(adjusted_p_value)
+        row["significant"] = bool(adjusted_p_value < 0.05)
+    return rows
+
+
+def style_reference_axis(ax):
+    ax.set_facecolor(REFERENCE_PANEL)
+    for spine in ax.spines.values():
+        spine.set_edgecolor(REFERENCE_BORDER)
+        spine.set_linewidth(0.9)
+    ax.grid(axis="x", color=REFERENCE_BORDER, alpha=0.3, linewidth=0.8)
+    ax.tick_params(colors="#5f564d")
+
+
+def draw_key_finding_panel(ax, row, show_legend=False):
+    covid_mean = row["covid_mean"]
+    climate_mean = row["climate_mean"]
+    covid_ci_low, covid_ci_high = row["covid_ci"]
+    climate_ci_low, climate_ci_high = row["climate_ci"]
+
+    style_reference_axis(ax)
+    ax.errorbar(
+        covid_mean,
+        1,
+        xerr=[[covid_mean - covid_ci_low], [covid_ci_high - covid_mean]],
+        fmt="o",
+        color=COVID_COLOR,
+        ecolor=COVID_COLOR,
+        markersize=7,
+        markeredgewidth=1.8,
+        elinewidth=2.2,
+        capsize=6,
+        capthick=2.2,
+        label="COVID",
+        zorder=3,
+    )
+    ax.errorbar(
+        climate_mean,
+        0,
+        xerr=[[climate_mean - climate_ci_low], [climate_ci_high - climate_mean]],
+        fmt="o",
+        color=CLIMATE_COLOR,
+        ecolor=CLIMATE_COLOR,
+        markersize=7,
+        markeredgewidth=1.8,
+        elinewidth=2.2,
+        capsize=6,
+        capthick=2.2,
+        label="Climate",
+        zorder=3,
+    )
+
+    x_min = min(covid_ci_low, climate_ci_low)
+    x_max = max(covid_ci_high, climate_ci_high)
+    x_span = max(x_max - x_min, 0.02)
+    ax.set_xlim(x_min - x_span * 0.45, x_max + x_span * 0.55)
+    ax.set_ylim(-0.45, 1.45)
+    ax.set_yticks([1, 0])
+    ax.set_yticklabels(["COVID", "Climate"], fontsize=11, color="#5f564d")
+    ax.set_xlabel(row["x_label"], fontsize=11, color="#5f564d")
+    ax.set_title(row["title"], loc="left", fontsize=15, fontweight="bold", color=TEXT_COLOR, pad=12)
+
+    status_label = "Significant" if row["significant"] else "Not significant"
+    status_color = SIGNIFICANT_COLOR if row["significant"] else "#8b8176"
+    ax.text(
+        0.985,
+        1.04,
+        status_label,
+        transform=ax.transAxes,
+        ha="right",
+        va="bottom",
+        fontsize=12,
+        fontweight="bold",
+        color=status_color,
+    )
+
+    ax.text(
+        covid_mean,
+        1.09,
+        format_mean(covid_mean),
+        ha="center",
+        va="bottom",
+        fontsize=11,
+        fontweight="bold",
+        color="#6d6258",
+    )
+    ax.text(
+        climate_mean,
+        0.09,
+        format_mean(climate_mean),
+        ha="center",
+        va="bottom",
+        fontsize=11,
+        fontweight="bold",
+        color="#6d6258",
+    )
+    if show_legend:
+        legend = ax.legend(loc="upper right", frameon=False, fontsize=11)
+        for text in legend.get_texts():
+            text.set_color(TEXT_COLOR)
+
+
+def draw_summary_card(ax, index, row):
+    ax.axis("off")
+    card = FancyBboxPatch(
+        (0.02, 0.08),
+        0.96,
+        0.84,
+        boxstyle="round,pad=0.02,rounding_size=0.03",
+        linewidth=1.0,
+        edgecolor="#e1d4c2",
+        facecolor=REFERENCE_PANEL,
+    )
+    ax.add_patch(card)
+    ax.add_patch(
+        FancyBboxPatch(
+            (0.04, 0.12),
+            0.025,
+            0.72,
+            boxstyle="round,pad=0.0,rounding_size=0.004",
+            linewidth=0,
+            facecolor=SIGNIFICANT_COLOR if row["significant"] else "#8b8176",
+        )
+    )
+    ax.text(0.1, 0.78, row["title"], fontsize=12.5, fontweight="bold", color=TEXT_COLOR)
+    ax.text(
+        0.1,
+        0.47,
+        f"Climate={format_mean(row['climate_mean'])} | COVID={format_mean(row['covid_mean'])}",
+        fontsize=12,
+        color="#6d6258",
+    )
+    ax.text(
+        0.1,
+        0.2,
+        f"p={format_compact_p_value(row['p_value'])} (Holm adj={format_compact_p_value(row['adjusted_p_value'])})",
+        fontsize=12,
+        color=SIGNIFICANT_COLOR if row["significant"] else "#8b8176",
+    )
+
+
+def plot_key_findings_results(
+    covid_path,
+    climate_path,
+    output_path,
+    show=False,
+    n_boot=2000,
+    seed=42,
+):
+    covid = pd.read_csv(covid_path)
+    climate = pd.read_csv(climate_path)
+    rows = build_key_findings_rows(covid, climate, n_boot=n_boot, seed=seed)
+
+    fig = plt.figure(figsize=(16, 11), facecolor=REFERENCE_BACKGROUND)
+    grid = fig.add_gridspec(3, 4, height_ratios=[1.0, 1.0, 0.95], hspace=0.42, wspace=0.55)
+    fig.suptitle(
+        "Climate vs COVID Misinformation: Key Findings Results",
+        fontsize=23,
+        fontweight="bold",
+        color=TEXT_COLOR,
+        y=0.975,
+    )
+    fig.text(
+        0.5,
+        0.935,
+        "Four Mann-Whitney U tests with Holm-Bonferroni correction; points show descriptive means with 95% bootstrap CIs.",
+        ha="center",
+        fontsize=15,
+        color="#6d6258",
+    )
+
+    axes = [
+        fig.add_subplot(grid[0, 0:2]),
+        fig.add_subplot(grid[0, 2:4]),
+        fig.add_subplot(grid[1, 0:2]),
+        fig.add_subplot(grid[1, 2:4]),
+    ]
+    for index, (ax, row) in enumerate(zip(axes, rows)):
+        draw_key_finding_panel(ax, row, show_legend=index == 1)
+
+    header_ax = fig.add_subplot(grid[2, :])
+    header_ax.axis("off")
+    header_ax.text(
+        0.0,
+        1.02,
+        "Statistical Summary",
+        fontsize=20,
+        fontweight="bold",
+        color=TEXT_COLOR,
+        ha="left",
+        va="bottom",
+    )
+    card_grid = grid[2, :].subgridspec(1, 4, wspace=0.04)
+    for index, row in enumerate(rows):
+        card_ax = fig.add_subplot(card_grid[0, index])
+        draw_summary_card(card_ax, index, row)
+
+    plt.savefig(output_path, dpi=160, facecolor=fig.get_facecolor(), bbox_inches="tight")
+    print(f"Saved -> {output_path}")
+    if show:
+        plt.show()
+    plt.close(fig)
 
 
 def significance_label(p_value):
@@ -485,6 +822,12 @@ def plot_rhetoric(rhetoric_path, output_path, show=False):
 
 
 if __name__ == "__main__":
+    plot_key_findings_results(
+        covid_path="data/analysis/covid_emotions.csv",
+        climate_path="data/analysis/climate_emotions.csv",
+        output_path="data/analysis/key_findings_results.png",
+        show=False,
+    )
     plot_all(
         covid_path="data/analysis/covid_emotions.csv",
         climate_path="data/analysis/climate_emotions.csv",
