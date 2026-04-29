@@ -86,8 +86,8 @@ def run_rhetoric_tests(features_df):
         contingency = pd.crosstab(features_df['domain'], features_df[feature])
         chi2, p, _, _ = chi2_contingency(contingency)
         sig = '***' if p < 0.001 else '**' if p < 0.01 else '*' if p < 0.05 else ''
-        covid_rate = contingency.loc['covid', 1] / contingency.loc['covid'].sum() if 'covid' in contingency.index else 0
-        climate_rate = contingency.loc['climate', 1] / contingency.loc['climate'].sum() if 'climate' in contingency.index else 0
+        covid_rate = contingency.loc['covid'].get(1, 0) / contingency.loc['covid'].sum() if 'covid' in contingency.index else 0
+        climate_rate = contingency.loc['climate'].get(1, 0) / contingency.loc['climate'].sum() if 'climate' in contingency.index else 0
         print(f"{feature:<28} {covid_rate:>12.4f} {climate_rate:>14.4f} {p:>12.4e} {sig}")
         results.append({'feature': feature, 'covid_rate': covid_rate, 'climate_rate': climate_rate, 'p_value': p, 'test': 'chi-squared'})
 
