@@ -12,13 +12,14 @@ from src.analysis.tfidf_context import TFIDF_CONTEXT_PATH, run_tfidf_context_ana
 from src.features.emotion import get_emotions_batch
 from src.features.lemmatization import lemmatize_series
 from src.features.rhetoric import extract_rhetoric_features, run_rhetoric_tests
-<<<<<<< HEAD
-from scipy.stats import mannwhitneyu
-=======
 from src.features.tf_idf import print_top_terms, top_terms_per_domain
 from src.features.vader import VADER_COLUMNS, get_vader_scores
-from src.features.visualize import plot_all, plot_rhetoric, plot_tfidf_context
->>>>>>> a11b1b98686f5d878d9a4f158828d2a2d1fea37a
+from src.features.visualize import (
+    plot_all,
+    plot_key_findings_results,
+    plot_rhetoric,
+    plot_tfidf_context,
+)
 
 
 PROCESSED_DIR = "data/processed"
@@ -130,34 +131,6 @@ def run_pipeline():
         print(f"    Neu: {scores['neu']:.4f}")
         print(f"    Pos: {scores['pos']:.4f}")
         print(f"    Compound: {scores['compound']:.4f}")
-
-<<<<<<< HEAD
-
-    stat, p = mannwhitneyu(
-        covid_vader_df['compound'],
-        climate_vader_df['compound'],
-        alternative='two-sided'
-    )
-    print(f"\nVADER compound Mann-Whitney U: p={p:.4e}")
-    vader_results = {
-        'compound_mwu_p': p,
-        'covid_compound_mean': covid_vader_df['compound'].mean(),
-        'climate_compound_mean': climate_vader_df['compound'].mean()
-    }
-    with open(f'{ANALYSIS_DIR}/vader_stats.json', 'w') as f:
-        json.dump(vader_results, f, indent=2)
-
-    # 6. rhetoric analysis
-    # print("\nRunning rhetoric analysis...")
-    # combined = pd.concat([covid, climate], ignore_index=True)
-    # rhetoric_features = extract_rhetoric_features(combined)
-    # rhetoric_stats = run_rhetoric_tests(rhetoric_features)
-
-    # rhetoric_features.to_csv(f'{ANALYSIS_DIR}/rhetoric_features.csv', index=False)
-    # rhetoric_stats.to_csv(f'{ANALYSIS_DIR}/rhetoric_stats.csv', index=False)
-    # print(f"Saved → {ANALYSIS_DIR}/rhetoric_features.csv")
-    # print(f"Saved → {ANALYSIS_DIR}/rhetoric_stats.csv")
-=======
     combined = pd.concat([covid, climate], ignore_index=True)
     rhetoric_features = _load_cached_rhetoric(combined)
     if rhetoric_features is None:
@@ -173,7 +146,6 @@ def run_pipeline():
     print(f"Saved -> {RhetoricStatsPath}")
 
     covid, climate = _attach_rhetoric_columns(covid, climate, rhetoric_features)
->>>>>>> a11b1b98686f5d878d9a4f158828d2a2d1fea37a
 
     covid_path = f"{ANALYSIS_DIR}/covid_emotions.csv"
     climate_path = f"{ANALYSIS_DIR}/climate_emotions.csv"
@@ -202,6 +174,12 @@ def run_pipeline():
     run_stats(covid_path=covid_path, climate_path=climate_path)
 
     print("\nRendering summary figures...")
+    plot_key_findings_results(
+        covid_path=covid_path,
+        climate_path=climate_path,
+        output_path=f"{ANALYSIS_DIR}/key_findings_results.png",
+        show=False,
+    )
     plot_all(
         covid_path=covid_path,
         climate_path=climate_path,
