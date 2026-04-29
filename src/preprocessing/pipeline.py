@@ -19,6 +19,7 @@ from src.preprocessing.clean import clean_series, filter_english
 
 RAW_DIR = 'data/raw'
 PROCESSED_DIR = 'data/processed'
+os.makedirs(PROCESSED_DIR, exist_ok=True)
 
 def run_pipeline():
     # load raw files
