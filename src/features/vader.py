@@ -1,6 +1,8 @@
 import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+VADER_COLUMNS = ["vader_neg", "vader_neu", "vader_pos", "vader_compound"]
+
 # Calculate the average sentiment scores of a list of texts
 # Input: texts = list of texts
 # Output:
@@ -19,6 +21,17 @@ def vader_series(texts):
         scores = analyzer.polarity_scores(text)
         rows.append(scores)
     return pd.DataFrame(rows)
+
+
+def get_vader_scores(texts):
+    return vader_series(texts).rename(
+        columns={
+            "neg": VADER_COLUMNS[0],
+            "neu": VADER_COLUMNS[1],
+            "pos": VADER_COLUMNS[2],
+            "compound": VADER_COLUMNS[3],
+        }
+    )
 
 
 def avg_vader(texts):
