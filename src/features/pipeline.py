@@ -8,7 +8,7 @@ from src.analysis.stats import run_stats
 from src.analysis.tfidf_context import TFIDF_CONTEXT_PATH, run_tfidf_context_analysis
 from src.features.tf_idf import top_terms_per_domain, print_top_terms
 from src.features.lemmatization import lemmatize_series
-from src.features.vader import avg_vader, vader_series
+from src.features.vader import vader_series
 from src.features.emotion import get_emotions_batch
 from src.features.rhetoric import extract_rhetoric_features, run_rhetoric_tests
 from src.features.visualize import plot_tfidf_context
@@ -66,24 +66,24 @@ def run_pipeline():
 
     # 5. VADER sentiment analysis
     print("\nCalculating average VADER sentiment scores...")
-    covid_sentiment = avg_vader(covid['text'].tolist())
-    climate_sentiment = avg_vader(climate['text'].tolist())
-    sentiment_results = {
-        'covid': {
-            'neg': covid_sentiment[0],
-            'neu': covid_sentiment[1],
-            'pos': covid_sentiment[2],
-            'compound': covid_sentiment[3]
-        },
-        'climate': {
-            'neg': climate_sentiment[0],
-            'neu': climate_sentiment[1],
-            'pos': climate_sentiment[2],
-            'compound': climate_sentiment[3]
-        }
-    }
     covid_vader_df = vader_series(covid['text'].tolist())
     climate_vader_df = vader_series(climate['text'].tolist())
+    covid_sentiment = covid_vader_df.mean()
+    climate_sentiment = climate_vader_df.mean()
+    sentiment_results = {
+        'covid': {
+            'neg': covid_sentiment['neg'],
+            'neu': covid_sentiment['neu'],
+            'pos': covid_sentiment['pos'],
+            'compound': covid_sentiment['compound']
+        },
+        'climate': {
+            'neg': climate_sentiment['neg'],
+            'neu': climate_sentiment['neu'],
+            'pos': climate_sentiment['pos'],
+            'compound': climate_sentiment['compound']
+        }
+    }
     covid_vader_columns = covid_vader_df.rename(
         columns={
             'neg': 'vader_neg',
